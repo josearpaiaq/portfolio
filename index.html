@@ -13,7 +13,7 @@
             body div {
                 background-color: rgb(215, 196, 226);
             }
-            a {
+            h2 {
                 text-decoration: none;
                 color: red;
             }
@@ -22,10 +22,10 @@
     <body>
         <header>
             <nav>
-                <a href="#">Sobre mi | </a>
-                <a href="#">Proyectos | </a>
-                <a href="#">Escritos | </a>
-                <a href="#">Contacto</a>
+                <a href="#sobre-mi">Sobre mi | </a>
+                <a href="#proyectos">Proyectos | </a>
+                <a href="#articulos">Escritos | </a>
+                <a href="#contact">Contacto</a>
             </nav>
             <div class="titulos-header">
                 <h1>Bienvenidos a mi pagina web.</h1>
@@ -33,7 +33,7 @@
             </div>
         </header>
         <main>
-            <section class="sobre-mi">
+            <section class="sobre-mi" id="sobre-mi">
                 <h2>Este soy yo!!</h2>
                 <div class="cont-sobre-mi">
                     <div class="cont-sobre-studios">
@@ -53,14 +53,55 @@
                     </div>
                 </div>
             </section>
-            <section class="proyectos">
+            <section class="proyectos" id="proyectos">
                 <h2>Mis proyectos</h2>
+                <div class="containt-mis-proyectos">
+                    <div class="proy-card">
+                        <img src="" alt="">
+                        <h3>Proyecto 1</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                    <div class="proy-card">
+                        <h3>Proyecto 2</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                    <div class="proy-card">
+                        <h3>Proyecto 3</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                    <div class="proy-card">
+                        <h3>Proyecto 4</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="articulos-escritos" id="articulos">
+                <h2>Escritos</h2>
+                <div class="container-arti">
+                    <div class="art-card">
+                        <img src="" alt="">
+                        <h3>Proyecto 1</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                    <div class="art-card">
+                        <h3>Articulo 2</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                    <div class="art-card">
+                        <h3>Articulo 3</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                    <div class="art-card">
+                        <h3>Articulo 4</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos maxime ratione fugiat iure similique, voluptatibus assumenda tempora odio saepe adipisci temporibus qui perferendis unde dolorum ea laborum praesentium non quod.</p>
+                    </div>
+                </div>
             </section>
         </main>
-        <footer>
+        <footer id="contact">
             <div class="footer-cont">
+                <h2>Contacto</h3> 
                 <hr>
-                <h3>Redes sociales</h3> 
                 <a href="#">josearpaiaquintero@gmail.com | </a>
                 <a href="https://www.facebook.com/jose.arpaia">Facebook</a>
                 <a href="#">Twitter</a>
