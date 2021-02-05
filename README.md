@@ -1,5 +1,7 @@
 # JQARPAIA.github.io
 
-Una pagina Web ot have fun in a bilingual way xD
+This will be my single page presentation web, with content about me and my taste, hobbies and of course college and life proyect!
 
-This is about me and about my stuff
+But most of all for practicing and having some fun coding a little.
+
+Any feedback or improvement just let me know, will be really appreciate!!
