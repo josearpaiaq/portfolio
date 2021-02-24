@@ -2,23 +2,31 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="Esta es mi pagina web de portafolio. Mi nombre es Jose Arpaia y dejame contante mi histotia y trayecto como Desarrollor Web.">
     <title>José Arpaia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/faviconJA.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css" class="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <!-- <a id="name" href="#">Jose Arpia</a> -->
+            <span><a id="name" href="./">Web Dev</a></span>
             <a href="#sobre-mi">Sobre mi</a>
             <a href="#proyectos">Proyectos</a>
             <a href="#articulos">Escritos</a>
-            <a href="#contact">Contacto</a>
+            <a href="#contacto">Contacto</a>
         </nav>
         <div class="titulos-header">
-            <h1>SOY JOSE ARPAIA</h1>
-            <h2>Y soy desarrollar web.</h2>
-            <a href="#"><i><b>Esta es mi historia</b></i></a>
+            <div class="titulos-header--h1">
+                <h1>Mi nombre es Jose Arpaia</h1>
+                <h2>Soy desarrollar web.</h2>                
+            </div>
+            <a href="#">Mi historia</a>
         </div>
     </header>
     <main>
@@ -26,7 +34,7 @@
             <h2>Este soy yo!!</h2>
             <div class="cont-sobre-mi">
                 <div class="cont-sobre-studios">
-                    <img src="" alt="Jose Arpaia">
+                    <img src="" alt="Jose Arpaia" title="Jose Arpaia">
                     <h4>1 Soy estudiante</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium atque iusto iure adipisci
                         explicabo doloremque eum ex vero, ipsum illum mollitia fuga molestiae. Commodi magnam obcaecati
@@ -35,7 +43,7 @@
                         eos!</p>
                 </div>
                 <div class="cont-sobre-futbol">
-                    <img src="" alt="">
+                    <img src="" alt="kkk" title="HOLA">
                     <h4>2 Amo el futbol</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium atque iusto iure adipisci
                         explicabo doloremque eum ex vero, ipsum illum mollitia fuga molestiae. Commodi magnam obcaecati
@@ -44,7 +52,7 @@
                         eos!</p>
                 </div>
                 <div class="cont-sobre-hobbies">
-                    <img src="" alt="">
+                    <img src="" alt="sssss" title="Que haces?">
                     <h4>3 Hobbies (SPOILER: SOY CINEFILO!!)</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium atque iusto iure adipisci
                         explicabo doloremque eum ex vero, ipsum illum mollitia fuga molestiae. Commodi magnam obcaecati
@@ -56,7 +64,7 @@
         </section>
         <section class="contenedor proyectos" id="proyectos">
             <h2>Mis proyectos</h2>
-            <div class="containt-mis-proyectos">
+            <div class="container-mis-proyectos">
                 <div class="proy-card">
                     <img src="" alt="">
                     <h3>Proyecto 1</h3>
@@ -115,19 +123,22 @@
             </div>
         </section>
     </main>
-    <section class="contenedor" id="contact">
+    <section class="contenedor contact" id="contacto">
          <h2>Contacto</h2>
-         <form action="">
-             <input type="text" name="nombre" placeholder="Nombre">
-             <br>
-             <input type="text" name="apellido" placeholder="Apellido">
-             <br>
-             <input type="email" name="email" placeholder="Email" required>
-             <br>
-             <textarea name="mensaje" id="mensaje" placeholder="Escriba su mensaje aqui..." cols="10" rows="5" required></textarea>
-             <br>
-             <input type="submit" value="Enviar">
-         </form>
+         <div>
+            <form class="form" action="form">
+                <div class="form__img">
+                    <img src="img/Contact.png" title="Imagen del formulario" alt="imagen delformulario de contacto">
+                </div>
+                <div class="form__flex-input">
+                    <input class="form__input" type="text" name="nombre" placeholder="Nombre">
+                    <input class="form__input" type="text" name="apellido" placeholder="Apellido">
+                    <input class="form__input" type="email" name="email" placeholder="Email" required>
+                    <textarea class="form__input" name="mensaje" id="mensaje" placeholder="Escriba su mensaje aqui..." required></textarea>
+                    <input class="form__input form__button" type="submit" value="Enviar">
+                </div>
+            </form> 
+         </div>
     </section>
     <footer>
         <div class="footer-cont">

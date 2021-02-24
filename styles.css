@@ -2,53 +2,113 @@
      margin: 0;
      padding: 0;    
      box-sizing: border-box;
+     font-size: 1em;
  }
 
 body{
-    background: chocolate;
+    background-color: #000;
     color: white;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
+
+/* Primera pantalla de la pagina, header y nav*/
 header {
     background-image: url(img/bg-new-york.jpg);
     height: 700px;
     width: 100%;
 }
 nav {
+    display: flex;
+    flex-direction: row;
+    flex-flow: flex-end wrap;
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(to left, transparent, lightblue);
     position: absolute;
-    width: 100%;
+    width: 100%;    
     height: 50px;
-    text-align: right;
-    padding: 10px 20px 0 0;
-    background-color: rgb(17, 15, 161);
-    opacity: .8;
+}
+
+nav span {
+    flex: 3;
+    font-size: 35px;
 }
 header a{
     text-decoration: none;
-    color: rgb(255, 4, 4);
-    padding-left: 10px;
+    color: #000;
+    padding: 0 10px;
     font-style: bold;
     font-size: 25px;
+    margin: 10px;
 }
-header a:hover {
-    color: white;
-    text-decoration: underline;
+header nav a:hover {
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 100px;
+    box-shadow: 10px 10px 8px #000; 
 }
-header div a {
-    color: yellow;
-}
+
 .titulos-header{
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
     width: 100%;
     height: 100%;
     text-align: center;
     padding: 250px 0 200px;  
     margin: auto;
     text-align: center;
+    
+}
+.titulos-header--h1 {
+    transition: all .8s;
+    font-size: 50px;
+}
+
+.titulos-header--h1:hover {
+    color:rgb(8, 6, 10);
+    font-size: 70px;
+    
+}
+
+.titulos-header a{
+    font-style: normal;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    transition: all .8s;
+    text-decoration: underline;
+    margin: 50px 0;
+}
+
+.titulos-header a:hover {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+}
+
+/* Contenido principal de la pagina */
+main {
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 30px;
 }
 .contenedor {
     width: 100%;
-    height: 700px;
-    padding: 60px;
+    padding: 10px;
+}
+
+section > div {
+    display: flex;
+    flex-direction: row;
+    flex-flow: center wrap;
+}
+
+section > div > div {
+    max-height: 300px;
 }
 .sobre-mi {
     background-color: rgb(17, 15, 161);
@@ -59,12 +119,76 @@ header div a {
 .articulos-escritos {
     background-color: rgb(62, 122, 72);
 }
-.contacto {
-    background-color: rgb(126, 14, 14);
+
+
+/* Formulario de contacto */
+
+.contact {
+    background-color: #333;
 }
+.form { 
+    display: flex;
+    flex-flow: row wrap;
+    padding: 50px 0 50px 50px;
+    border: 5px solid #000;
+    width: 100%;
+}
+.form__flex-input {
+    display: flex;
+    flex-direction: column;
+    flex-flow: space-between wrap;
+    align-content: center;
+    width: 100%;
+    flex: 2;
+    padding: 50px;
+    margin: 0 50px;
+    border: 5px solid #fff;
+}
+.form__input {
+    background-color: transparent;
+    margin: 10px 10px;
+    padding: 5px;
+    border: 5px bold #000;
+    resize: none;
+    text-align: center;
+}
+
+.form__input::placeholder{
+    color: #fff;
+    font-family: 'Sen', sans-serif;
+}
+
+.form__button {
+    color: #fff;
+    background-color: #000;
+}
+
+.form__button:active {
+    background-color: transparent;
+}
+
+.form__img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+}
+
+.form__img img {
+    max-width: 450px;
+    min-width: 250px;
+    border-radius: 20em;
+    text-align: center;
+}
+
+
+/* Pie de pagina con informacion de RRSS*/
+
 footer {
     background-color: rgb(12, 12, 14);
     text-align: center;
+    height: 100%;
+    margin: 0;
 }
 footer a {
     margin-right: 25px;
@@ -78,7 +202,7 @@ footer a:hover {
 }
 .copyright-footer {
     text-align: center;
-    margin-right: 20px;
+    margin: 0 20px;
 }
 .copyright-footer img {
     height: 20px;
