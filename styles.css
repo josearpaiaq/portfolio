@@ -164,11 +164,13 @@ section > div > div {
     color: #fff;
     font-family: 'Sen', sans-serif;
     text-align: left;
+    opacity: .5;
 }
 .form__input:focus {
     outline: none;
     border-bottom: 5px solid #000;
     transition: all .4s;
+    background: linear-gradient(to top, #333, #222);
 }
 .form__button {
     text-align: center;
@@ -202,6 +204,11 @@ footer {
     text-align: center;
     height: 100%;
     margin: 0;
+}
+
+.footer__h2 {
+    margin: 0;
+    background: linear-gradient(to bottom, #333, #000);
 }
 footer a {
     font-size: 25px;
