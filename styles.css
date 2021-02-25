@@ -130,8 +130,8 @@ section > div > div {
     display: flex;
     flex-flow: row wrap;
     padding: 50px 0 50px 50px;
-    border: 5px solid #000;
     width: 100%;
+    height: 100%;
 }
 .form__flex-input {
     display: flex;
@@ -142,25 +142,38 @@ section > div > div {
     flex: 2;
     padding: 50px;
     margin: 0 50px;
-    border: 5px solid #fff;
 }
 .form__input {
-    background-color: transparent;
+    color: #fff;
+    background: linear-gradient(to top, #222, #333);
     margin: 10px 10px;
     padding: 5px;
-    border: 5px bold #000;
+    border: none;
+    text-align: left;
+    outline: none;
+    border-bottom: 1px solid #000;
+    border-radius: 5%;
+}
+
+#mensaje {
+    height: 150px;
     resize: none;
-    text-align: center;
 }
 
 .form__input::placeholder{
     color: #fff;
     font-family: 'Sen', sans-serif;
+    text-align: left;
 }
-
+.form__input:focus {
+    outline: none;
+    border-bottom: 5px solid #000;
+    transition: all .4s;
+}
 .form__button {
+    text-align: center;
     color: #fff;
-    background-color: #000;
+    background: #000;
 }
 
 .form__button:active {
@@ -175,10 +188,10 @@ section > div > div {
 }
 
 .form__img img {
-    max-width: 450px;
-    min-width: 250px;
-    border-radius: 20em;
-    text-align: center;
+    max-width: 350px;
+    min-width: 150px;
+    border-radius: 50%;
+    margin: auto;
 }
 
 
@@ -191,7 +204,6 @@ footer {
     margin: 0;
 }
 footer a {
-    margin-right: 25px;
     font-size: 25px;
     padding: 20px;
     text-decoration: none;
@@ -200,6 +212,19 @@ footer a:hover {
     text-decoration: underline;
     color: white;
 }
+
+.footer-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: center wrap;
+}
+.footer-cont a {
+    min-width: 150px;
+    max-width: 350px;
+    flex: 1;
+}
+
 .copyright-footer {
     text-align: center;
     margin: 0 20px;
