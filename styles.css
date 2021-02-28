@@ -27,13 +27,14 @@ nav {
     font-family: 'Dancing Script', cursive;
     background: linear-gradient(to left, transparent, lightblue);
     position: absolute;
-    width: 100%;    
-    height: 50px;
+    width: 100%;
 }
-
 nav span {
-    flex: 3;
-    font-size: 1.5em;
+    flex: 2;
+}
+nav span img {
+    padding: .3em 0 .3em .8em;
+    height: 2em;
 }
 header a{
     text-decoration: none;
@@ -42,13 +43,35 @@ header a{
     font-style: bold;
     font-size: 1.5em;
     margin: 10px;
+    text-align: center;
 }
 header nav a:hover {
-    color: #fff;
     border: 2px solid #000;
-    border-radius: 100px;
+    border-radius: 80%;
     box-shadow: 10px 10px 8px #000; 
     transition: all .5s;
+}
+
+@media screen and (max-width: 590px) {
+    nav {
+        display: grid;
+        grid-template: repeat(5, 1fr) / 1fr 1fr;
+        top: -190px;
+        transition: all .5s;
+    }
+    nav:hover {
+        top: 0px;
+        margin: 0 0 20px 0;
+    }
+    nav span {
+        grid-row: 1 / span 5;
+        align-self: flex-end;
+        justify-self: center;
+    }
+    nav span img {
+        height: 3em;
+        
+    }
 }
 
 .titulos-header{
@@ -86,7 +109,7 @@ header nav a:hover {
 .titulos-header--a > a:hover {
     font-size: 20px;
     border: 2px solid #000;
-    border-radius: 100px;
+    border-radius: 80%;
     box-shadow: 10px 10px 8px #000;
 }
 
@@ -168,7 +191,7 @@ h2 {
 }
 
 #mensaje {
-    height: 150px;
+    height: 150px !important;
     resize: none;
 }
 
@@ -199,10 +222,11 @@ h2 {
     flex-direction: row;
     justify-content: center;
     margin: 0;
+    box-shadow: 0 !important; /*REVISAR box-shadow*/
+    border: none;
 }
 
 .form__img img {
-    box-shadow: 0 !important; /*REVISAR!!!!!!!!!!!*/
     align-self: center;
     max-width: 250px;
     border-radius: 50%;
