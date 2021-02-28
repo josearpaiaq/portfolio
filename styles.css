@@ -13,11 +13,14 @@ body{
 
 /* Primera pantalla de la pagina, header y nav*/
 header {
-    background-image: url(img/bg-new-york.jpg); 
+    /* background-image: url(img/bg-new-york.jpg);  */
     width: 100%;
     object-fit: cover;
 }
-
+.header__bg {
+    background-size: cover;
+    background-position: center center;
+}
 nav {
     display: flex;
     flex-flow: row wrap;
@@ -30,15 +33,14 @@ nav {
 
 nav span {
     flex: 3;
-    justify-self: flex-start;
-    font-size: 35px;
+    font-size: 1.5em;
 }
 header a{
     text-decoration: none;
     color: #000;
     padding: 0 10px;
     font-style: bold;
-    font-size: 25px;
+    font-size: 1.5em;
     margin: 10px;
 }
 header nav a:hover {
@@ -62,15 +64,14 @@ header nav a:hover {
 }
 .titulos-header--h1 {
     transition: all .8s;
-    font-size: 50px;
+    font-size: 3em;
 }
 
 .titulos-header--h1:hover {
     color:rgb(8, 6, 10);
-    font-size: 70px;
+    font-size: 2em;
     
 }
-
 .titulos-header--a > a{
     color: #fff;
     font-style: normal;
@@ -108,10 +109,10 @@ h2 {
 
 .contenedor div div {
     flex: 1;
-    border: 5px dashed #000;
+    box-shadow: 5px 5px 8px #000;
     margin: 5px;
     padding: 5px;
-    max-width: 450px;
+    min-width: 250px;
 }
 
 .sobre-mi {
@@ -139,31 +140,31 @@ h2 {
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
-    padding: 50px 0 50px 0px;
+    padding: 40px 0;
     width: 100%;
-    height: 100%;
 }
 .form__flex-input {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-content: center;
-    width: 100%;
-    padding: 50px;
+    width: 95%;
+    padding: 10px;
     margin: 0;
     min-width: 400px;
 }
 .form__input {
     color: #fff;
     background: linear-gradient(to top, #222, #333);
-    margin: 10px 10px;
-    padding: 5px;
+    margin: 10px 0px;
+    padding: 0px;
     border: none;
     text-align: left;
     outline: none;
     border-bottom: 1px solid #000;
     border-radius: 5%;
-    width: 100%;
+    width: 95%;
+    flex: 1;
 }
 
 #mensaje {
@@ -201,6 +202,7 @@ h2 {
 }
 
 .form__img img {
+    box-shadow: 0 !important; /*REVISAR!!!!!!!!!!!*/
     align-self: center;
     max-width: 250px;
     border-radius: 50%;
