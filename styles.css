@@ -13,14 +13,14 @@ body{
 
 /* Primera pantalla de la pagina, header y nav*/
 header {
-    background-image: url(img/bg-new-york.jpg);
-    height: 700px;
+    background-image: url(img/bg-new-york.jpg); 
     width: 100%;
+    object-fit: cover;
 }
+
 nav {
     display: flex;
-    flex-direction: row;
-    flex-flow: flex-end wrap;
+    flex-flow: row wrap;
     font-family: 'Dancing Script', cursive;
     background: linear-gradient(to left, transparent, lightblue);
     position: absolute;
@@ -30,6 +30,7 @@ nav {
 
 nav span {
     flex: 3;
+    justify-self: flex-start;
     font-size: 35px;
 }
 header a{
@@ -45,6 +46,7 @@ header nav a:hover {
     border: 2px solid #000;
     border-radius: 100px;
     box-shadow: 10px 10px 8px #000; 
+    transition: all .5s;
 }
 
 .titulos-header{
@@ -69,27 +71,25 @@ header nav a:hover {
     
 }
 
-.titulos-header a{
+.titulos-header--a > a{
+    color: #fff;
     font-style: normal;
     font-size: 15px;
-    display: flex;
-    justify-content: center;
+    justify-self: center;
     align-self: flex-start;
     transition: all .8s;
-    text-decoration: underline;
+    text-decoration: none;
     margin: 50px 0;
 }
 
-.titulos-header a:hover {
-    text-decoration: none;
+.titulos-header--a > a:hover {
     font-size: 20px;
-    color: #fff;
+    border: 2px solid #000;
+    border-radius: 100px;
+    box-shadow: 10px 10px 8px #000;
 }
 
 /* Contenido principal de la pagina */
-main {
-    width: 100%;
-}
 
 h2 {
     text-align: center;
@@ -101,15 +101,19 @@ h2 {
     padding: 10px;
 }
 
-section > div {
+.contenedor > div {
     display: flex;
-    flex-direction: row;
-    flex-flow: center wrap;
+    flex-flow: row wrap;
 }
 
-section > div > div {
-    max-height: 300px;
+.contenedor div div {
+    flex: 1;
+    border: 5px dashed #000;
+    margin: 5px;
+    padding: 5px;
+    max-width: 450px;
 }
+
 .sobre-mi {
     background-color: rgb(17, 15, 161);
 }
@@ -129,19 +133,17 @@ section > div > div {
 .form { 
     display: flex;
     flex-flow: row wrap;
-    padding: 50px 0 50px 50px;
+    padding: 50px 0 50px 0px;
     width: 100%;
     height: 100%;
 }
 .form__flex-input {
     display: flex;
-    flex-direction: column;
-    flex-flow: space-between wrap;
+    flex-flow: column wrap;
     align-content: center;
     width: 100%;
-    flex: 2;
     padding: 50px;
-    margin: 0 50px;
+    margin: 0;
 }
 .form__input {
     color: #fff;
@@ -153,6 +155,7 @@ section > div > div {
     outline: none;
     border-bottom: 1px solid #000;
     border-radius: 5%;
+    width: 100%;
 }
 
 #mensaje {
@@ -168,7 +171,7 @@ section > div > div {
 }
 .form__input:focus {
     outline: none;
-    border-bottom: 5px solid #000;
+    border-bottom: 2px solid #000;
     transition: all .4s;
     background: linear-gradient(to top, #333, #222);
 }
@@ -186,14 +189,14 @@ section > div > div {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex: 1;
+    margin: 0;
 }
 
 .form__img img {
-    max-width: 350px;
-    min-width: 150px;
+    align-self: center;
+    max-width: 250px;
     border-radius: 50%;
-    margin: auto;
+    margin: 0;
 }
 
 
@@ -204,6 +207,8 @@ footer {
     text-align: center;
     height: 100%;
     margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .footer__h2 {
@@ -214,6 +219,7 @@ footer a {
     font-size: 25px;
     padding: 20px;
     text-decoration: none;
+    transition: all .5s;
 }
 footer a:hover {
     text-decoration: underline;
@@ -223,20 +229,17 @@ footer a:hover {
 .footer-cont {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-flow: center wrap;
+    flex-flow: row wrap;
 }
 .footer-cont a {
-    min-width: 150px;
-    max-width: 350px;
     flex: 1;
 }
 
 .copyright-footer {
     text-align: center;
     margin: 0 20px;
+    font-size: 1em;
 }
 .copyright-footer img {
-    height: 20px;
-    width: 20px;
+    width: 1em;
 }
