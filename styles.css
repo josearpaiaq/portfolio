@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url(img/bg-new-york.jpg);
+  background: #333;
   background-size: contain;
   background-position: top;
   color: white;
@@ -93,32 +93,26 @@ header nav a:hover {
   text-align: center;
 }
 .titulos-header--h1 {
-  position: relative;
-  font-size: 3em;
   animation-name: animationHeader;
   animation-duration: 3s;
-  animation-direction: alternate;
+  animation-direction: normal;
   animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
   transition: all 0.8s;
-  left: 0;
 }
 /* Animacion para el titulo de la pagina */
 @keyframes animationHeader {
   0% {
-    left: 0;
-  }
-  50% {
-    left: 40%;
+    font-size: 1em;
   }
   100% {
-    left: 0;
-    font-size: 1em;
+    font-size: 4em;
   }
 }
 
 .titulos-header--h1:hover {
   color: rgb(8, 6, 10);
-  font-size: 2em;
   cursor: pointer;
 }
 .titulos-header--a > a {
@@ -133,7 +127,6 @@ header nav a:hover {
 }
 
 .titulos-header--a > a:hover {
-  font-size: 20px;
   border: 2px solid #000;
   border-radius: 25%;
   box-shadow: 10px 10px 8px #000;
@@ -147,6 +140,7 @@ h2 {
   margin: 50px 0;
   font-size: 30px;
 }
+
 .contenedor {
   width: 100%;
   padding: 10px;
@@ -164,7 +158,7 @@ h2 {
   min-width: 250px;
 }
 .sobre-mi {
-  background: linear-gradient(to bottom, transparent, rgb(37, 36, 94));
+  background: linear-gradient(to bottom, #11f, rgb(37, 36, 94));
 }
 
 .techs {
@@ -181,32 +175,43 @@ h2 {
 /* Modelo de la carta para temas distintos */
 .card {
   display: flex;
-  flex-flow: row wrap;
-  align-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  position: relative;
   top: 0;
 }
+
+.card p {
+  text-align: justify;
+  padding: 10px;
+}
 .card:hover {
+  top: -5px;
   box-shadow: 8px 8px 10px #000;
 }
 .card__img {
   background-size: cover;
   background-position: center center;
   min-height: 300px;
-  box-shadow: none;
-  margin: 50px 0;
+  margin: 0;
 }
 
-.card article {
-  margin-top: 2em;
+.card__article {
+  margin-top: 1em;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-evenly;
+  align-content: space-between;
 }
 
-.card article h4,
-p {
-  margin: 10px 0;
+.card__article h4 {
+  margin-top: 0;
+  margin-left: 10px;
 }
+ .card__article-author{
+   margin-bottom: 0;
+ }
 
 /* Formulario de contacto */
 
@@ -216,11 +221,7 @@ p {
   padding: 50px;
 }
 
-#formId {
-  box-shadow: none;
-}
-
-#formIdInput {
+#formId, #formIdInput {
   box-shadow: none;
 }
 
@@ -231,7 +232,6 @@ p {
   align-content: center;
   padding: 10px;
   width: 100%;
-  /* outline: 5px solid red; */
   box-shadow: 5px 5px 8px #000 !important;
 }
 .form__flex-input {
@@ -248,17 +248,16 @@ p {
 .form__input {
   color: #fff;
   font-size: 1em;
-  background: linear-gradient(to top, #222, #333);
   margin: 10px 0px;
   padding: 0px;
   border: none;
   text-align: left;
   outline: none;
   border-bottom: 2px solid #000;
-  border-radius: 5%;
   width: 100%;
-  flex: 1;
   height: 50px;
+  flex: 1;
+  background: transparent;
 }
 
 #mensaje {
@@ -276,9 +275,8 @@ p {
 }
 .form__input:focus {
   outline: none;
-  border-bottom: 4px solid #000;
+  border-bottom: 4px solid #060;
   transition: all 0.4s;
-  background: linear-gradient(to top, #333, #222);
 }
 .form__button {
   text-align: center;
@@ -296,6 +294,7 @@ p {
   flex-direction: row;
   justify-content: center;
   border: none;
+  padding: 20px;
 }
 
 .form__img img {
@@ -321,7 +320,8 @@ footer {
 }
 footer a {
   font-size: 25px;
-  padding: 20px;
+  padding: 0;
+  margin: 0 10px;
   text-decoration: none;
   transition: all 0.5s;
 }
@@ -335,9 +335,7 @@ footer a:hover {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-}
-.footer-cont a {
-  flex: 1;
+  justify-content: center;
 }
 
 .copyright-footer {
