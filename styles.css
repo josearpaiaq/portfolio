@@ -6,23 +6,19 @@
 }
 
 body {
-  background: #333;
-  background-size: contain;
-  background-position: top;
+  background-image: url(img/bg-new-york.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   color: white;
   font-family: "Open Sans", sans-serif;
 }
 
 /* Primera pantalla de la pagina, header y nav*/
 header {
-  /* background-image: url(img/bg-new-york.jpg);  */
   width: 100%;
-  object-fit: cover;
 }
-.header__bg {
-  background-size: cover;
-  background-position: center center;
-}
+
 nav {
   display: flex;
   flex-flow: row wrap;
@@ -158,7 +154,7 @@ h2 {
   min-width: 250px;
 }
 .sobre-mi {
-  background: linear-gradient(to bottom, #11f, rgb(37, 36, 94));
+  background: linear-gradient(to bottom, transparent, rgb(37, 36, 94));
 }
 
 .techs {
@@ -181,11 +177,13 @@ h2 {
   justify-content: space-between;
   position: relative;
   top: 0;
+  background-color: #fff6;
 }
 
 .card p {
   text-align: justify;
   padding: 10px;
+  color: #000;
 }
 .card:hover {
   top: -5px;
@@ -324,13 +322,27 @@ footer a {
   margin: 0 10px;
   text-decoration: none;
   transition: all 0.5s;
+  color: #66f;
 }
-footer a:hover {
+footer p {
+  font-size: 25px;
+  padding: 0;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: all 0.5s;
+  color: #66f;
+}
+footer a:hover{
   text-decoration: underline;
   color: white;
   cursor: pointer;
 }
 
+.fa-discord:hover::after { 
+  content: " ArpaiaJQ";
+  color: white;
+  cursor: pointer;
+}
 .footer-cont {
   width: 100%;
   display: flex;
