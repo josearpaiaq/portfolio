@@ -19,6 +19,7 @@
             <nav>
                 <span>
                     <img src="img/faviconJA- 32x32.png" alt="Logo" title="Jose Arpaia">
+                    <label for="img">Jose Arpaia</label>
                 </span>
                 <a href="#sobre-mi">Sobre mi</a>
                 <a href="#techs">Conocimientos</a>
@@ -72,33 +73,33 @@
                 </div>
             </div>
         </section>
-        <section class="contenedor techs">
-            <h2>Conocimientos</h2>
+        <section class="contenedor techs" id="techs">
+            <h2>Conocimientos Web</h2>
             <div class="conocimientos">
                 <div>
                     <div class="conocimientos__img">
                         <div>
                             <img src="img/KnownTechs/html5-brands.svg" title="HTML" alt="HTML LOGO">
                             <p>Nivel:
-                                <input type="range" disabled value="90">
+                                <meter min="0" max="100" low="30" high="70" optimum="80" value="90"></meter>
                             </p>
                         </div>
                         <div>
                             <img src="img/KnownTechs/css3-alt-brands.svg" title="CSS" alt="CSS LOGO">
                             <p>Nivel:
-                                <input type="range" disabled value="60">
+                               <meter min="0" max="100" low="30" high="70" optimum="80" value="60"></meter>
                             </p>
                         </div>
                         <div>
                             <img src="img/KnownTechs/js-brands.svg" title="Java alt" title="JavaScript Logo">
                             <p>Nivel:
-                                <input type="range" disabled value="50">
+                                <meter min="0" max="100" low="30" high="70" optimum="80" value="50"></meter>
                             </p>
                         </div>
                         <div>
                             <img src="img/KnownTechs/git-alt-brands.svg" title="GIT" alt="GIT LOGO">
                             <p>Nivel:
-                                <input type="range" disabled value="70">
+                                <meter min="0" max="100" low="30" high="70" optimum="80" value="70"></meter>
                             </p>
                         </div>
                     </div>
@@ -193,6 +194,7 @@
     </main>
     <section class="contact" id="contacto">
          <h2>Formulario de Contacto</h2>
+         <div class="animatedCubic"></div>
          <div>
             <form class="form" id="formId" action="form">
                 <div class="form__img">
@@ -205,7 +207,8 @@
                     <textarea class="form__input" name="mensaje" id="mensaje" placeholder="Escriba su mensaje aqui..." ></textarea>
                     <input class="form__input form__button" type="submit" value="Enviar">
                 </div>
-            </form> 
+            </form>
+            <p>*Si no me puedes contactar mediante este formulario, comunicate a mi correo electronico <b><i>josearpaiaquintero@gmail.com</i></b> y trabajemos juntos :) </p>
          </div>
     </section>
     <footer>

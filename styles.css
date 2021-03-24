@@ -35,6 +35,11 @@ nav span {
   flex: 2;
   margin: auto 1em;
 }
+nav span label {
+  font-size: 32px;
+  align-self: center;
+  color: #000;
+}
 nav span img {
   padding: auto 0 auto 0.8em;
   height: 2em;
@@ -285,6 +290,35 @@ h2 {
   padding: 50px;
 }
 
+.contact h2{
+  margin-bottom: 10px;
+}
+.contact:hover .animatedCubic {
+  animation: moveslefttoRight 4s ease .5s infinite alternate both;
+}
+.animatedCubic {
+  height: 2px;
+  width: 100px;
+  box-shadow: 0 0 50px #0f0;
+  background-color: #060;
+  margin: auto auto 20px;
+}
+
+@keyframes moveslefttoRight {
+  0%{
+    transform: scaleX(1);
+  }
+  50%{
+    transform: scaleX(3.5);
+  }
+  70%{
+    transform: scaleX(1);
+  }
+  100%{
+    transform: scaleX(3.5);
+  }
+}
+
 #formId, #formIdInput {
   box-shadow: none;
 }
@@ -297,6 +331,7 @@ h2 {
   padding: 10px;
   width: 100%;
   box-shadow: 5px 5px 8px #000 !important;
+  margin-bottom: 20px;
 }
 .form__flex-input {
   display: flex;
