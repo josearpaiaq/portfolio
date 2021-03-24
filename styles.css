@@ -32,6 +32,7 @@ nav {
   width: 100%;
 }
 nav span {
+  display: flex;
   flex: 2;
   margin: auto 1em;
 }
@@ -39,6 +40,7 @@ nav span label {
   font-size: 32px;
   align-self: center;
   color: #000;
+  margin-left: 10px;
 }
 nav span img {
   padding: auto 0 auto 0.8em;
@@ -84,6 +86,9 @@ header nav a:hover {
     align-self: flex-end;
     justify-self: center;
     margin: 5px;
+  }
+  nav span label {
+    font-size: 20px;
   }
   nav span img {
     height: 2.5em;
