@@ -118,12 +118,18 @@ header nav a:hover {
   animation-iteration-count: 1;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  transition: all 0.8s;
+  color: #060;
+  letter-spacing: 1px;
+  transition: all .8s;
 }
 /* Animacion para el titulo de la pagina */
 @keyframes animationHeader {
   0% {
+    letter-spacing: 25px;
     font-size: 1em;
+  }
+  50% {
+    letter-spacing: 45px;
   }
   100% {
     font-size: 4em;
@@ -131,8 +137,8 @@ header nav a:hover {
 }
 
 .titulos-header--h1:hover {
-  color: rgb(8, 6, 10);
   cursor: pointer;
+  transform: skew(25deg);
 }
 .titulos-header--a > a {
   color: #fff;
@@ -156,7 +162,7 @@ header nav a:hover {
 
 h2 {
   text-align: center;
-  margin: 50px 0;
+  margin: 30px 0 10px;
   font-size: 30px;
 }
 
@@ -165,32 +171,28 @@ h2 {
   padding: 10px;
 }
 
-.contenedor > div {
-  display: flex;
-  flex-flow: row wrap;
-}
-.contenedor div div {
-  flex: 1;
-  min-width: 250px;
-}
 .sobre-mi {
   background: linear-gradient(to bottom, transparent, rgb(37, 36, 94));
 }
 
 .techs {
-  background: linear-gradient(to bottom, rgb(37, 36, 94), #333);
+  background: linear-gradient(to bottom, rgb(37, 36, 94), rgb(15, 161, 27));
 }
 .proyectos {
-  display: none; /* SECCION HIDDEN*/
-  background: linear-gradient(to bottom, #333, rgb(15, 161, 27));
-}
-
-.articulos-escritos {
-  display: none; /* SECCION HIDDEN*/
-  background: linear-gradient(to bottom, rgb(15, 161, 27), rgb(62, 122, 72));
+  background: linear-gradient(to bottom, rgb(15, 161, 27), #333);
 }
 
 /* Modelo de la carta para temas distintos */
+
+.sobre-mi > div {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.sobre-mi div div {
+  flex: 1;
+  min-width: 250px;
+}
 .card {
   background-color: #fff6;
   display: flex;
@@ -235,6 +237,15 @@ h2 {
  }
 
  /* Seccion de conocimientos y tecnologias aprendidas */
+ .techs > div {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.techs div div {
+  flex: 1;
+  min-width: 250px;
+}
 
 .conocimientos > div{
   display: flex;
@@ -286,6 +297,83 @@ h2 {
   }
 }
 
+/* Seccion de proyectos */
+
+.proyectos:hover .animatedCubic {
+  animation: moveslefttoRight 4s ease .5s infinite alternate both;
+}
+
+.proyectos {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column wrap;
+  margin-bottom: 0;
+}
+.proyectos-p {
+  text-align: center;
+  margin: 20px auto 0;
+}
+
+.proyectos-p a {
+  color: #48e;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 40px;
+  min-width: 200px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+}
+
+.grid-item {
+  justify-self: flex-end;
+  box-shadow: 0 0 30px #333;
+}
+
+.grid-item:hover {
+  transform: translateY(-.5%);
+  box-shadow: 0 0 50px #333;
+}
+
+.proy-card {
+  display: flex;
+  flex-direction: column;  
+}
+.proy-card__img{
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.proy-card__text {
+  text-align: justify;
+}
+
+.proy-card__content {
+  padding: 20px;
+}
+.grid-item-prox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item-prox {
+  box-shadow: 0 0 30px #333;
+}
+.grid-item-prox:hover {
+  transform: translateY(-.5%);
+  box-shadow: 0 0 50px #333;
+}
+@media screen and (max-width: 900px){
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Formulario de contacto */
 
@@ -298,7 +386,7 @@ h2 {
 .contact h2{
   margin-bottom: 10px;
 }
-.contact:hover .animatedCubic {
+.contact:hover .animatedCubic, .techs:hover .animatedCubic, .sobre-mi:hover .animatedCubic {
   animation: moveslefttoRight 4s ease .5s infinite alternate both;
 }
 .animatedCubic {
@@ -306,7 +394,7 @@ h2 {
   width: 100px;
   box-shadow: 0 0 50px #0f0;
   background-color: #060;
-  margin: auto auto 20px;
+  margin: auto auto 60px;
 }
 
 @keyframes moveslefttoRight {
