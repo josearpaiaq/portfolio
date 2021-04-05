@@ -21,7 +21,7 @@
             <nav>
                 <span>
                     <img src="img/faviconJA- 32x32.png" alt="Logo" title="Jose Arpaia">
-                    <label for="img">Jose Arpaia</label>
+                    <label for="img">Desarrollo Web</label>
                 </span>
                 <a href="#sobre-mi">Sobre mi</a>
                 <a href="#techs">Conocimientos</a>
@@ -31,10 +31,12 @@
             </nav>
             <div class="titulos-header">
                 <div class="titulos-header--h1">
-                    <h1>Desarrollo Web</h1>             
+                    <h1>Jose Arpaia</h1>          
                 </div>
                 <div class="titulos-header--a">
-                    <a href="#sobre-mi">Conoceme >> </a>
+                    <p>
+                        - Front End Developer - 
+                    </p>
                 </div>
             </div>
         </div>
@@ -44,35 +46,25 @@
             <h2>Un poco de mí</h2>
             <div class="animatedCubic" style="background-color: #48e;"></div>
             <div class="container-sobre-mi">
-                <div class="cont-estudios card">
-                    <div class="card__img" style="background-image: url(img/AboutMeSection/Education.jpg);box-shadow: none;"></div>
-                    <article class="card__article">
-                        <h4>Universidad</h4>
+                <div class="flex-sobre-mi">
+                    <div class="flex-sobre-mi__imgs">
+                        <img src="img/AboutMeSection/Education.jpg" alt="">
+                        <img src="img/AboutMeSection/hobbies.jpg" alt="">
+                        <img src="img/AboutMeSection/Sports.jpg" alt="">
+                        <img src="img/fotoDePortadaDiseñoWeb.jpg" alt="">
+                    </div>
+                    <div class="flex-sobre-mi__info">
                         <p>
+                            <b>Universidad</b> <br>
                             Actualmente estoy estudiando la carrera de Ingenieria de Sistemas y Computación en la Universidad Tecnologica de Panamá, curso los ultimos años de mi carrera, aunque desde siempre me han gustado la computadoras y todo lo que referente a la tecnologia, aprendi HTML a los 17 años y desde ahi supe que tendria que aprender más del desarrollo web.
-                        </p>
-                        <p class="card__article-author">- Jose Arpaia</p>
-                    </article>
-                </div>
-                <div class="cont-sobre-futbol card">
-                    <div class="card__img" style="background-image: url(img/AboutMeSection/Sports.jpg);box-shadow: none"></div>
-                    <article class="card__article">
-                        <h4>Me encantan los deportes</h4>
-                        <p>
+                            <br><br>
+                            <b>Me encantan los deportes</b> <br>
                             Desde muy pequeño siempre he sido muy dinamico y activo, sobre todo en el tema de los deportes. El futbol o soccer (como se le conoce en algunos paises) ha estado siempre presente en mi vida y la verdad me encanta, practicarlo. Tambien me gusta mucho el tenis y cada que tengo la oportunidad tambien lo practico pero no esta de más siempre una buena conversación sobre cualquier deporte, realmente las disfruto.
-                        </p>
-                        <p class="card__article-author">- Jose Arpaia</p>
-                    </article>
-                </div>
-                <div class="cont-sobre-hobbies card">
-                    <div class="card__img" style="background-image: url(img/AboutMeSection/hobbies.jpg);box-shadow: none"></div>
-                    <article class="card__article">    
-                        <h4>Hobbies (SPOILER: SOY CINEFILO!!)</h4>
-                        <p>
+                            <br><br> 
+                            <b>Hobbies (SPOILER: SOY CINEFILO!!)</b> <br>
                             Ademas de los deportes, me gusta distraerme con el mundo audiovisual, cine, series, cortometrajes y peliculas de acción y sci-fi como Marvel, por ejemplo. Tambien de vez en cuando y de cuando en vez, hago caso a los video recetas y preparo algo rico en casa para toda la familia.
                         </p>
-                        <p class="card__article-author">- Jose Arpaia</p>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -125,7 +117,7 @@
                         <div class="proy-card__content">
                             <h3 class="proy-card__header">Pagina de Tarjetas de Moticacion</h3>
                             <p class="proy-card__text">
-                                Este es un mini proyecto en el cual se hace uso de JavaScript para hacer el display de varias tarjetas con mensaje motivadores.
+                                Este es un mini proyecto en el cual se hace uso de JavaScript para hacer el display de varias tarjetas con mensajes motivadores.
                             </p>
                         </div>
                     </div>
@@ -141,36 +133,25 @@
         </section>
     </main>
     <section class="contact" id="contacto">
-         <h2>Formulario de Contacto</h2>
+         <h2>Contacto</h2>
          <div class="animatedCubic"></div>
-         <div>
-            <form class="form" id="formId" action="form">
-                <div class="form__img">
-                    <img src="img/Contact.png" title="Imagen del formulario" alt="imagen delformulario de contacto" style="box-shadow: none;">
-                </div>
-                <div class="form__flex-input" id="formIdInput">
-                    <input class="form__input" type="text" name="nombre" placeholder="Nombre">
-                    <input class="form__input" type="text" name="apellido" placeholder="Apellido">
-                    <input class="form__input" type="email" name="email" placeholder="Email">
-                    <textarea class="form__input" name="mensaje" id="mensaje" placeholder="Escriba su mensaje aqui..." ></textarea>
-                    <input class="form__input form__button" type="submit" value="Enviar">
-                </div>
-            </form>
-            <p>*Si no me puedes contactar mediante este formulario, comunicate a mi correo electronico <b><i>josearpaiaquintero@gmail.com</i></b> y trabajemos juntos :) </p>
-         </div>
+         <p>
+            Puedes contactarme al siguiente correo para trabajar juntos
+         </p>
+         <a href="mailto: josarpaiaquintero@gmail.com"><b>josearpaiaquintero@gmail.com</b></a>
     </section>
     <footer>
         <h2 class="footer__h2">Redes Sociales</h2>
         <div class="footer-cont">
             <!-- <a href="#">josearpaiaquintero@gmail.com</a> -->
-            <a href="https://www.facebook.com/jose.arpaia" target="_BLANK"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com/ArpaiaJose" target="_BLANK"><i class="fab fa-twitter"></i></a>
-            <p><i class="fab fa-discord"></i></p>
-            <a href="https://www.instagram.com/josearpaiaq/" target="_BLANK"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/JQARPAIA" target="_BLANK"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/jose-arpaia-quintero-1b8434125"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/JQARPAIA" target="_BLANK"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/ArpaiaJose" target="_BLANK"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/jose.arpaia" target="_BLANK"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/josearpaiaq/" target="_BLANK"><i class="fab fa-instagram"></i></a>
         </div>
         <h2 class="copyright-footer">&copy; 2021 Todos los derechos reservados<br>Hecho por <span>Jose Arpaia</span></h2>
     </footer>
+    <script src="index.js"></script>
 </body>
 </html>

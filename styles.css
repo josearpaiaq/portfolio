@@ -26,7 +26,7 @@ header {
 nav {
   display: flex;
   flex-flow: row wrap;
-  font-family: "Dancing Script", cursive;
+  font-weight: bold;
   background: linear-gradient(to left, transparent, lightblue);
   position: absolute;
   width: 100%;
@@ -62,7 +62,9 @@ header nav a:hover {
   transition: all 0.5s;
   cursor: pointer;
 }
-
+#nav__btn-menu {
+  display: none;
+}
 #nav__btn-menu:hover {
   box-shadow: none;
   border: none;
@@ -73,7 +75,7 @@ header nav a:hover {
   nav {
     display: grid;
     grid-template: repeat(5, 1fr) / 1fr 1fr;
-    top: -190px;
+    top: -210px;
     transition: all 0.5s;
   }
   nav:hover {
@@ -92,6 +94,9 @@ header nav a:hover {
   }
   nav span img {
     height: 2.5em;
+  }
+  #nav__btn-menu {
+    display: inline-block;
   }
   .titulos-header--h1 {
     color: #000;
@@ -112,13 +117,8 @@ header nav a:hover {
   text-align: center;
 }
 .titulos-header--h1 {
-  animation-name: animationHeader;
-  animation-duration: 3s;
-  animation-direction: normal;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-  color: #060;
+  animation: animationHeader 3s ease 1 .5s normal forwards;
+  color: #222;
   letter-spacing: 1px;
   transition: all .8s;
 }
@@ -126,19 +126,19 @@ header nav a:hover {
 @keyframes animationHeader {
   0% {
     letter-spacing: 25px;
-    font-size: 1em;
   }
   50% {
     letter-spacing: 45px;
   }
   100% {
     font-size: 4em;
+    letter-spacing: 1px;
   }
 }
 
-.titulos-header--h1:hover {
+.titulos-header--h1:hover{
   cursor: pointer;
-  transform: skew(25deg);
+  transform: scale(1.1);
 }
 .titulos-header--a > a {
   color: #fff;
@@ -181,60 +181,50 @@ h2 {
 .proyectos {
   background: linear-gradient(to bottom, rgb(15, 161, 27), #333);
 }
+footer {
+  background: linear-gradient(to bottom, #333, #000);
+}
 
 /* Modelo de la carta para temas distintos */
 
-.sobre-mi > div {
+.container-sobre-mi{
+  width: 90%;
+  margin: auto;
+}
+
+.flex-sobre-mi{
   display: flex;
   flex-flow: row wrap;
-}
 
-.sobre-mi div div {
+}
+.flex-sobre-mi__imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  margin-right: 20px;
   flex: 1;
-  min-width: 250px;
 }
-.card {
-  background-color: #fff6;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  position: relative;
-  top: 0;
-  height: 500px;
-  box-shadow: 5px 5px 8px #000;
-  margin: 5px;
+.flex-sobre-mi__imgs img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-.card p {
+.flex-sobre-mi__info {
+  flex: 2;
+}
+.flex-sobre-mi__info p {
   text-align: justify;
-  padding: 10px;
-  color: #000;
 }
-.card:hover {
-  top: -5px;
-  box-shadow: 8px 8px 10px #000;
+@media screen and (max-width: 900px){
+  .flex-sobre-mi{
+    flex-flow: column wrap;
+  }
+  .flex-sobre-mi__imgs{
+    margin: 10px auto;
+  }
 }
-.card__img {
-  background-size: cover;
-  background-position: center center;
-  height: 300px;
-  box-shadow: none;
-}
-
-.card__article {
-  margin-top: 1em;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-}
-
-.card__article h4 {
-  align-self: center;
-}
-.card__article-author{
-  align-self: flex-end;
- }
 
  /* Seccion de conocimientos y tecnologias aprendidas */
  .techs > div {
@@ -412,87 +402,21 @@ h2 {
   }
 }
 
-#formId, #formIdInput {
-  box-shadow: none;
-}
-
-.form {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-content: center;
-  padding: 10px;
-  width: 100%;
-  box-shadow: 5px 5px 8px #000 !important;
-  margin-bottom: 20px;
-}
-.form__flex-input {
+.contact {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  align-content: center;
-  padding: 10px;
-  margin: 0;
-  width: 95%;
-  min-width: 150px;
-  max-width: 500px;
-}
-.form__input {
-  color: #fff;
-  font-size: 1em;
-  margin: 10px 0px;
-  padding: 0px;
-  border: none;
-  text-align: left;
-  outline: none;
-  border-bottom: 2px solid #000;
-  width: 100%;
-  height: 50px;
-  flex: 1;
-  background: transparent;
+  align-items: center;
 }
 
-#mensaje {
-  height: 150px;
-  font-size: 1em;
-  resize: none;
-  padding-bottom: 100px;
-}
-
-.form__input::placeholder {
-  color: #fff;
-  font-family: "Sen", sans-serif;
-  text-align: left;
-  opacity: 0.5;
-}
-.form__input:focus {
-  outline: none;
-  border-bottom: 4px solid #060;
-  transition: all 0.4s;
-}
-.form__button {
+.contact p {
   text-align: center;
+}
+.contact a {
+  font-size: 25px;
   color: #fff;
-  background: #000;
-  height: 100px;
-}
-
-.form__button:active {
-  background-color: transparent;
-}
-
-.form__img {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border: none;
-  padding: 20px;
-}
-
-.form__img img {
-  align-self: center;
-  max-width: 250px;
-  border-radius: 50%;
+  background-color: #06c;
+  text-decoration: none;
 }
 
 /* Pie de pagina con informacion de RRSS*/
@@ -508,7 +432,6 @@ footer {
 
 .footer__h2 {
   margin: 0;
-  background: linear-gradient(to bottom, #333, #000);
 }
 footer a {
   font-size: 25px;
@@ -531,18 +454,12 @@ footer a:hover{
   color: #fff;
   cursor: pointer;
 }
-.fa-discord:hover::after { 
-  content: " ArpaiaJQ";
-  color: #fff;
-  cursor: pointer;
-}
 .footer-cont {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
-
 .copyright-footer {
   text-align: center;
   margin: 0 20px;
