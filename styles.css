@@ -90,7 +90,7 @@ header nav a:hover {
     margin: 5px;
   }
   nav span label {
-    font-size: 20px;
+    font-size: 15px;
   }
   nav span img {
     height: 2.5em;
@@ -101,9 +101,9 @@ header nav a:hover {
   .titulos-header--h1 {
     color: #000;
   }
-  /* .conocimientos__ilustracion img{
-    height: 400px;
-  } */
+  .titulos-header--a {
+    color: #000;
+  }
 }
 
 .titulos-header {
@@ -410,13 +410,14 @@ footer {
 }
 
 .contact p {
+  margin: auto;
   text-align: center;
 }
 .contact a {
-  font-size: 25px;
   color: #fff;
   background-color: #06c;
   text-decoration: none;
+  margin: auto;
 }
 
 /* Pie de pagina con informacion de RRSS*/
