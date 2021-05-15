@@ -71,7 +71,7 @@ header nav a:hover {
   cursor: pointer;
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 910px) {
   nav {
     display: grid;
     grid-template: repeat(5, 1fr) / 1fr 1fr;
@@ -99,10 +99,10 @@ header nav a:hover {
     display: inline-block;
   }
   .titulos-header--h1 {
-    color: #000;
+    color: #fff;
   }
   .titulos-header--a {
-    color: #000;
+    color: #fff;
   }
 }
 
@@ -118,6 +118,7 @@ header nav a:hover {
 }
 .titulos-header--h1 {
   animation: animationHeader 3s ease 1 .5s normal forwards;
+  font-size: 4em;
   color: #222;
   letter-spacing: 1px;
   transition: all .8s;
