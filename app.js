@@ -13,3 +13,8 @@ const showName = arrayName => {
 };
  
 showName(arrayName);
+
+
+/* USANDO LA LIBRERIA SCROLL REVEAL */
+ScrollReveal().reveal('.contenedor', {delay: 600});
+ScrollReveal().reveal('.contact', {delay: 600});
