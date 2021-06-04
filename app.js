@@ -1,19 +1,9 @@
 let headerName = document.querySelector(".titulos-header--h1");
-let arrayName = ["J", "o", "s", "e", " ", "A", "r", "p", "a", "i", "a"];
+let arrayName = 'Soy Jose Arpaia';
 
-const showName = arrayName => {
-    for (let index = 0; index < arrayName.length; index++) {
-        const element = arrayName[index];
-        setTimeout(() => {
-            headerName.append(element);
-            console.log(element);
-        }, 500);
-    };
-    clearTimeout();        
-};
- 
-showName(arrayName);
-
+setTimeout(() => {
+    headerName.append(arrayName);
+}, 500);
 
 /* USANDO LA LIBRERIA SCROLL REVEAL */
 ScrollReveal().reveal('.contenedor', {delay: 600});
