@@ -215,7 +215,7 @@ footer {
 
 .techs div div {
   flex: 1;
-  min-width: 250px;
+  /* min-width: 250px; */
 }
 
 .conocimientos > div{
@@ -245,23 +245,38 @@ footer {
   flex: 3;
   max-height: 150px;
   min-height: 50px;
+  cursor: pointer;
+  transition: filter .8s ease-in-out;
+}
+
+.conocimientos__img div img:hover  {
+  filter: drop-shadow(0px 0px 5px #000);
 }
 .conocimientos__ilustracion {
   display: flex;
   justify-content: center;
   flex: 2;
   margin-bottom: 10px;
-  
 }
 .conocimientos__ilustracion img{
+  /*  */
+  filter: drop-shadow(0px 0px 5px #000);  
   max-height: 250px;
   min-height: 200px;
-  /* border: 2px solid #fff; */
+  transition: filter .8s ease-in-out;
+}
+.conocimientos__ilustracion img:hover {
+  filter: drop-shadow(40px 15px 8px #000);
 }
 
 @media screen and (max-width: 800px) {
   .conocimientos .conocimientos__img {
-    grid-template: 1fr 1fr 1fr 1fr / 1fr;
+    grid-template: 1fr 1fr / 1fr 1fr;
+  }
+  .conocimientos__img div img{
+    max-height: 75px;
+    min-height: 30px;
+    min-width: 80px;
   }
   .conocimientos__ilustracion img{
     height: 200px;
@@ -313,7 +328,7 @@ footer {
   display: flex;
   flex-direction: column;  
 }
-.proy-card__img{
+.proy-card__img {
   display: block;
   width: 100%;
   height: 300px;

@@ -6,5 +6,5 @@ setTimeout(() => {
 }, 500);
 
 /* USANDO LA LIBRERIA SCROLL REVEAL */
-ScrollReveal().reveal('.contenedor', {delay: 600});
-ScrollReveal().reveal('.contact', {delay: 600});
+ScrollReveal().reveal('.contenedor', {delay: 300});
+ScrollReveal().reveal('.contact', {delay: 300});
