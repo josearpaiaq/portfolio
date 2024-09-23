@@ -8,9 +8,9 @@ export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const mainSection = document.getElementById(sectionsIds.home);
+    const topElement = document.getElementById("top");
 
-    if (!mainSection) return;
+    if (!topElement) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -24,11 +24,11 @@ export default function ScrollToTopButton() {
       { threshold: 0.1 } // Se activa cuando el 10% de la sección es visible
     );
 
-    observer.observe(mainSection);
+    observer.observe(topElement);
 
     return () => {
-      if (mainSection) {
-        observer.unobserve(mainSection);
+      if (topElement) {
+        observer.unobserve(topElement);
       }
     };
   }, []);
