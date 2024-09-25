@@ -11,7 +11,7 @@ export default function SnappingPage({
     <section
       id={id}
       className={[
-        "snap-center snap-always min-h-[90vh] bg-slate-700",
+        "snap-center snap-always min-h-[95vh] bg-slate-700",
         className,
       ].join(" ")}
     >
