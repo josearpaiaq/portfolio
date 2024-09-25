@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ArrowUp from "./icons/ArrowUp";
-import { sectionsIds } from "@/constants";
+import { sectionsConfig } from "@/constants";
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +34,7 @@ export default function ScrollToTopButton() {
   }, []);
 
   const scrollToTop = () => {
-    const topSection = document.getElementById(sectionsIds.home);
+    const topSection = document.getElementById(sectionsConfig.home.id);
     topSection?.scrollIntoView({ behavior: "smooth" });
   };
 

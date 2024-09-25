@@ -1,9 +1,12 @@
 import SnappingPage from "@/components/snappingPage";
-import { sectionsIds } from "@/constants";
+import { sectionsConfig } from "@/constants";
 
 export default function Experience() {
   return (
-    <SnappingPage id={sectionsIds.experience} className="bg-malachite-600">
+    <SnappingPage
+      id={sectionsConfig.experience.id}
+      className="bg-malachite-600"
+    >
       Experience
     </SnappingPage>
   );

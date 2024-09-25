@@ -7,10 +7,10 @@ import ScrollToTopButton from "@/components/scrollTopComponent";
 
 export default function App() {
   return (
-    <section className="flex flex-col h-screen">
+    <section className="flex flex-col h-screen bg-malachite-900">
       <Navbar />
       <main
-        className="snap-y snap-mandatory overflow-y-scroll h-[95vh]"
+        className="snap-y snap-mandatory overflow-y-scroll h-[92vh]"
         id="main"
       >
         <Home />

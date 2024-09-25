@@ -1,6 +1,6 @@
 "use client";
 
-import { sectionsIds } from "@/constants";
+import { sectionsConfig } from "@/constants";
 import MenuIcon from "./icons/MenuIcon";
 import { useEffect, useRef, useState } from "react";
 
@@ -29,6 +29,7 @@ export default function Navbar() {
       className={[
         "bg-malachite-100 text-malachite-950 w-full p-2",
         "sticky top-0",
+        "rounded-lg w-[99%] mx-auto",
         "transition-all duration-1000 ease-in-out",
         "md:max-h-[10vh]  h-fit",
       ].join(" ")}
@@ -45,32 +46,32 @@ export default function Navbar() {
               isOpen ? "-rotate-45 opacity-100" : "opacity-50",
             ].join(" ")}
           />
-          <div className="hidden md:flex justify-between gap-4 items-center h-fit bg-malachite-100 text-malachite-950">
+          <div className="hidden md:flex justify-between gap-4 items-center h-fit text-malachite-950">
             <a
               className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
               onClick={() => setIsOpen(false)}
-              href={`#${sectionsIds.home}`}
+              href={`#${sectionsConfig.home.id}`}
             >
               Home
             </a>
             <a
               className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
               onClick={() => setIsOpen(false)}
-              href={`#${sectionsIds.experience}`}
+              href={`#${sectionsConfig.experience.id}`}
             >
               Experience
             </a>
             <a
               className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
               onClick={() => setIsOpen(false)}
-              href={`#${sectionsIds.projects}`}
+              href={`#${sectionsConfig.projects.id}`}
             >
               Projects
             </a>
             <a
               className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
               onClick={() => setIsOpen(false)}
-              href={`#${sectionsIds.contact}`}
+              href={`#${sectionsConfig.contact.id}`}
             >
               Contact Me
             </a>
@@ -78,35 +79,35 @@ export default function Navbar() {
         </div>
         <div
           className={[
-            "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-500 ease-in-out bg-malachite-100 text-malachite-950 w-full overflow-hidden",
+            "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-500 ease-in-out text-malachite-950 w-full overflow-hidden",
             isOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0",
           ].join(" ")}
         >
           <a
             className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
             onClick={() => setIsOpen(false)}
-            href={`#${sectionsIds.home}`}
+            href={`#${sectionsConfig.home.id}`}
           >
             Home
           </a>
           <a
             className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
             onClick={() => setIsOpen(false)}
-            href={`#${sectionsIds.experience}`}
+            href={`#${sectionsConfig.experience.id}`}
           >
             Experience
           </a>
           <a
             className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
             onClick={() => setIsOpen(false)}
-            href={`#${sectionsIds.projects}`}
+            href={`#${sectionsConfig.projects.id}`}
           >
             Projects
           </a>
           <a
             className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
             onClick={() => setIsOpen(false)}
-            href={`#${sectionsIds.contact}`}
+            href={`#${sectionsConfig.contact.id}`}
           >
             Contact Me
           </a>
