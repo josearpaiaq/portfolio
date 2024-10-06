@@ -3,10 +3,15 @@
 import { sectionsConfig } from "@/constants";
 import MenuIcon from "./icons/MenuIcon";
 import { useEffect, useRef, useState } from "react";
+import NavbarLink from "./navbarLink";
 
-export default function Navbar() {
+export default function Navbar({ topVisible }: { topVisible: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const navbarRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToTop = () => {
+    document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -25,92 +30,98 @@ export default function Navbar() {
 
   return (
     <nav
+      id="navbar"
       ref={navbarRef}
       className={[
-        "bg-malachite-100 text-malachite-950 w-full p-2",
-        "sticky top-0",
+        "w-full p-2",
+        "absolute top-0",
         "rounded-lg w-[99%] mx-auto",
-        "transition-all duration-1000 ease-in-out",
-        "md:max-h-[10vh]  h-fit",
+        "transition-all duration-700 ease-in-out",
+        "md:max-h-[10vh] h-fit text-white",
+        topVisible
+          ? isOpen
+            ? "bg-malachite-800"
+            : "bg-transparent"
+          : "bg-malachite-700 ",
       ].join(" ")}
     >
       <div className="flex flex-col justify-between items-center">
         <div className="flex w-full justify-between items-center p-2">
-          <div className="text-xl font-semibold self-start md:self-center">
+          <div
+            className="text-xl font-semibold self-start md:self-center animate-pulse cursor-pointer select-none"
+            onClick={scrollToTop}
+          >
             JA
           </div>
           <MenuIcon
             onClick={() => setIsOpen(!isOpen)}
+            color={"#fff"}
             className={[
-              "transition-all duration-300 ease-in-out cursor-pointer block md:hidden",
+              "transition-all duration-300 ease-in-out cursor-pointer block md:hidden text-white",
               isOpen ? "-rotate-45 opacity-100" : "opacity-50",
             ].join(" ")}
           />
-          <div className="hidden md:flex justify-between gap-4 items-center h-fit text-malachite-950">
-            <a
-              className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-              onClick={() => setIsOpen(false)}
-              href={`#${sectionsConfig.home.id}`}
+
+          {/* Desktop navbar */}
+          <div className="hidden md:flex justify-between gap-4 items-center h-fit">
+            <NavbarLink
+              id={sectionsConfig.home.id}
+              setIsOpen={() => setIsOpen(false)}
             >
               Home
-            </a>
-            <a
-              className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-              onClick={() => setIsOpen(false)}
-              href={`#${sectionsConfig.experience.id}`}
+            </NavbarLink>
+            <NavbarLink
+              id={sectionsConfig.experience.id}
+              setIsOpen={() => setIsOpen(false)}
             >
               Experience
-            </a>
-            <a
-              className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-              onClick={() => setIsOpen(false)}
-              href={`#${sectionsConfig.projects.id}`}
+            </NavbarLink>
+            <NavbarLink
+              id={sectionsConfig.projects.id}
+              setIsOpen={() => setIsOpen(false)}
             >
               Projects
-            </a>
-            <a
-              className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-              onClick={() => setIsOpen(false)}
-              href={`#${sectionsConfig.contact.id}`}
+            </NavbarLink>
+            <NavbarLink
+              id={sectionsConfig.contact.id}
+              setIsOpen={() => setIsOpen(false)}
             >
               Contact Me
-            </a>
+            </NavbarLink>
           </div>
         </div>
+
+        {/* Mobile navbar */}
         <div
           className={[
-            "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-500 ease-in-out text-malachite-950 w-full overflow-hidden",
+            "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-500 ease-in-out w-full overflow-hidden",
             isOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0",
           ].join(" ")}
         >
-          <a
-            className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-            onClick={() => setIsOpen(false)}
-            href={`#${sectionsConfig.home.id}`}
+          <NavbarLink
+            id={sectionsConfig.home.id}
+            setIsOpen={() => setIsOpen(false)}
           >
             Home
-          </a>
-          <a
-            className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-            onClick={() => setIsOpen(false)}
-            href={`#${sectionsConfig.experience.id}`}
+          </NavbarLink>
+          <NavbarLink
+            id={sectionsConfig.experience.id}
+            setIsOpen={() => setIsOpen(false)}
           >
             Experience
-          </a>
-          <a
-            className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-            onClick={() => setIsOpen(false)}
-            href={`#${sectionsConfig.projects.id}`}
+          </NavbarLink>
+          <NavbarLink
+            id={sectionsConfig.projects.id}
+            setIsOpen={() => setIsOpen(false)}
           >
             Projects
-          </a>
-          <a
-            className="cursor-pointer hover:bg-malachite-200 rounded-md hover:shadow-sm px-4 py-2"
-            onClick={() => setIsOpen(false)}
-            href={`#${sectionsConfig.contact.id}`}
+          </NavbarLink>
+          <NavbarLink
+            id={sectionsConfig.contact.id}
+            setIsOpen={() => setIsOpen(false)}
           >
             Contact Me
-          </a>
+          </NavbarLink>
         </div>
       </div>
     </nav>

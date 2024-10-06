@@ -5,7 +5,12 @@ export default function Experience() {
   return (
     <SnappingPage
       id={sectionsConfig.experience.id}
-      className="bg-malachite-600"
+      className={[
+        "text-malachite-950",
+        sectionsConfig.experience.styles?.background,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       Experience
     </SnappingPage>

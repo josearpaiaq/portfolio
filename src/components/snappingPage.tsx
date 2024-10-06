@@ -1,9 +1,11 @@
+import { ReactNode } from "react";
+
 export default function SnappingPage({
   children,
   className,
   id,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   id: string;
 }) {
@@ -11,9 +13,11 @@ export default function SnappingPage({
     <section
       id={id}
       className={[
-        "snap-center snap-always h-[92vh] bg-slate-700 overflow-y-auto",
+        "snap-center snap-always h-screen bg-slate-700 overflow-y-auto py-[10vh]",
         className,
-      ].join(" ")}
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {children}
     </section>

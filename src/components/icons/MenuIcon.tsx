@@ -1,27 +1,37 @@
+import React from "react";
+
+type MenuIconProps = {
+  color?: string;
+  className?: string;
+  width?: string | number;
+  height?: string | number;
+  strokeWidth?: string | number;
+  stroke?: string;
+  onClick?: () => void;
+};
+
 export default function MenuIcon({
-  className,
+  color = "#000",
+  className = "",
   width = "20",
   height = "20",
+  // stroke = "#fff",
+  strokeWidth = "1.5",
   onClick,
-}: {
-  className?: string;
-  width?: string;
-  height?: string;
-  onClick?: () => void;
-}) {
+}: MenuIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={["icon icon-tabler icon-tabler-menu-2", className].join(" ")}
       width={width}
       height={height}
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="#2c3e50"
-      fill="none"
+      strokeWidth={strokeWidth}
+      stroke={color}
+      fill={color}
       strokeLinecap="round"
       strokeLinejoin="round"
-      onClick={() => onClick?.()}
+      className={["icon icon-tabler icon-tabler-menu-2", className].join(" ")}
+      onClick={onClick}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M4 6l16 0" />

@@ -23,13 +23,13 @@ export const sectionsConfig: Record<
     id: "projects",
 
     styles: {
-      background: "bg-malachite-800",
+      background: "bg-malachite-700",
     },
   },
   contact: {
     id: "contact",
     styles: {
-      background: "bg-malachite-800",
+      background: "bg-malachite-600",
     },
   },
 };

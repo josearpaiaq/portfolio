@@ -6,9 +6,11 @@ export default function Projects() {
     <SnappingPage
       id={sectionsConfig.projects.id}
       className={[
-        "bg-malachite-500 text-malachite-950",
-        sectionsConfig.projects.styles,
-      ].join(" ")}
+        "text-malachite-950",
+        sectionsConfig.projects.styles?.background,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       Projects
     </SnappingPage>

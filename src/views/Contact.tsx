@@ -5,7 +5,12 @@ export default function Contact() {
   return (
     <SnappingPage
       id={sectionsConfig.contact.id}
-      className="bg-malachite-400 text-malachite-950"
+      className={[
+        "text-malachite-950",
+        sectionsConfig.contact.styles?.background,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       Contact Me
     </SnappingPage>
