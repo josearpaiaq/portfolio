@@ -1,8 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Technologies / libraries
+## Possible technologies / features to use in the project
 
-- shadcn
+- shadcn (?)
+- framer motion (?)
+- resend for mailer
+- download cv with some react-to-pdf library
+- dark mode (?)
+- google fonts
+- add scroll driven animations
+- add button to download cv in the scrollToTop component
+- rename scrollToTop component to enhance functionalities
 
 ## Getting Started
 
