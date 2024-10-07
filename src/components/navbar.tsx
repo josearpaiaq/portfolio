@@ -63,8 +63,8 @@ export default function Navbar() {
           "rounded-lg w-[99%] mx-auto",
           "transition-all duration-700 ease-in-out",
           "md:max-h-[10vh] h-fit text-malachite-50",
-          topVisible ? "bg-transparent" : "bg-malachite-700",
-          isOpen && "bg-malachite-700",
+          topVisible ? "bg-transparent" : "bg-malachite-700/70",
+          isOpen && "!bg-malachite-700 pb-4",
         ]
           .filter(Boolean)
           .join(" ")}
