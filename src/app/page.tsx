@@ -5,7 +5,7 @@ import Home from "@/views/Home";
 import Experience from "@/views/Experience";
 import Projects from "@/views/Projects";
 import Contact from "@/views/Contact";
-import ScrollToTopButton from "@/components/scrollTopComponent";
+import MoreOptionsComponent from "@/components/moreOptionsComponent";
 import { sectionsConfig } from "@/constants";
 import { useEffect, useState } from "react";
 
@@ -69,7 +69,9 @@ export default function App() {
         <Contact />
       </main>
 
-      <ScrollToTopButton onChange={(isVisible) => setTopVisible(!isVisible)} />
+      <MoreOptionsComponent
+        onChange={(isVisible) => setTopVisible(!isVisible)}
+      />
     </section>
   );
 }

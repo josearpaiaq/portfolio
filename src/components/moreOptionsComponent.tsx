@@ -16,7 +16,7 @@ interface IMoreOptions {
   className?: string;
 }
 
-export default function ScrollToTopButton({
+export default function MoreOptionsComponent({
   onChange,
 }: {
   onChange?: (topIsVisible: boolean) => void;
