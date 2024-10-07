@@ -11,7 +11,9 @@ import useStore from "@/store";
 interface IMoreOptions {
   title?: string;
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   visible?: boolean;
   size?: "2" | "3";
   className?: string;
@@ -59,21 +61,6 @@ export default function MoreOptionsComponent() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setOpenOptions(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <div
       className={[
@@ -85,6 +72,7 @@ export default function MoreOptionsComponent() {
         .filter(Boolean)
         .join(" ")}
       ref={containerRef}
+      onMouseLeave={() => setOpenOptions(false)}
     >
       <CircleButton
         onClick={scrollToTop}
@@ -111,6 +99,7 @@ export default function MoreOptionsComponent() {
         onClick={() => setOpenOptions((prev) => !prev)}
         visible
         title="More Options"
+        onMouseEnter={() => setOpenOptions(true)}
         className={openOptions ? "rotate-45" : ""}
       >
         <PlusSign />
@@ -123,6 +112,8 @@ function CircleButton({
   title,
   children,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
   visible,
   size = "3",
   className,
@@ -131,6 +122,8 @@ function CircleButton({
     <button
       type="button"
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={[
         "transition-all duration-300 transform",
         "shadow-md",
