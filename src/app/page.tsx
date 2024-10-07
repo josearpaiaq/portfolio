@@ -8,11 +8,12 @@ import Contact from "@/views/Contact";
 import MoreOptionsComponent from "@/components/moreOptionsComponent";
 import { sectionsConfig } from "@/constants";
 import { useEffect, useState } from "react";
+import useStore from "@/store";
 
 export default function App() {
   const [backgroundColor, setBackgroundColor] =
     useState<string>("bg-malachite-900");
-  const [topVisible, setTopVisible] = useState(true);
+  const { topVisible, setTopVisible } = useStore();
 
   useEffect(() => {
     const sections = Object.values(sectionsConfig).map((section) =>
@@ -69,9 +70,7 @@ export default function App() {
         <Contact />
       </main>
 
-      <MoreOptionsComponent
-        onChange={(isVisible) => setTopVisible(!isVisible)}
-      />
+      <MoreOptionsComponent />
     </section>
   );
 }

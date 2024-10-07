@@ -6,6 +6,7 @@ import { sectionsConfig } from "@/constants";
 import PlusSign from "./icons/PlusSign";
 import DownloadFile from "./icons/DownloadFile";
 import { downloadCV } from "@/lib/utils";
+import useStore from "@/store";
 
 interface IMoreOptions {
   title?: string;
@@ -16,12 +17,8 @@ interface IMoreOptions {
   className?: string;
 }
 
-export default function MoreOptionsComponent({
-  onChange,
-}: {
-  onChange?: (topIsVisible: boolean) => void;
-}) {
-  const [topIsVisible, setTopIsVisible] = useState(false);
+export default function MoreOptionsComponent() {
+  const { topVisible, setTopVisible } = useStore();
   const [openOptions, setOpenOptions] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -48,8 +45,7 @@ export default function MoreOptionsComponent({
       (entries) => {
         // Si la sección principal no es visible, mostramos el botón
         const isV = !entries[0].isIntersecting;
-        setTopIsVisible(isV);
-        onChange?.(isV);
+        setTopVisible(isV);
       },
       { threshold: 0.1 } // Se activa cuando el 10% de la sección es visible
     );
@@ -92,7 +88,7 @@ export default function MoreOptionsComponent({
     >
       <CircleButton
         onClick={scrollToTop}
-        visible={topIsVisible}
+        visible={topVisible}
         size="2"
         title="Go back to top"
       >
