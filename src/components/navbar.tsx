@@ -5,10 +5,12 @@ import MenuIcon from "./icons/MenuIcon";
 import { useEffect, useRef, useState } from "react";
 import NavbarLink from "./navbarLink";
 import { scrollTo } from "@/lib/utils";
+import useStore from "@/store";
 
-export default function Navbar({ topVisible }: { topVisible: boolean }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navbarRef = useRef<HTMLDivElement | null>(null);
+  const { topVisible } = useStore();
 
   const scrollToTop = () => {
     document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
@@ -61,11 +63,8 @@ export default function Navbar({ topVisible }: { topVisible: boolean }) {
           "rounded-lg w-[99%] mx-auto",
           "transition-all duration-700 ease-in-out",
           "md:max-h-[10vh] h-fit text-malachite-50",
-          topVisible
-            ? isOpen
-              ? "bg-malachite-800"
-              : "bg-transparent"
-            : "bg-malachite-700 ",
+          topVisible ? "bg-transparent" : "bg-malachite-700",
+          isOpen && "bg-malachite-700",
         ]
           .filter(Boolean)
           .join(" ")}

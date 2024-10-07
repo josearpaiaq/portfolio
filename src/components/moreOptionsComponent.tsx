@@ -45,7 +45,7 @@ export default function MoreOptionsComponent() {
       (entries) => {
         // Si la sección principal no es visible, mostramos el botón
         const isV = !entries[0].isIntersecting;
-        setTopVisible(isV);
+        setTopVisible(!isV);
       },
       { threshold: 0.1 } // Se activa cuando el 10% de la sección es visible
     );
@@ -88,7 +88,7 @@ export default function MoreOptionsComponent() {
     >
       <CircleButton
         onClick={scrollToTop}
-        visible={topVisible}
+        visible={!topVisible}
         size="2"
         title="Go back to top"
       >

@@ -8,12 +8,10 @@ import Contact from "@/views/Contact";
 import MoreOptionsComponent from "@/components/moreOptionsComponent";
 import { sectionsConfig } from "@/constants";
 import { useEffect, useState } from "react";
-import useStore from "@/store";
 
 export default function App() {
   const [backgroundColor, setBackgroundColor] =
     useState<string>("bg-malachite-900");
-  const { topVisible, setTopVisible } = useStore();
 
   useEffect(() => {
     const sections = Object.values(sectionsConfig).map((section) =>
@@ -59,7 +57,7 @@ export default function App() {
         .filter(Boolean)
         .join(" ")}
     >
-      <Navbar topVisible={topVisible} />
+      <Navbar />
       <main
         className="snap-y snap-mandatory overflow-y-scroll h-screen"
         id="main"
