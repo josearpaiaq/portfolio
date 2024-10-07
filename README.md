@@ -2,15 +2,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Possible technologies / features to use in the project
 
-- shadcn (?)
+- ZUSTAND LANDING PAGE EFFECT
 - framer motion (?)
 - resend for mailer
 - download cv with some react-to-pdf library
 - dark mode (?)
 - google fonts
 - add scroll driven animations
-- add button to download cv in the scrollToTop component
-- rename scrollToTop component to enhance functionalities
 
 ## Getting Started
 
@@ -35,6 +33,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## References and used third party resources
 
 - [icons](https://tablericons.com/)
+- [shadcn](https://ui.shadcn.com/)
+- [zustand](https://zustand-demo.pmnd.rs/)
 
 ## Learn More
 
