@@ -77,7 +77,7 @@ export default function MoreOptionsComponent() {
   return (
     <div
       className={[
-        "flex flex-col items-center gap-2",
+        "flex flex-col items-center gap-2 z-40",
         "fixed bottom-8 right-8 text-white",
         "transition-all duration-300",
         "bg-transparent",

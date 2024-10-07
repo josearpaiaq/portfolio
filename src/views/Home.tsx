@@ -10,11 +10,11 @@ export default function Home() {
         .filter(Boolean)
         .join(" ")}
       id={sectionsConfig.home.id}
+      backgroundVideoUrl={"/background.mp4"}
     >
-      <div id="top" className="h-1 w-1 bg-transparent"></div>
-
-      <div className="flex flex-col gap-2 justify-center h-full px-6 md:px-36">
-        <h1 id="main-title" className="text-6xl">
+      <div className="flex flex-col gap-2 justify-center h-full px-6 md:px-36 text-malachite-500">
+        <div id="top" className="h-1 w-1 bg-transparent"></div>
+        <h1 id="main-title" className="text-5xl md:text-6xl">
           José Arpaia
         </h1>
         <h3 className="text-3xl">Software Engineer</h3>

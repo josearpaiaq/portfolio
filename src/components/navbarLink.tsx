@@ -13,7 +13,7 @@ export default function NavbarLink({
       >
         {children}
       </a>
-      <div className="h-0.5 w-0 bg-malachite-950 transition-all duration-300 group-hover:w-full"></div>
+      <div className="h-0.5 w-0 bg-malachite-500 transition-all duration-300 group-hover:w-full"></div>
     </div>
   );
 }

@@ -48,7 +48,7 @@ export default function Navbar() {
     <>
       <div
         className={[
-          "inset-0 absolute bg-malachite-950/50 z-10 transition-all duration-300 ease-in-out",
+          "inset-0 absolute bg-malachite-950/50 z-50 transition-all duration-300 ease-in-out",
           isOpen ? "" : "hidden",
         ]
           .filter(Boolean)
