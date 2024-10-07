@@ -112,9 +112,7 @@ export default function MoreOptionsComponent({
       ))}
 
       <CircleButton
-        onClick={() => {
-          setOpenOptions((prev) => !prev);
-        }}
+        onClick={() => setOpenOptions((prev) => !prev)}
         visible
         title="More Options"
         className={openOptions ? "rotate-45" : ""}
@@ -138,10 +136,10 @@ function CircleButton({
       type="button"
       onClick={onClick}
       className={[
-        "transition-all duration-300",
+        "transition-all duration-300 transform",
         "shadow-md",
         "hover:shadow-xl hover:scale-110 hover:opacity-85 rounded-full bg-malachite-500",
-        "p-" + size,
+        size === "3" ? "p-3" : "p-2",
         visible ? "opacity-100 flex" : "opacity-0 hidden",
         className,
       ]

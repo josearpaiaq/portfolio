@@ -60,7 +60,7 @@ export default function Navbar({ topVisible }: { topVisible: boolean }) {
           "absolute top-0 z-[90]",
           "rounded-lg w-[99%] mx-auto",
           "transition-all duration-700 ease-in-out",
-          "md:max-h-[10vh] h-fit !text-white",
+          "md:max-h-[10vh] h-fit text-malachite-50",
           topVisible
             ? isOpen
               ? "bg-malachite-800"
@@ -82,7 +82,7 @@ export default function Navbar({ topVisible }: { topVisible: boolean }) {
               onClick={() => setIsOpen(!isOpen)}
               color={"#fff"}
               className={[
-                "transition-all duration-300 ease-in-out cursor-pointer block md:hidden text-white",
+                "transition-all duration-300 ease-in-out cursor-pointer block md:hidden",
                 isOpen ? "-rotate-45 opacity-100" : "opacity-50",
               ].join(" ")}
             />
