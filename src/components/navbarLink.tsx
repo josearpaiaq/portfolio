@@ -1,18 +1,15 @@
 export default function NavbarLink({
-  id,
-  setIsOpen,
+  onClick,
   children,
 }: {
-  id: string;
-  setIsOpen: () => void;
+  onClick?: () => void;
   children: string;
 }) {
   return (
     <div className="flex flex-col transition-all group">
       <a
         className="cursor-pointer rounded-md px-4 py-2"
-        onClick={setIsOpen}
-        href={`#${id}`}
+        onClick={() => onClick?.()}
       >
         {children}
       </a>

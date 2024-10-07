@@ -1,6 +1,7 @@
 import SnappingPage from "@/components/snappingPage";
 import { Button } from "@/components/ui/button";
 import { sectionsConfig } from "@/constants";
+import { downloadCV, scrollTo } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -19,8 +20,13 @@ export default function Home() {
         <h3 className="text-3xl">Software Engineer</h3>
 
         <div className="flex gap-2 mt-6">
-          <Button>Download my CV</Button>
-          <Button variant={"secondary"}>Get in touch with me</Button>
+          <Button onClick={() => downloadCV()}>Download my CV</Button>
+          <Button
+            variant={"secondary"}
+            onClick={() => scrollTo(sectionsConfig.contact.id)}
+          >
+            Get in touch with me
+          </Button>
         </div>
       </div>
     </SnappingPage>

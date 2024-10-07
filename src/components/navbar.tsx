@@ -4,6 +4,7 @@ import { sectionsConfig } from "@/constants";
 import MenuIcon from "./icons/MenuIcon";
 import { useEffect, useRef, useState } from "react";
 import NavbarLink from "./navbarLink";
+import { scrollTo } from "@/lib/utils";
 
 export default function Navbar({ topVisible }: { topVisible: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,11 @@ export default function Navbar({ topVisible }: { topVisible: boolean }) {
 
   const scrollToTop = () => {
     document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    scrollTo(sectionId);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -84,26 +90,30 @@ export default function Navbar({ topVisible }: { topVisible: boolean }) {
             {/* Desktop navbar */}
             <div className="hidden md:flex justify-between gap-4 items-center h-fit">
               <NavbarLink
-                id={sectionsConfig.home.id}
-                setIsOpen={() => setIsOpen(false)}
+                onClick={() => {
+                  scrollToSection(sectionsConfig.home.id);
+                }}
               >
                 Home
               </NavbarLink>
               <NavbarLink
-                id={sectionsConfig.experience.id}
-                setIsOpen={() => setIsOpen(false)}
+                onClick={() => {
+                  scrollToSection(sectionsConfig.experience.id);
+                }}
               >
                 Experience
               </NavbarLink>
               <NavbarLink
-                id={sectionsConfig.projects.id}
-                setIsOpen={() => setIsOpen(false)}
+                onClick={() => {
+                  scrollToSection(sectionsConfig.projects.id);
+                }}
               >
                 Projects
               </NavbarLink>
               <NavbarLink
-                id={sectionsConfig.contact.id}
-                setIsOpen={() => setIsOpen(false)}
+                onClick={() => {
+                  scrollToSection(sectionsConfig.contact.id);
+                }}
               >
                 Contact Me
               </NavbarLink>
@@ -118,26 +128,30 @@ export default function Navbar({ topVisible }: { topVisible: boolean }) {
             ].join(" ")}
           >
             <NavbarLink
-              id={sectionsConfig.home.id}
-              setIsOpen={() => setIsOpen(false)}
+              onClick={() => {
+                scrollToSection(sectionsConfig.home.id);
+              }}
             >
               Home
             </NavbarLink>
             <NavbarLink
-              id={sectionsConfig.experience.id}
-              setIsOpen={() => setIsOpen(false)}
+              onClick={() => {
+                scrollToSection(sectionsConfig.experience.id);
+              }}
             >
               Experience
             </NavbarLink>
             <NavbarLink
-              id={sectionsConfig.projects.id}
-              setIsOpen={() => setIsOpen(false)}
+              onClick={() => {
+                scrollToSection(sectionsConfig.projects.id);
+              }}
             >
               Projects
             </NavbarLink>
             <NavbarLink
-              id={sectionsConfig.contact.id}
-              setIsOpen={() => setIsOpen(false)}
+              onClick={() => {
+                scrollToSection(sectionsConfig.contact.id);
+              }}
             >
               Contact Me
             </NavbarLink>
