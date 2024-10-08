@@ -2,15 +2,14 @@
 
 import { sectionsConfig } from "@/constants";
 import MenuIcon from "./icons/MenuIcon";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import NavbarLink from "./navbarLink";
 import { scrollTo } from "@/lib/utils";
 import useStore from "@/store";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const navbarRef = useRef<HTMLDivElement | null>(null);
-  const { topVisible } = useStore();
+  const { topVisible, navbarIsOpen, setNavbarIsOpen } = useStore();
 
   const scrollToTop = () => {
     document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
@@ -18,7 +17,7 @@ export default function Navbar() {
 
   const scrollToSection = (sectionId: string) => {
     scrollTo(sectionId);
-    setIsOpen(false);
+    setNavbarIsOpen(false);
   };
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function Navbar() {
         navbarRef.current &&
         !navbarRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false);
+        setNavbarIsOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -38,18 +37,18 @@ export default function Navbar() {
 
   useEffect(() => {
     // Si el usuario abre el menu, desactivamos el scroll
-    if (isOpen) {
+    if (navbarIsOpen) {
       // Desactivamos el scroll
       document.body.style.overflow = "hidden";
     }
-  }, [isOpen]);
+  }, [navbarIsOpen]);
 
   return (
     <>
       <div
         className={[
           "inset-0 absolute bg-malachite-950/50 z-50 transition-all duration-300 ease-in-out",
-          isOpen ? "" : "hidden",
+          navbarIsOpen ? "" : "hidden",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -63,8 +62,11 @@ export default function Navbar() {
           "rounded-lg w-[99%] mx-auto",
           "transition-all duration-700 ease-in-out",
           "md:max-h-[10vh] h-fit text-malachite-50",
-          topVisible ? "bg-transparent" : "bg-malachite-700/70",
-          isOpen && "!bg-malachite-700 pb-4",
+          topVisible
+            ? navbarIsOpen
+              ? "bg-malachite-700 text-malachite-50 pb-4"
+              : "bg-transparent text-malachite-500"
+            : "bg-malachite-700/70",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -72,17 +74,17 @@ export default function Navbar() {
         <div className="flex flex-col justify-between items-center z-10">
           <div className="flex w-full justify-between items-center p-2">
             <div
-              className="text-xl font-semibold self-start md:self-center animate-pulse cursor-pointer select-none"
+              className="text-xl font-semibold self-start md:self-center animate-bounce cursor-pointer select-none"
               onClick={scrollToTop}
             >
               JA
             </div>
             <MenuIcon
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setNavbarIsOpen(!navbarIsOpen)}
               color={"#fff"}
               className={[
                 "transition-all duration-300 ease-in-out cursor-pointer block md:hidden",
-                isOpen ? "-rotate-45 opacity-100" : "opacity-50",
+                navbarIsOpen ? "-rotate-45 opacity-100" : "opacity-50",
               ].join(" ")}
             />
 
@@ -123,7 +125,7 @@ export default function Navbar() {
           <div
             className={[
               "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-500 ease-in-out w-full overflow-hidden",
-              isOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0",
+              navbarIsOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0",
             ].join(" ")}
           >
             <NavbarLink

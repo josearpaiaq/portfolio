@@ -7,14 +7,11 @@ export default function NavbarLink({
   onClick?: () => void;
   children: string;
 }) {
-  const { topVisible } = useStore();
+  const { topVisible, navbarIsOpen } = useStore();
   return (
     <div className="flex flex-col transition-all group">
       <a
-        className={[
-          "cursor-pointer rounded-md px-4 py-2",
-          topVisible ? "text-malachite-500" : "text-malachite-200",
-        ]
+        className={["cursor-pointer rounded-md px-4 py-2"]
           .filter(Boolean)
           .join(" ")}
         onClick={() => onClick?.()}
@@ -24,7 +21,11 @@ export default function NavbarLink({
       <div
         className={[
           "h-0.5 w-0 transition-all duration-300 group-hover:w-full",
-          topVisible ? "bg-malachite-500" : "bg-malachite-200",
+          topVisible
+            ? navbarIsOpen
+              ? "bg-malachite-200"
+              : "bg-malachite-500"
+            : "bg-malachite-200",
         ]
           .filter(Boolean)
           .join(" ")}
