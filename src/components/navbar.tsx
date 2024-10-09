@@ -47,7 +47,7 @@ export default function Navbar() {
     <>
       <div
         className={[
-          "inset-0 absolute bg-emerald-950/50 z-50 transition-all duration-300 ease-in-out",
+          "inset-0 absolute bg-teal-950/50 z-50 transition-all duration-300 ease-in-out",
           navbarIsOpen ? "" : "hidden",
         ]
           .filter(Boolean)
@@ -61,12 +61,12 @@ export default function Navbar() {
           "absolute top-0 z-[90]",
           "rounded-lg w-[99%] mx-auto",
           "transition-all duration-700 ease-in-out",
-          "md:max-h-[10vh] h-fit text-emerald-50",
+          "md:max-h-[10vh] h-fit text-teal-50",
           topVisible
             ? navbarIsOpen
-              ? "bg-emerald-700 text-emerald-50 pb-4"
-              : "bg-transparent text-emerald-500"
-            : "bg-emerald-700/70",
+              ? "bg-teal-700 text-teal-50 pb-4"
+              : "bg-transparent text-teal-500"
+            : "bg-teal-700/70",
         ]
           .filter(Boolean)
           .join(" ")}

@@ -10,16 +10,16 @@ export default function Home() {
       id={sectionsConfig.home.id}
       backgroundVideoUrl={"/background.mp4"}
     >
-      <div className="flex flex-col gap-2 justify-center h-full px-6 md:px-36 text-emerald-200">
+      <div className="flex flex-col gap-2 justify-center h-full px-6 md:px-36 text-teal-200">
         <div id="top" className="h-1 w-1 bg-transparent"></div>
         <h1 id="main-title" className="text-5xl md:text-6xl my-4">
           Jose Arpaia
         </h1>
         <h3>
-          <span className="mx-1 font-bold text-lg bg-emerald-400 rounded-full text-emerald-800 py-2 px-4 w-fit">
+          <span className="mx-1 font-bold text-lg bg-teal-400 rounded-full text-teal-800 py-2 px-4 w-fit">
             Software Engineer
           </span>
-          experienced in JavaScript, React, and Vue.
+          experienced in TypeScript, React, and Vue.
         </h3>
 
         <div className="flex gap-2 mt-6">

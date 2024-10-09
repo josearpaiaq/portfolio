@@ -129,7 +129,7 @@ function CircleButton({
       className={[
         "transition-all duration-800",
         "shadow-md",
-        "hover:shadow-xl hover:scale-110 hover:opacity-85 rounded-full bg-emerald-500",
+        "hover:shadow-xl hover:scale-110 hover:opacity-85 rounded-full bg-teal-500",
         size === "3" ? "p-3" : "p-2",
         visible ? "opacity-100 flex" : "opacity-0 hidden",
         className,
