@@ -13,8 +13,9 @@ export interface IMenuIconProps {
 export interface IProjects {
   title: string;
   description: string;
-  url: string;
-  image: string;
+  url?: string;
+  image?: string;
+  color?: string;
   tags: tagsEnum[];
 }
 

@@ -8,7 +8,7 @@ type Store = {
 };
 
 const useStore = create<Store>()((set) => ({
-  topVisible: false,
+  topVisible: true,
   navbarIsOpen: false,
   setTopVisible: (value) => set({ topVisible: value }),
   setNavbarIsOpen: (value) => set({ navbarIsOpen: value }),

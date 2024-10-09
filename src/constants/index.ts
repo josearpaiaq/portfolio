@@ -23,6 +23,11 @@ export const sectionsConfig: Record<
   },
 };
 
+export enum mediaLinks {
+  github = "https://github.com/josearpaiaq",
+  linkedin = "https://www.linkedin.com/in/josearpaia/",
+}
+
 export enum tagsEnum {
   react = "React",
   tailwind = "Tailwind CSS",
@@ -33,32 +38,32 @@ export enum tagsEnum {
 
 export const tags: Record<
   tagsEnum,
-  { title: string; url: string; icon: string }
+  { title: string; url: string; icon?: string }
 > = {
   [tagsEnum.react]: {
     title: "React",
     url: "https://reactjs.org/",
-    icon: "/images/icons/react.svg",
+    icon: "/icons/react-icon.svg",
   },
   [tagsEnum.tailwind]: {
     title: "Tailwind CSS",
     url: "https://tailwindcss.com/",
-    icon: "/images/icons/tailwind.svg",
+    icon: "/icons/tailwindcss-icon.svg",
   },
   [tagsEnum.typescript]: {
     title: "TypeScript",
     url: "https://www.typescriptlang.org/",
-    icon: "/images/icons/typescript.svg",
+    icon: "/icons/typescript-icon.svg",
   },
   [tagsEnum.nextjs]: {
     title: "Next.js",
     url: "https://nextjs.org/",
-    icon: "/images/icons/nextjs.svg",
+    icon: "/icons/next-js-icon.svg",
   },
   [tagsEnum.vuejs]: {
     title: "Vue.js",
     url: "https://vuejs.org/",
-    icon: "/images/icons/vuejs.svg",
+    icon: "/icons/vue-icon.svg",
   },
 };
 
@@ -88,8 +93,7 @@ export const projects: IProjects[] = [
     title: "React Tailwind Template",
     description:
       "A React template with Tailwind CSS, TypeScript, and Next.js. It's a great starting point for your next project.",
-    url: "https://github.com/josearpaia/react-tailwind-template",
-    image: "/images/projects/react-tailwind-template.png",
+    url: mediaLinks.github,
     tags: [tagsEnum.nextjs, tagsEnum.tailwind, tagsEnum.typescript],
   },
 ];
