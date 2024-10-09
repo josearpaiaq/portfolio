@@ -1,14 +1,6 @@
 import SnappingPage from "@/components/snappingPage";
-import { projects, sectionsConfig, tags } from "@/constants";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Chip from "@/components/chip";
+import { projects, sectionsConfig } from "@/constants";
+import ProjectCard from "@/components/projects/card";
 
 export default function Projects() {
   return (
@@ -18,48 +10,14 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-auto">
           {projects.map(
             ({ title, description, url, image, tags: projectTags }, index) => (
-              <Card
+              <ProjectCard
                 key={title + index}
-                className={[
-                  "bg-teal-800 text-teal-200",
-                  url && "cursor-pointer hover:opacity-85",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-                onClick={() => url && window.open(url, "_blank")}
-              >
-                <CardHeader>
-                  <CardTitle>
-                    <a href={url} target="_blank" rel="noreferrer">
-                      <h3>{title}</h3>
-                    </a>
-                  </CardTitle>
-                  {description && (
-                    <CardDescription>{description}</CardDescription>
-                  )}
-                </CardHeader>
-                {image && (
-                  <CardContent>
-                    <img src={image} alt={title} />
-                  </CardContent>
-                )}
-                <CardFooter className="flex flex-wrap gap-2">
-                  {projectTags.map((tag) => (
-                    <Chip key={tag} url={tags[tag].url}>
-                      <div className="flex items-center gap-1 text-sm">
-                        {tags[tag].icon && (
-                          <img
-                            src={tags[tag].icon}
-                            alt={tags[tag].title}
-                            className="w-4 h-4"
-                          />
-                        )}
-                        {tags[tag].title}
-                      </div>
-                    </Chip>
-                  ))}
-                </CardFooter>
-              </Card>
+                title={title}
+                description={description}
+                url={url}
+                image={image}
+                tags={projectTags}
+              />
             )
           )}
         </div>
