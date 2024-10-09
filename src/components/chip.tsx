@@ -14,10 +14,10 @@ export default function Chip({
   return (
     <div
       className={[
-        "rounded-full py-1 px-3 select-none shadow-xl",
+        "rounded-full py-1 px-3 select-none shadow-xl transition-all duration-300",
         bgColor,
         textColor,
-        url && "cursor-pointer hover:opacity-85",
+        url && "cursor-pointer hover:bg-opacity-60",
       ]
         .filter(Boolean)
         .join(" ")}

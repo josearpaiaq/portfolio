@@ -20,8 +20,8 @@ export default function ProjectCard({
   return (
     <Card
       className={[
-        "bg-teal-800 text-teal-200",
-        url && "cursor-pointer hover:opacity-85",
+        "bg-teal-800 text-teal-200 transition-all duration-300",
+        url && "cursor-pointer hover:bg-teal-900",
       ]
         .filter(Boolean)
         .join(" ")}

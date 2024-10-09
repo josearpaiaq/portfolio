@@ -15,6 +15,9 @@ export default function Experience() {
   );
   return (
     <SnappingPage id={sectionsConfig.experience.id}>
+      <h3 className="text-3xl text-center w-full text-teal-100 py-6">
+        {"Work and Technologies i've worked with"}
+      </h3>
       <div className="gap-4 items-center justify-around flex-wrap pt-4 w-full hidden md:flex">
         {Object.values(tags).map(({ title, icon, url }, index) => (
           <div
