@@ -1,4 +1,4 @@
-import { MenuIconProps } from "@/types/icons";
+import { IMenuIconProps } from "@/types";
 
 export default function MenuIcon({
   color = "#000",
@@ -8,7 +8,7 @@ export default function MenuIcon({
   // stroke = "#fff",
   strokeWidth = "1.5",
   onClick,
-}: MenuIconProps) {
+}: IMenuIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

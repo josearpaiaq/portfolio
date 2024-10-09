@@ -47,7 +47,7 @@ export default function Navbar() {
     <>
       <div
         className={[
-          "inset-0 absolute bg-malachite-950/50 z-50 transition-all duration-300 ease-in-out",
+          "inset-0 absolute bg-emerald-950/50 z-50 transition-all duration-300 ease-in-out",
           navbarIsOpen ? "" : "hidden",
         ]
           .filter(Boolean)
@@ -61,12 +61,12 @@ export default function Navbar() {
           "absolute top-0 z-[90]",
           "rounded-lg w-[99%] mx-auto",
           "transition-all duration-700 ease-in-out",
-          "md:max-h-[10vh] h-fit text-malachite-50",
+          "md:max-h-[10vh] h-fit text-emerald-50",
           topVisible
             ? navbarIsOpen
-              ? "bg-malachite-700 text-malachite-50 pb-4"
-              : "bg-transparent text-malachite-500"
-            : "bg-malachite-700/70",
+              ? "bg-emerald-700 text-emerald-50 pb-4"
+              : "bg-transparent text-emerald-500"
+            : "bg-emerald-700/70",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -74,7 +74,7 @@ export default function Navbar() {
         <div className="flex flex-col justify-between items-center z-10">
           <div className="flex w-full justify-between items-center p-2">
             <div
-              className="text-xl font-semibold self-start md:self-center animate-bounce cursor-pointer select-none"
+              className="text-xl font-semibold self-start md:self-center cursor-pointer select-none"
               onClick={scrollToTop}
             >
               JA

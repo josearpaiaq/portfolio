@@ -83,24 +83,26 @@ export default function MoreOptionsComponent() {
         {<ArrowUp />}
       </CircleButton>
 
-      {moreOptions.map(({ title, children, onClick, size }, index) => (
-        <CircleButton
-          onClick={onClick}
-          visible={openOptions}
-          title={title}
-          key={index}
-          size={size || "2"}
-        >
-          {children}
-        </CircleButton>
-      ))}
+      {moreOptions.map(({ title, children, onClick, size }, index) => {
+        return (
+          <CircleButton
+            onClick={onClick}
+            visible={openOptions}
+            title={title}
+            key={index}
+            size={size || "2"}
+          >
+            {children}
+          </CircleButton>
+        );
+      })}
 
       <CircleButton
         onClick={() => setOpenOptions((prev) => !prev)}
         visible
         title="More Options"
         onMouseEnter={() => setOpenOptions(true)}
-        className={openOptions ? "rotate-45" : ""}
+        className={[openOptions ? "rotate-45" : ""].filter(Boolean).join(" ")}
       >
         <PlusSign />
       </CircleButton>
@@ -125,9 +127,9 @@ function CircleButton({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={[
-        "transition-all duration-300 transform",
+        "transition-all duration-800",
         "shadow-md",
-        "hover:shadow-xl hover:scale-110 hover:opacity-85 rounded-full bg-malachite-500",
+        "hover:shadow-xl hover:scale-110 hover:opacity-85 rounded-full bg-emerald-500",
         size === "3" ? "p-3" : "p-2",
         visible ? "opacity-100 flex" : "opacity-0 hidden",
         className,

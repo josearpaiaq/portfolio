@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   const [backgroundColor, setBackgroundColor] =
-    useState<string>("bg-malachite-900");
+    useState<string>("bg-emerald-900");
 
   useEffect(() => {
     const sections = Object.values(sectionsConfig).map((section) =>
@@ -29,7 +29,7 @@ export default function App() {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id as keyof typeof sectionsConfig;
           setBackgroundColor(
-            sectionsConfig[sectionId].styles?.background || "bg-malachite-100"
+            sectionsConfig[sectionId].styles?.background || "bg-emerald-100"
           );
         }
       });

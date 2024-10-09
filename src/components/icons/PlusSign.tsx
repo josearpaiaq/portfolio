@@ -1,4 +1,4 @@
-import { MenuIconProps } from "@/types/icons";
+import { IMenuIconProps } from "@/types";
 
 export default function PlusSign({
   width = "20",
@@ -6,7 +6,7 @@ export default function PlusSign({
   color = "#000",
   strokeWidth = "1.5",
   onClick,
-}: MenuIconProps) {
+}: IMenuIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

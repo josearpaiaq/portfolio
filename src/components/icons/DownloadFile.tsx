@@ -1,4 +1,4 @@
-import { MenuIconProps } from "@/types/icons";
+import { IMenuIconProps } from "@/types";
 
 export default function DownloadFile({
   width = "20",
@@ -7,7 +7,7 @@ export default function DownloadFile({
   strokeWidth = "1.5",
   stroke = "#000",
   onClick,
-}: MenuIconProps) {
+}: IMenuIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

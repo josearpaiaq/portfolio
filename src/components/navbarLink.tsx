@@ -23,9 +23,9 @@ export default function NavbarLink({
           "h-0.5 w-0 transition-all duration-300 group-hover:w-full",
           topVisible
             ? navbarIsOpen
-              ? "bg-malachite-200"
-              : "bg-malachite-500"
-            : "bg-malachite-200",
+              ? "bg-emerald-200"
+              : "bg-emerald-500"
+            : "bg-emerald-200",
         ]
           .filter(Boolean)
           .join(" ")}
