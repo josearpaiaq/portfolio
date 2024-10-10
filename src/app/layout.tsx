@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Jose Arpaia - Portfolio",
+  title: "José Arpaia - Software Developer",
   description:
-    "Hi, i'm José Arpaia, i'm a software developer based in Panamá. Experienced with Javascript technologies like React, Next.js, Node.js and more. I aim to build a great career with the best companies in the world and become part of the technology revolution is already happening. Software developer portfolio for Jose Arpaia.",
+    "Here, José Arpaia, a software developer based in Panamá. Experienced with Javascript technologies like React, Next.js, Node.js and more. I aim to build a great career with the best companies in the world and become part of the technology revolution is already happening. Software developer portfolio for Jose Arpaia.",
 };
 
 export default function RootLayout({
