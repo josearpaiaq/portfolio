@@ -27,7 +27,7 @@ export default function MoreOptionsComponent() {
   const moreOptions: IMoreOptions[] = [
     {
       title: "Download my CV",
-      children: <DownloadFile />,
+      children: <DownloadFile color="#fff" />,
       onClick: () => downloadCV(),
       size: "2",
     },
@@ -104,7 +104,7 @@ export default function MoreOptionsComponent() {
         onMouseEnter={() => setOpenOptions(true)}
         className={[openOptions ? "rotate-45" : ""].filter(Boolean).join(" ")}
       >
-        <PlusSign />
+        <PlusSign color="#fff" />
       </CircleButton>
     </div>
   );

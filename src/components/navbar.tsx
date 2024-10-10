@@ -83,9 +83,11 @@ export default function Navbar() {
               onClick={() => setNavbarIsOpen(!navbarIsOpen)}
               color={"#fff"}
               className={[
-                "transition-all duration-300 ease-in-out cursor-pointer block md:hidden",
+                "transition-all duration-300 ease-in-out cursor-pointer block md:hidden z-50",
                 navbarIsOpen ? "-rotate-45 opacity-100" : "opacity-50",
-              ].join(" ")}
+              ]
+                .filter(Boolean)
+                .join(" ")}
             />
 
             {/* Desktop navbar */}
