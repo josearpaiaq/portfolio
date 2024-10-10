@@ -64,8 +64,8 @@ export default function Contact() {
 
   return (
     <SnappingPage id={sectionsConfig.contact.id}>
-      <div className="flex flex-col justify-center items-center h-full md:px-6 text-teal-200 pt-12">
-        <h3 className="text-3xl text-center w-full text-teal-100 py-6">
+      <div className="flex flex-col justify-center items-center h-full md:px-6 text-teal-200 pt-6 md:pt-12">
+        <h3 className="text-3xl text-center w-full text-teal-100 py-2 md:py-6">
           Send me a message
         </h3>
         <Form {...form}>

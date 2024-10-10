@@ -15,14 +15,16 @@ export default function Home() {
         <h1 id="main-title" className="text-5xl md:text-6xl my-4">
           Jose Arpaia
         </h1>
-        <h3 className="flex flex-col md:flex-row gap-2 md:items-center">
-          <span className="mx-1 font-bold text-lg bg-teal-400 rounded-full text-teal-800 py-2 px-4 w-fit">
-            Software Engineer
+        <h3 className="flex flex-col md:flex-row gap-2 md:items-center w-fit">
+          <span className="mx-1 font-bold md:text-lg bg-teal-400 rounded-full text-teal-800 py-2 px-4 w-fit text-nowrap">
+            Full Stack Developer
           </span>
-          <span>experienced with TypeScript, React, and Vue.</span>
+          <span className="w-fit">
+            experienced with TypeScript, React, and Vue.
+          </span>
         </h3>
 
-        <div className="flex gap-2 mt-6">
+        <div className="flex flex-col md:flex-row gap-2 mt-6">
           <Button onClick={() => downloadCV()}>Download my CV</Button>
           <Button
             variant={"secondary"}
