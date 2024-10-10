@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import NavbarLink from "./navbarLink";
 import { scrollTo } from "@/lib/utils";
 import useStore from "@/store";
+import BrandingLogo from "./icons/BrandingLogo";
 
 export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement | null>(null);
@@ -74,10 +75,10 @@ export default function Navbar() {
         <div className="flex flex-col justify-between items-center z-10">
           <div className="flex w-full justify-between items-center p-2">
             <div
-              className="text-xl font-semibold self-start md:self-center cursor-pointer select-none"
+              className="text-xl font-semibold self-start md:self-center cursor-pointer select-none h-8 w-8 [&>img]:hover:scale-150 transition-all duration-300 ease-in-out hover:bg-teal-700/70 rounded-md p-2"
               onClick={scrollToTop}
             >
-              JA
+              <BrandingLogo />
             </div>
             <MenuIcon
               onClick={() => setNavbarIsOpen(!navbarIsOpen)}

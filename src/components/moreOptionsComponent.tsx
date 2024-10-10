@@ -27,7 +27,7 @@ export default function MoreOptionsComponent() {
   const moreOptions: IMoreOptions[] = [
     {
       title: "Download my CV",
-      children: <DownloadFile color="#fff" />,
+      children: <DownloadFile color="#000" />,
       onClick: () => downloadCV(),
       size: "2",
     },

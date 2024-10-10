@@ -19,7 +19,7 @@ export default function HorizontalTimeline({ events }: TimelineProps) {
       <div className="absolute w-full h-[.1rem] top-1 bg-white" />
       {events.map(({ date, company, url, position, description }, index) => (
         <div key={index} className="flex w-full ml-4 max-w-[30rem]">
-          <div className="absolute top-0 w-3 h-3 rounded-full !z-50 bg-teal-600" />
+          <div className="absolute top-0 w-3 h-3 rounded-full !z-50 bg-teal-100" />
           <a
             className={[
               "p-4 rounded-md mb-4 bg-teal-600 min-w-[15rem] hover:shadow-md",
