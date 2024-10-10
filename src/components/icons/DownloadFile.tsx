@@ -1,11 +1,11 @@
-import { IMenuIconProps } from "@/types";
+import { IMenuIconProps } from '@/types';
 
 export default function DownloadFile({
-  width = "20",
-  height = "20",
-  color = "#000",
-  strokeWidth = "1.5",
-  stroke = "#000",
+  width = '20',
+  height = '20',
+  color = '#000',
+  strokeWidth = '1.5',
+  stroke = '#000',
   onClick,
 }: IMenuIconProps) {
   return (

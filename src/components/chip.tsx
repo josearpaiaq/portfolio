@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export default function Chip({
   children,
-  bgColor = "bg-teal-500",
-  textColor = "text-teal-800",
+  bgColor = 'bg-teal-500',
+  textColor = 'text-teal-800',
   url,
 }: {
   children: ReactNode;
@@ -14,14 +14,14 @@ export default function Chip({
   return (
     <div
       className={[
-        "rounded-full py-1 px-3 select-none shadow-xl transition-all duration-300",
+        'w-fit select-none rounded-full px-3 py-1 shadow-xl transition-all duration-300',
         bgColor,
         textColor,
-        url && "cursor-pointer hover:bg-opacity-60",
+        url && 'cursor-pointer hover:bg-opacity-60',
       ]
         .filter(Boolean)
-        .join(" ")}
-      onClick={() => url && window.open(url, "_blank")}
+        .join(' ')}
+      onClick={() => url && window.open(url, '_blank')}
     >
       {children}
     </div>

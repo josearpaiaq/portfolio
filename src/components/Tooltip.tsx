@@ -3,15 +3,15 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip';
 
 export default function Tooltip({ title }: { title?: string }) {
   return (
     <TooltipProvider>
       <TooltipPrimitive>
-        <TooltipTrigger>{""}</TooltipTrigger>
+        <TooltipTrigger>{''}</TooltipTrigger>
         <TooltipContent>
-          <p>{title || "..."}</p>
+          <p>{title || '...'}</p>
         </TooltipContent>
       </TooltipPrimitive>
     </TooltipProvider>

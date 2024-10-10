@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["Arpaia", "tailwindcss"]
+  "cSpell.words": ["Arpaia", "tailwindcss"],
+  "editor.formatOnSave": true
 }

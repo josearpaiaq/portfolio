@@ -1,10 +1,10 @@
-import { IMenuIconProps } from "@/types";
+import { IMenuIconProps } from '@/types';
 
 export default function PlusSign({
-  width = "20",
-  height = "20",
-  color = "#000",
-  strokeWidth = "1.5",
+  width = '20',
+  height = '20',
+  color = '#000',
+  strokeWidth = '1.5',
   onClick,
 }: IMenuIconProps) {
   return (

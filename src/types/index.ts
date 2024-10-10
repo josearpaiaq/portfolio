@@ -1,4 +1,4 @@
-import { tagsEnum } from "@/constants";
+import { tagsEnum } from '@/constants';
 
 export interface IMenuIconProps {
   color?: string;
@@ -25,7 +25,7 @@ export interface IExperience {
   fullTime: boolean;
   remote: boolean;
   startDate: number;
-  endDate?: number | "present";
+  endDate?: number | 'present';
   location: string;
   company: string;
   url: string;

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from 'react';
 
 export default function SnappingPage({
   children,
@@ -11,26 +11,33 @@ export default function SnappingPage({
   id: string;
   backgroundVideoUrl?: string;
 }) {
+  // const [videoLoaded, setVideoLoaded] = useState(false);
+
   return (
     <section
       id={id}
       className={[
-        "relative snap-center snap-always h-screen bg-slate-700 overflow-y-auto py-[10vh]",
+        'relative h-screen snap-center snap-always overflow-y-auto bg-slate-700 py-[10vh]',
         className,
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
+      style={{
+        background: !!backgroundVideoUrl
+          ? `url(${backgroundVideoUrl}) no-repeat center center/cover`
+          : undefined,
+      }}
     >
       {backgroundVideoUrl && (
         <video
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
           src={backgroundVideoUrl}
           autoPlay
           loop
           muted
         />
       )}
-      <div className="h-full w-full relative z-10">{children}</div>
+      <div className="relative z-10 h-full w-full">{children}</div>
     </section>
   );
 }

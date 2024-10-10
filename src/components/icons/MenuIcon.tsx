@@ -1,12 +1,12 @@
-import { IMenuIconProps } from "@/types";
+import { IMenuIconProps } from '@/types';
 
 export default function MenuIcon({
-  color = "#000",
-  className = "",
-  width = "20",
-  height = "20",
+  color = '#000',
+  className = '',
+  width = '20',
+  height = '20',
   // stroke = "#fff",
-  strokeWidth = "1.5",
+  strokeWidth = '1.5',
   onClick,
 }: IMenuIconProps) {
   return (
@@ -20,7 +20,7 @@ export default function MenuIcon({
       fill={color}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={["icon icon-tabler icon-tabler-menu-2", className].join(" ")}
+      className={['icon icon-tabler icon-tabler-menu-2', className].join(' ')}
       onClick={onClick}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
