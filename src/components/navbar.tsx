@@ -61,7 +61,7 @@ export default function Navbar() {
           "w-full p-2",
           "absolute top-0 z-[90]",
           "rounded-lg w-[99%] mx-auto",
-          "transition-all duration-700 ease-in-out",
+          "transition-all duration-300 ease-in-out",
           "md:max-h-[10vh] h-fit text-teal-50",
           topVisible
             ? navbarIsOpen
@@ -127,7 +127,7 @@ export default function Navbar() {
           {/* Mobile navbar */}
           <div
             className={[
-              "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-500 ease-in-out w-full overflow-hidden",
+              "flex md:hidden md:flex-row flex-col justify-between gap-4 items-center transition-all duration-300 ease-in-out w-full overflow-hidden",
               navbarIsOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0",
             ].join(" ")}
           >
