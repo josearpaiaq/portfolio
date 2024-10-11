@@ -152,7 +152,7 @@ export const projects: IProjects[] = [
   {
     title: 'Rick and Morty Wiki',
     description:
-      'I developed a Rick and Morty character Wiki using the official API (https://rickandmortyapi.com/) to fetch detailed character information. The app also features pagination by leveraging the API’s built-in properties. This project was a great way to sharpen my vanilla JavaScript skills, and it was built entirely with HTML, CSS, and JavaScript.',
+      'I developed a Rick and Morty character Wiki using the official API to fetch detailed character information. The app also features pagination by leveraging the API’s built-in properties. This project was a great way to sharpen my vanilla JavaScript skills, and it was built entirely with HTML, CSS, and JavaScript.',
     url: 'https://rick-and-morty-wiki-by-josearpaiaq.netlify.app/',
     image: 'projects/rick-and-morty-wiki.png',
     tags: [tagsEnum.JavaScript],

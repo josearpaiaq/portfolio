@@ -1,6 +1,7 @@
 import { IProjects } from '@/types';
 import Chip from '../Chip';
 import { tags } from '@/constants';
+import { useState } from 'react';
 
 export default function ProjectCard({
   url,
@@ -9,10 +10,12 @@ export default function ProjectCard({
   tags: projectTags,
   image,
 }: IProjects) {
+  const [showDescription, setShowDescription] = useState(() => false);
+
   return (
     <div
       className={[
-        'w-[76vw] rounded-lg bg-teal-700 transition-all duration-300 ease-in-out hover:shadow-md md:h-full md:w-[30vw]',
+        'h-fit w-[76vw] rounded-lg bg-teal-700 transition-all duration-300 ease-in-out hover:shadow-md md:w-[25vw]',
         url && 'hover:bg-opacity-75',
       ]
         .filter(Boolean)
@@ -27,8 +30,13 @@ export default function ProjectCard({
         />
       )}
       <div className="px-2 py-1">
-        <h3 className="my-2 px-4 text-lg font-bold">{title}</h3>
-        <div className="text-balance px-4 text-teal-200/80">{description}</div>
+        <h3 className="my-2 px-4 font-bold md:text-lg">{title}</h3>
+        <div
+          className="cursor-pointer text-balance px-4 text-teal-200/80"
+          onClick={() => setShowDescription((prev) => !prev)}
+        >
+          {showDescription ? description : `${description?.slice(0, 150)}...`}
+        </div>
         <div className="flex flex-wrap gap-2 p-4">
           {projectTags?.map((tag) => (
             <Chip key={tag} url={tags[tag].url}>
