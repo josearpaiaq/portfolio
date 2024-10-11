@@ -7,6 +7,7 @@ import NavbarLink from './navbarLink';
 import { scrollTo } from '@/lib/utils';
 import useStore from '@/store';
 import BrandingLogo from './icons/BrandingLogo';
+import Chip from './chip';
 
 export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement | null>(null);
@@ -77,16 +78,19 @@ export default function Navbar() {
             >
               <BrandingLogo />
             </div>
-            <MenuIcon
-              onClick={() => setNavbarIsOpen(!navbarIsOpen)}
-              color={'#fff'}
-              className={[
-                'z-50 block cursor-pointer transition-all duration-300 ease-in-out md:hidden',
-                navbarIsOpen ? '-rotate-45 opacity-100' : 'opacity-50',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-            />
+            <div className="flex items-center gap-2 md:hidden">
+              <ContactMeLink onClick={() => scrollToSection(sectionsConfig.contact.id)} />
+              <MenuIcon
+                onClick={() => setNavbarIsOpen(!navbarIsOpen)}
+                color={'#fff'}
+                className={[
+                  'z-50 block cursor-pointer transition-all duration-300 ease-in-out',
+                  navbarIsOpen ? '-rotate-45 opacity-100' : 'opacity-50',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+              />
+            </div>
 
             {/* Desktop navbar */}
             <div className="hidden h-fit items-center justify-between gap-4 md:flex">
@@ -111,13 +115,8 @@ export default function Navbar() {
               >
                 Projects
               </NavbarLink>
-              <NavbarLink
-                onClick={() => {
-                  scrollToSection(sectionsConfig.contact.id);
-                }}
-              >
-                Contact Me
-              </NavbarLink>
+
+              <ContactMeLink onClick={() => scrollToSection(sectionsConfig.contact.id)} />
             </div>
           </div>
 
@@ -149,16 +148,17 @@ export default function Navbar() {
             >
               Projects
             </NavbarLink>
-            <NavbarLink
-              onClick={() => {
-                scrollToSection(sectionsConfig.contact.id);
-              }}
-            >
-              Contact Me
-            </NavbarLink>
           </div>
         </div>
       </nav>
     </>
+  );
+}
+
+function ContactMeLink({ onClick }: { onClick: () => void }) {
+  return (
+    <Chip textColor="text-teal-100" bgColor="bg-teal-500" onClick={onClick}>
+      Contact with me
+    </Chip>
   );
 }

@@ -62,10 +62,8 @@ export default function Contact() {
 
   return (
     <SnappingPage id={sectionsConfig.contact.id}>
-      <div className="flex h-full flex-col items-center justify-center pt-6 text-teal-200 md:px-6 md:pt-12">
-        <h3 className="w-full py-2 text-center text-3xl text-teal-100 md:py-6">
-          Send me a message
-        </h3>
+      <div className="flex h-full flex-col items-center pt-12 text-teal-200 md:px-6">
+        <h3 className="w-full pb-4 text-center text-3xl text-teal-100">Send me a message</h3>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleOnSubmit)}

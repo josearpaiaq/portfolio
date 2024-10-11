@@ -17,7 +17,7 @@ export default function SnappingPage({
     <section
       id={id}
       className={[
-        'relative h-screen snap-center snap-always overflow-y-auto bg-slate-700 py-[10vh]',
+        'relative h-screen snap-center snap-always overflow-y-auto bg-slate-700 pt-[10vh]',
         className,
       ]
         .filter(Boolean)
