@@ -150,11 +150,11 @@ export const projects: IProjects[] = [
     tags: [tagsEnum.JavaScript, tagsEnum.react],
   },
   {
-    title: 'Rick and Morty Wiki',
+    title: 'Tic Tac Toe game',
     description:
-      'I developed a Rick and Morty character Wiki using the official API to fetch detailed character information. The app also features pagination by leveraging the API’s built-in properties. This project was a great way to sharpen my vanilla JavaScript skills, and it was built entirely with HTML, CSS, and JavaScript.',
-    url: 'https://rick-and-morty-wiki-by-josearpaiaq.netlify.app/',
-    image: 'projects/rick-and-morty-wiki.png',
+      'Tic Tac Toe is a classic game that can be played with two players. It is a simple game that is easy to learn and play. I made this game using vainilla JavaScript, HTML and CSS. I host the game using the GitHub Pages service that makes it super easy to settle a continuous integration pipeline with every merge to master branch, it is available online now.',
+    url: 'https://josearpaiaq.github.io/Tic-Tac-Toe/',
+    image: 'projects/tic-tac-toe-game.png',
     tags: [tagsEnum.JavaScript],
   },
   {
@@ -165,7 +165,14 @@ export const projects: IProjects[] = [
     image: 'projects/vue-todo-app.png',
     tags: [tagsEnum.JavaScript, tagsEnum.vuejs],
   },
-
+  {
+    title: 'Rick and Morty Wiki',
+    description:
+      'I developed a Rick and Morty character Wiki using the official API to fetch detailed character information. The app also features pagination by leveraging the API’s built-in properties. This project was a great way to sharpen my vanilla JavaScript skills, and it was built entirely with HTML, CSS, and JavaScript.',
+    url: 'https://rick-and-morty-wiki-by-josearpaiaq.netlify.app/',
+    image: 'projects/rick-and-morty-wiki.png',
+    tags: [tagsEnum.JavaScript],
+  },
   {
     title: 'Country Finder App',
     description:

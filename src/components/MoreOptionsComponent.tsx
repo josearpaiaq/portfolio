@@ -93,7 +93,9 @@ export default function MoreOptionsComponent() {
       })}
 
       <CircleButton
-        onClick={() => setOpenOptions((prev) => !prev)}
+        onClick={() => {
+          setOpenOptions((prev) => !prev);
+        }}
         visible
         title="More Options"
         onMouseEnter={() => setOpenOptions(true)}

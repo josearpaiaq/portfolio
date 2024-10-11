@@ -34,7 +34,7 @@ export default function Experience() {
 
         <div className="md:w-1/2">
           <h3 className="text-md mt-4 text-balance text-center font-semibold text-teal-100 md:mt-0 md:text-lg">
-            Technologies and tools i use on a daily basis
+            Technologies and tools I use on a daily basis
           </h3>
           <div className={['grid w-full grid-cols-4 gap-4 pt-4'].filter(Boolean).join(' ')}>
             {Object.values(tags).map(({ title, icon, url }, index) => (
