@@ -1,4 +1,5 @@
-import { tagsEnum } from "@/constants";
+import { tagsEnum } from '@/constants';
+import { ReactNode } from 'react';
 
 export interface IMenuIconProps {
   color?: string;
@@ -12,11 +13,11 @@ export interface IMenuIconProps {
 
 export interface IProjects {
   title: string;
-  description: string;
+  description: ReactNode;
   url?: string;
   image?: string;
   color?: string;
-  tags: tagsEnum[];
+  tags?: tagsEnum[];
 }
 
 export interface IExperience {
@@ -25,10 +26,20 @@ export interface IExperience {
   fullTime: boolean;
   remote: boolean;
   startDate: number;
-  endDate?: number | "present";
+  endDate?: number | 'present';
   location: string;
   company: string;
   url: string;
   image: string;
   tags: tagsEnum[];
+}
+
+export interface IJobs {
+  company: string;
+  position: string;
+  date?: string;
+  url?: string;
+  description?: ReactNode;
+  tags?: tagsEnum[];
+  remarkablePoints?: string[];
 }

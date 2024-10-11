@@ -1,6 +1,6 @@
 export default function ArrowUp({
-  width = "20",
-  height = "20",
+  width = '20',
+  height = '20',
 }: {
   width?: string;
   height?: string;

@@ -9,6 +9,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - dark mode (?)
 - google fonts
 - add scroll driven animations
+- add google recaptcha
 
 ## Getting Started
 

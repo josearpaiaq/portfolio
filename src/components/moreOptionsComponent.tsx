@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { ReactNode, useEffect, useRef, useState } from "react";
-import ArrowUp from "./icons/ArrowUp";
-import { sectionsConfig } from "@/constants";
-import PlusSign from "./icons/PlusSign";
-import DownloadFile from "./icons/DownloadFile";
-import { downloadCV } from "@/lib/utils";
-import useStore from "@/store";
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import ArrowUp from './icons/ArrowUp';
+import { sectionsConfig } from '@/constants';
+import PlusSign from './icons/PlusSign';
+import DownloadFile from './icons/DownloadFile';
+import { downloadCV } from '@/lib/utils';
+import useStore from '@/store';
 
 interface IMoreOptions {
   title?: string;
@@ -15,7 +15,7 @@ interface IMoreOptions {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   visible?: boolean;
-  size?: "2" | "3";
+  size?: '2' | '3';
   className?: string;
 }
 
@@ -26,20 +26,20 @@ export default function MoreOptionsComponent() {
 
   const moreOptions: IMoreOptions[] = [
     {
-      title: "Download my CV",
+      title: 'Download my CV',
       children: <DownloadFile color="#000" />,
       onClick: () => downloadCV(),
-      size: "2",
+      size: '2',
     },
   ];
 
   const scrollToTop = () => {
     const topSection = document.getElementById(sectionsConfig.home.id);
-    topSection?.scrollIntoView({ behavior: "smooth" });
+    topSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
-    const topElement = document.getElementById("top");
+    const topElement = document.getElementById('top');
 
     if (!topElement) return;
 
@@ -49,7 +49,7 @@ export default function MoreOptionsComponent() {
         const isV = !entries[0].isIntersecting;
         setTopVisible(!isV);
       },
-      { threshold: 0.1 } // Se activa cuando el 10% de la sección es visible
+      { threshold: 0.1 }, // Se activa cuando el 10% de la sección es visible
     );
 
     observer.observe(topElement);
@@ -64,22 +64,17 @@ export default function MoreOptionsComponent() {
   return (
     <div
       className={[
-        "flex flex-col items-center gap-2 z-40",
-        "fixed bottom-8 right-8 text-white",
-        "transition-all duration-300",
-        "bg-transparent",
+        'z-40 flex flex-col items-center gap-2',
+        'fixed bottom-8 right-8 text-white',
+        'transition-all duration-300',
+        'bg-transparent',
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
       ref={containerRef}
       onMouseLeave={() => setOpenOptions(false)}
     >
-      <CircleButton
-        onClick={scrollToTop}
-        visible={!topVisible}
-        size="2"
-        title="Go back to top"
-      >
+      <CircleButton onClick={scrollToTop} visible={!topVisible} size="2" title="Go back to top">
         {<ArrowUp />}
       </CircleButton>
 
@@ -90,7 +85,7 @@ export default function MoreOptionsComponent() {
             visible={openOptions}
             title={title}
             key={index}
-            size={size || "2"}
+            size={size || '2'}
           >
             {children}
           </CircleButton>
@@ -102,7 +97,7 @@ export default function MoreOptionsComponent() {
         visible
         title="More Options"
         onMouseEnter={() => setOpenOptions(true)}
-        className={[openOptions ? "rotate-45" : ""].filter(Boolean).join(" ")}
+        className={[openOptions ? 'rotate-45' : ''].filter(Boolean).join(' ')}
       >
         <PlusSign color="#fff" />
       </CircleButton>
@@ -117,7 +112,7 @@ function CircleButton({
   onMouseEnter,
   onMouseLeave,
   visible,
-  size = "3",
+  size = '3',
   className,
 }: IMoreOptions) {
   return (
@@ -127,15 +122,15 @@ function CircleButton({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={[
-        "transition-all duration-800",
-        "shadow-md",
-        "hover:shadow-xl hover:scale-110 hover:opacity-85 rounded-full bg-teal-500",
-        size === "3" ? "p-3" : "p-2",
-        visible ? "opacity-100 flex" : "opacity-0 hidden",
+        'duration-800 transition-all',
+        'shadow-md',
+        'rounded-full bg-teal-500 hover:scale-110 hover:opacity-85 hover:shadow-xl',
+        size === '3' ? 'p-3' : 'p-2',
+        visible ? 'flex opacity-100' : 'hidden opacity-0',
         className,
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
       aria-label={title}
       title={title}
     >

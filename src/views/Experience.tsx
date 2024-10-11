@@ -1,85 +1,55 @@
-import SnappingPage from "@/components/snappingPage";
-import { sectionsConfig, tags } from "@/constants";
-import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import { useRef } from "react";
-import HorizontalTimeline from "@/components/horizontalTimeline";
+import JobCard from '@/components/jobs/JobCard';
+import SnappingPage from '@/components/snappingPage';
+import { jobs, sectionsConfig, tags, tagsEnum } from '@/constants';
 
 export default function Experience() {
-  const plugin = useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: true, active: true })
-  );
   return (
     <SnappingPage id={sectionsConfig.experience.id}>
-      <h3 className="text-3xl text-center w-full text-teal-100 py-6">
-        {"Work Experience"}
-      </h3>
+      <h3 className="w-full pt-6 text-center text-3xl text-teal-100">{'Work Experience'}</h3>
 
-      {/* Desktop Static version */}
-      <div className="gap-4 items-center justify-around flex-wrap pt-4 w-full hidden md:flex">
-        {Object.values(tags).map(({ title, icon, url }, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center text-teal-100 gap-2 p-2 border-none select-none [&>a>img]:hover:animate-bounce"
-          >
-            <a href={url} target="_blank" rel="noreferrer">
-              {icon && <img src={icon} alt={title} className="w-12 h-12" />}
-            </a>
-            <h3>{title}</h3>
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile Carousel */}
-      <Carousel
-        plugins={[plugin.current]}
-        className="w-full md:hidden"
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-      >
-        <CarouselContent>
-          {Object.values(tags).map(({ title, icon, url }, index) => (
-            <CarouselItem key={index} className="basis-1/2">
-              <div
-                className="p-1 border-none"
-                style={{
-                  backgroundImage: `url(${icon}}`,
-                  backgroundColor: "transparent",
-                }}
-              >
-                <Card className="bg-transparent border-none shadow-none">
-                  <CardContent className="flex flex-col text-teal-100 justify-between select-none aspect-square items-center p-6 ">
-                    <a href={url} target="_blank" rel="noreferrer">
-                      {icon && (
-                        <img src={icon} alt={title} className="w-42 h-42" />
-                      )}
-                    </a>
-                    <h3>{title}</h3>
-                  </CardContent>
-                </Card>
+      <div className="flex w-full flex-col items-center justify-center px-8 pt-12 md:flex-row md:justify-around">
+        {jobs.map(({ company, position, date, url, description, remarkablePoints }, index) => (
+          <JobCard
+            key={company + index}
+            position={position}
+            company={company}
+            description={
+              <div className="text-teal-200/80">
+                <span className="mb-4 ml-2 text-xs font-bold">{date}</span>
+                <p className="mt-2 text-teal-50">{description}</p>
               </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+            }
+            remarkablePoints={remarkablePoints}
+            tags={[
+              tagsEnum.JavaScript,
+              tagsEnum.vuejs,
+              tagsEnum.react,
+              tagsEnum.tailwind,
+              tagsEnum.typescript,
+              tagsEnum.nextjs,
+            ]}
+            url={url}
+          />
+        ))}
 
-      <div className="w-full px-8 pt-12">
-        <HorizontalTimeline
-          events={[
-            {
-              company: "Etyalab S.A.",
-              date: "Nov 01, 2021 - Today",
-              position: "Frontend Developer",
-              description:
-                "My role in the company is to develop and maintain the web applications. I am responsible for creating and maintaining the user interface, ensuring a seamless user experience, and implementing new features and functionalities.",
-            },
-          ]}
-        />
+        <div className="md:w-1/2">
+          <h3 className="text-md mt-4 text-balance text-center font-semibold text-teal-100 md:mt-0 md:text-lg">
+            Technologies and tools i use on a daily basis
+          </h3>
+          <div className={['grid w-full grid-cols-4 gap-4 pt-4'].filter(Boolean).join(' ')}>
+            {Object.values(tags).map(({ title, icon, url }, index) => (
+              <div
+                key={index}
+                className="flex select-none flex-col items-center gap-2 border-none p-2 text-teal-100 [&>a>img]:hover:animate-bounce"
+              >
+                <a href={url} target="_blank" rel="noreferrer">
+                  {icon && <img src={icon} alt={title} className="h-12 w-12" />}
+                </a>
+                <h3>{title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </SnappingPage>
   );
