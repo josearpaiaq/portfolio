@@ -142,22 +142,6 @@ export const experiences: IExperience[] = [
 
 export const projects: IProjects[] = [
   {
-    title: 'Rick and Morty Wiki',
-    description:
-      'This a Wiki for Rick and Morty characters. Take advantage of the rick and morty api (https://rickandmortyapi.com/) to fetch the characters and its insights, the app is paginated too using the api pagination properties. Believe this project was really helpful to me to practice javascript vainilla skills. Made with only HTML, CSS, and JavaScript.',
-    url: 'https://rick-and-morty-wiki-by-josearpaiaq.netlify.app/',
-    image: 'projects/rick-and-morty-wiki.png',
-    tags: [tagsEnum.JavaScript],
-  },
-  {
-    title: 'To-do App made with Vue.js',
-    description:
-      'A simple to-do app made with Vue.js i made with vue cli, bootstrap and data persistence with local storage. You can create new tasks, edit a task, mark a task as completed, put back to uncompleted or delete a task, only using the local storage to store the tasks go we do not need to use a database.',
-    url: 'https://to-do-app-jaq.netlify.app/',
-    image: 'projects/vue-todo-app.png',
-    tags: [tagsEnum.JavaScript, tagsEnum.vuejs],
-  },
-  {
     title: 'Funny Math App',
     description:
       'This a calculator app that can calculate basic math operations like addition, subtraction, multiplication, and division. Made with React 18 when it just came out. I tried to make an unique style for the buttons and the inputs, not a complex project but gets tricky on the right control of the operations and context maintaining.',
@@ -165,6 +149,23 @@ export const projects: IProjects[] = [
     image: 'projects/funny-math-app.png',
     tags: [tagsEnum.JavaScript, tagsEnum.react],
   },
+  {
+    title: 'Rick and Morty Wiki',
+    description:
+      'I developed a Rick and Morty character Wiki using the official API (https://rickandmortyapi.com/) to fetch detailed character information. The app also features pagination by leveraging the API’s built-in properties. This project was a great way to sharpen my vanilla JavaScript skills, and it was built entirely with HTML, CSS, and JavaScript.',
+    url: 'https://rick-and-morty-wiki-by-josearpaiaq.netlify.app/',
+    image: 'projects/rick-and-morty-wiki.png',
+    tags: [tagsEnum.JavaScript],
+  },
+  {
+    title: 'To-do App made with Vue.js',
+    description:
+      'A simple to-do app made with Vue.js I made with vue cli, bootstrap and data persistence with local storage. You can create new tasks, edit a task, mark a task as completed, put back to uncompleted or delete a task, only using the local storage to store the tasks go we do not need to use a database.',
+    url: 'https://to-do-app-jaq.netlify.app/',
+    image: 'projects/vue-todo-app.png',
+    tags: [tagsEnum.JavaScript, tagsEnum.vuejs],
+  },
+
   {
     title: 'Country Finder App',
     description:
@@ -183,9 +184,8 @@ export const jobs: IJobs[] = [
     description:
       'My role in the company is to develop and maintain the web applications. I am responsible for creating and maintaining the user interface, ensuring a seamless user experience, and implementing new features and functionalities.',
     remarkablePoints: [
-      'Developed and maintained the user interface, ensuring a seamless user experience.',
-      'Implemented new features and functionalities.',
-      'Responsible for creating and maintaining the user interface.',
+      'Developed and maintained the user interfaces.',
+      'Implemented new features and functionalities for visual and functional improvements.',
       'Ensured a seamless user experience.',
     ],
   },

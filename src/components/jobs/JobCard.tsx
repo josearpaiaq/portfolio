@@ -30,7 +30,7 @@ export default function JobCard({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {description && <div className="text-teal-200/80">{description}</div>}
+        {description && <div className="text-balance text-teal-200/80">{description}</div>}
 
         {!!remarkablePoints?.length && (
           <div className="mt-4 flex flex-col gap-2 pl-2">
