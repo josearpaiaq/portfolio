@@ -1,16 +1,5 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Possible technologies / features to use in the project
-
-- ZUSTAND LANDING PAGE EFFECT
-- framer motion (?)
-- resend for mailer
-- download cv with some react-to-pdf library
-- dark mode (?)
-- google fonts
-- add scroll driven animations
-- add google recaptcha
-
 ## Getting Started
 
 First, run the development server:
@@ -33,9 +22,11 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## References and used third party resources
 
-- [icons](https://tablericons.com/)
-- [shadcn](https://ui.shadcn.com/)
-- [zustand](https://zustand-demo.pmnd.rs/)
+- Icons from: [tabler icons](https://tablericons.com/)
+- UI components library: [shadcn](https://ui.shadcn.com/)
+- State manager: [zustand](https://zustand-demo.pmnd.rs/)
+- Form library: [react-hook-form](https://react-hook-form.com/)
+- Form validation: [zod](https://github.com/colinhacks/zod)
 
 ## Learn More
 
