@@ -1,5 +1,5 @@
 import { IJobs } from '@/types';
-import Chip from '../chip';
+import Chip from '../Chip';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { tags } from '@/constants';
 
@@ -30,15 +30,13 @@ export default function JobCard({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {description && (
-          <CardDescription className="text-teal-200/80">{description}</CardDescription>
-        )}
+        {description && <div className="text-teal-200/80">{description}</div>}
 
         {!!remarkablePoints?.length && (
           <div className="mt-4 flex flex-col gap-2 pl-2">
             <h4 className="text-sm font-bold">Remarkable points</h4>
             {remarkablePoints.map((r) => (
-              <p className="flex gap-2 text-sm text-teal-200/80">
+              <p className="flex gap-2 text-sm text-teal-200/80" key={r}>
                 &bull; <span>{r}</span>
               </p>
             ))}

@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import SnappingPage from '@/components/snappingPage';
+import SnappingPage from '@/components/SnappingPage';
 import { sectionsConfig } from '@/constants';
 import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';

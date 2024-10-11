@@ -1,5 +1,5 @@
 import JobCard from '@/components/jobs/JobCard';
-import SnappingPage from '@/components/snappingPage';
+import SnappingPage from '@/components/SnappingPage';
 import { jobs, sectionsConfig, tags, tagsEnum } from '@/constants';
 
 export default function Experience() {
@@ -16,7 +16,7 @@ export default function Experience() {
             description={
               <div className="text-teal-200/80">
                 <span className="mb-4 ml-2 text-xs font-bold">{date}</span>
-                <p className="mt-2 text-teal-50">{description}</p>
+                <div className="mt-2 text-teal-50">{description}</div>
               </div>
             }
             remarkablePoints={remarkablePoints}

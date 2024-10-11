@@ -1,6 +1,5 @@
 import { IProjects } from '@/types';
-import Chip from '../chip';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import Chip from '../Chip';
 import { tags } from '@/constants';
 
 export default function ProjectCard({
@@ -24,7 +23,7 @@ export default function ProjectCard({
         <img
           src={image}
           alt={title}
-          className="sticky inset-0 m-0 h-52 w-full rounded-lg bg-teal-800 object-cover object-left-top p-0"
+          className="relative inset-0 h-52 w-full rounded-lg bg-teal-800 object-cover object-left-top shadow-2xl"
         />
       )}
       <div className="px-2 py-1">

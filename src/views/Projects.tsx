@@ -1,6 +1,6 @@
-import SnappingPage from '@/components/snappingPage';
+import SnappingPage from '@/components/SnappingPage';
 import { projects, sectionsConfig } from '@/constants';
-import ProjectCard from '@/components/projects/projectCard';
+import ProjectCard from '@/components/projects/ProjectCard';
 
 export default function Projects() {
   return (

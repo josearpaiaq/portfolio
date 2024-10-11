@@ -1,5 +1,5 @@
-import Chip from '@/components/chip';
-import SnappingPage from '@/components/snappingPage';
+import Chip from '@/components/Chip';
+import SnappingPage from '@/components/SnappingPage';
 import { Button } from '@/components/ui/button';
 import { sectionsConfig } from '@/constants';
 import { downloadCV, scrollTo } from '@/lib/utils';

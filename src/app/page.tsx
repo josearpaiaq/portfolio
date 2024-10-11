@@ -1,11 +1,11 @@
 'use client';
 
-import Navbar from '@/components/navbar';
+import Navbar from '@/components/Navbar';
 import Home from '@/views/Home';
 import Experience from '@/views/Experience';
 import Projects from '@/views/Projects';
 import Contact from '@/views/Contact';
-import MoreOptionsComponent from '@/components/moreOptionsComponent';
+import MoreOptionsComponent from '@/components/MoreOptionsComponent';
 import { sectionsConfig } from '@/constants';
 import { useEffect, useState } from 'react';
 
@@ -18,9 +18,9 @@ export default function App() {
     );
 
     const observerOptions = {
-      root: null, // El viewport
+      root: null,
       rootMargin: '0px',
-      threshold: 0.5, // Cambia este valor según la cantidad de la sección que debe estar visible
+      threshold: 0.5,
     };
 
     const observerCallback: IntersectionObserverCallback = (entries) => {

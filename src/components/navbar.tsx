@@ -3,11 +3,11 @@
 import { sectionsConfig } from '@/constants';
 import MenuIcon from './icons/MenuIcon';
 import { useEffect, useRef } from 'react';
-import NavbarLink from './navbarLink';
 import { scrollTo } from '@/lib/utils';
 import useStore from '@/store';
 import BrandingLogo from './icons/BrandingLogo';
-import Chip from './chip';
+import Chip from './Chip';
+import NavbarLink from './NavbarLink';
 
 export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement | null>(null);
