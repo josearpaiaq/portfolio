@@ -13,7 +13,7 @@ export interface IMenuIconProps {
 
 export interface IProjects {
   title: string;
-  description: ReactNode;
+  description: string;
   url?: string;
   image?: string;
   color?: string;
