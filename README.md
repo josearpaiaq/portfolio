@@ -27,6 +27,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - State manager: [zustand](https://zustand-demo.pmnd.rs/)
 - Form library: [react-hook-form](https://react-hook-form.com/)
 - Form validation: [zod](https://github.com/colinhacks/zod)
+- Mailer service: [Resend](https://resend.com/)
 
 ## Learn More
 
