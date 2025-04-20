@@ -113,6 +113,13 @@ export default function Navbar() {
               >
                 Projects
               </NavbarLink>
+              <NavbarLink
+                onClick={() => {
+                  scrollToSection(sectionsConfig.techStack.id);
+                }}
+              >
+                Tech Stack
+              </NavbarLink>
             </div>
           </div>
 
@@ -143,6 +150,13 @@ export default function Navbar() {
               }}
             >
               Projects
+            </NavbarLink>
+            <NavbarLink
+              onClick={() => {
+                scrollToSection(sectionsConfig.techStack.id);
+              }}
+            >
+              Tech Stack
             </NavbarLink>
           </div>
         </div>
