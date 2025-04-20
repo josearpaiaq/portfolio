@@ -15,7 +15,7 @@ export default function JobCard({
   return (
     <Card
       className={[
-        `relative flex h-full w-[80vw] flex-col bg-teal-800 text-teal-200 transition-all duration-300 md:w-[${width}]`,
+        `relative flex h-fit w-[80vw] flex-col bg-teal-800 text-teal-200 transition-all duration-300 md:w-[${width}]`,
         url && 'cursor-pointer hover:bg-teal-900',
       ]
         .filter(Boolean)
