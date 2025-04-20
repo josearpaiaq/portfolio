@@ -20,20 +20,6 @@ export interface IProjects {
   tags?: tagsEnum[];
 }
 
-export interface IExperience {
-  title: string;
-  description: string;
-  fullTime: boolean;
-  remote: boolean;
-  startDate: number;
-  endDate?: number | 'present';
-  location: string;
-  company: string;
-  url: string;
-  image: string;
-  tags: tagsEnum[];
-}
-
 export interface IJobs {
   company: string;
   position: string;
@@ -43,4 +29,5 @@ export interface IJobs {
   description?: ReactNode;
   tags?: tagsEnum[];
   remarkablePoints?: string[];
+  width?: string;
 }

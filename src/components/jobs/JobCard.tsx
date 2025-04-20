@@ -10,11 +10,12 @@ export default function JobCard({
   description,
   tags: jobsTags,
   remarkablePoints,
+  width = '50vw',
 }: IJobs) {
   return (
     <Card
       className={[
-        'relative flex h-full w-[80vw] flex-col justify-between bg-teal-800 text-teal-200 transition-all duration-300 md:w-[45vw]',
+        `relative flex h-full w-[80vw] flex-col bg-teal-800 text-teal-200 transition-all duration-300 md:w-[${width}]`,
         url && 'cursor-pointer hover:bg-teal-900',
       ]
         .filter(Boolean)
@@ -25,7 +26,7 @@ export default function JobCard({
         <CardTitle className="px-6 py-2">
           <a href={url} target="_blank" rel="noreferrer">
             <span className="text-lg font-bold">{position}</span> at{' '}
-            <span className="text-lg font-bold">{company}</span>
+            <span className="text-lg">{company}</span>
           </a>
         </CardTitle>
       </CardHeader>

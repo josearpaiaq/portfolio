@@ -1,4 +1,4 @@
-import { IExperience, IJobs, IProjects } from '@/types';
+import { IJobs, IProjects } from '@/types';
 
 type SectionOptions = 'home' | 'experience' | 'projects' | 'techStack' | 'contact';
 type SectionStyles = {
@@ -139,22 +139,6 @@ export const tags: Record<tagsEnum, { title: string; url: string; icon?: string;
     },
   };
 
-export const experiences: IExperience[] = [
-  {
-    title: 'Frontend Engineer',
-    description: 'Experienced in JavaScript, React, and Vue.',
-    fullTime: true,
-    remote: true,
-    location: 'Panama City, Panama',
-    startDate: 2021,
-    endDate: 'present',
-    company: 'Etyalab S.A.',
-    url: 'https://etyalab.com',
-    image: '/images/experiences/jose-arpaia.png',
-    tags: [tagsEnum.react, tagsEnum.tailwind, tagsEnum.typescript, tagsEnum.vuejs],
-  },
-];
-
 export const projects: IProjects[] = [
   {
     title: 'Funny Math App',
@@ -212,13 +196,8 @@ export const jobs: IJobs[] = [
       'Fisrt experiences with the Angular framework that combine with Ionic perfectly.',
       'The Bluecore team is a very friendly and supportive team.',
     ],
-    tags: [
-      tagsEnum.ionic,
-      tagsEnum.angular,
-      tagsEnum.JavaScript,
-      tagsEnum.tailwind,
-      tagsEnum.typescript,
-    ],
+    tags: [tagsEnum.ionic, tagsEnum.angular, tagsEnum.tailwind, tagsEnum.typescript],
+    width: '70vw',
   },
   {
     company: 'Etyalab S.A.',
@@ -232,14 +211,8 @@ export const jobs: IJobs[] = [
       'Implemented new features and functionalities for visual and functional improvements.',
       'Ensured a seamless user experience.',
     ],
-    tags: [
-      tagsEnum.JavaScript,
-      tagsEnum.vuejs,
-      tagsEnum.react,
-      tagsEnum.tailwind,
-      tagsEnum.typescript,
-      tagsEnum.nextjs,
-    ],
+    tags: [tagsEnum.vuejs, tagsEnum.react, tagsEnum.tailwind, tagsEnum.typescript, tagsEnum.nextjs],
     url: 'https://etyalab.com',
+    width: '50vw',
   },
 ];

@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react';
 import { scrollTo } from '@/lib/utils';
 import useStore from '@/store';
 import BrandingLogo from './icons/BrandingLogo';
-import Chip from './Chip';
 import NavbarLink from './NavbarLink';
 
 export default function Navbar() {
@@ -79,7 +78,6 @@ export default function Navbar() {
               <BrandingLogo />
             </div>
             <div className="flex items-center gap-2 md:hidden">
-              <ContactMeLink onClick={() => scrollToSection(sectionsConfig.contact.id)} />
               <MenuIcon
                 onClick={() => setNavbarIsOpen(!navbarIsOpen)}
                 color={'#fff'}
@@ -115,8 +113,6 @@ export default function Navbar() {
               >
                 Projects
               </NavbarLink>
-
-              <ContactMeLink onClick={() => scrollToSection(sectionsConfig.contact.id)} />
             </div>
           </div>
 
@@ -152,13 +148,5 @@ export default function Navbar() {
         </div>
       </nav>
     </>
-  );
-}
-
-function ContactMeLink({ onClick }: { onClick: () => void }) {
-  return (
-    <Chip textColor="text-teal-100" bgColor="bg-teal-500" onClick={onClick}>
-      Contact with me
-    </Chip>
   );
 }
