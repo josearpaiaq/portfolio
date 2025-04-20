@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Jose Arpaia Quintero',
+  title: 'Software Engineer',
   description:
     "I'm a software developer based in Panamá. Experienced with Javascript technologies like React, Next.js, Node.js and more. I aim to build a great career with the best companies in the world and become part of the technology revolution is already happening. Software developer portfolio for Jose Arpaia Quintero.",
 };
