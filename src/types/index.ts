@@ -37,7 +37,8 @@ export interface IExperience {
 export interface IJobs {
   company: string;
   position: string;
-  date?: string;
+  startDate?: string;
+  endDate?: string;
   url?: string;
   description?: ReactNode;
   tags?: tagsEnum[];

@@ -1,6 +1,6 @@
 import { IExperience, IJobs, IProjects } from '@/types';
 
-type SectionOptions = 'home' | 'experience' | 'projects' | 'contact';
+type SectionOptions = 'home' | 'experience' | 'projects' | 'techStack' | 'contact';
 type SectionStyles = {
   background?: string;
 };
@@ -14,6 +14,9 @@ export const sectionsConfig: Record<SectionOptions, { id: string; styles?: Secti
   },
   projects: {
     id: 'projects',
+  },
+  techStack: {
+    id: 'techStack',
   },
   contact: {
     id: 'contact',
@@ -41,6 +44,8 @@ export enum tagsEnum {
   prettier = 'Prettier',
   vitejs = 'Vite.js',
   postman = 'Postman',
+  ionic = 'Ionic',
+  angular = 'Angular',
   // canva = 'Canva',
   // github = 'GitHub',
 }
@@ -122,6 +127,16 @@ export const tags: Record<tagsEnum, { title: string; url: string; icon?: string;
       url: 'https://www.postman.com/',
       icon: '/icons/postman.svg',
     },
+    [tagsEnum.ionic]: {
+      title: 'Ionic',
+      url: 'https://ionicframework.com/',
+      icon: '/icons/ionic-logo.webp',
+    },
+    [tagsEnum.angular]: {
+      title: 'Angular',
+      url: 'https://angular.io/',
+      icon: '/icons/angular.svg',
+    },
   };
 
 export const experiences: IExperience[] = [
@@ -185,8 +200,30 @@ export const projects: IProjects[] = [
 
 export const jobs: IJobs[] = [
   {
+    company: 'BlueCore, S.A.',
+    startDate: 'Nov, 2024',
+    endDate: 'Present',
+    position: 'Software Engineer',
+    description:
+      "Here, in this company, I develop and maintain the mobile applications for the clients' company. Specially, for the financial sector, I develop the mobile applications that help the bank to manage their clients and their money. I am responsible for creating and maintaining the user interface, ensuring a seamless user experience, and implementing new features and functionalities.",
+    url: 'https://www.bluecorela.com/',
+    remarkablePoints: [
+      'Working with the Ionic framework to develop mobile applications.',
+      'Fisrt experiences with the Angular framework that combine with Ionic perfectly.',
+      'The Bluecore team is a very friendly and supportive team.',
+    ],
+    tags: [
+      tagsEnum.ionic,
+      tagsEnum.angular,
+      tagsEnum.JavaScript,
+      tagsEnum.tailwind,
+      tagsEnum.typescript,
+    ],
+  },
+  {
     company: 'Etyalab S.A.',
-    date: 'Nov 01, 2021 - Today',
+    startDate: 'Nov, 2021',
+    endDate: 'Nov, 2024',
     position: 'Frontend Developer',
     description:
       'My role in the company is to develop and maintain the web applications. I am responsible for creating and maintaining the user interface, ensuring a seamless user experience, and implementing new features and functionalities.',
@@ -195,5 +232,14 @@ export const jobs: IJobs[] = [
       'Implemented new features and functionalities for visual and functional improvements.',
       'Ensured a seamless user experience.',
     ],
+    tags: [
+      tagsEnum.JavaScript,
+      tagsEnum.vuejs,
+      tagsEnum.react,
+      tagsEnum.tailwind,
+      tagsEnum.typescript,
+      tagsEnum.nextjs,
+    ],
+    url: 'https://etyalab.com',
   },
 ];

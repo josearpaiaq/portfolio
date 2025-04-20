@@ -8,6 +8,7 @@ import Contact from '@/views/Contact';
 import MoreOptionsComponent from '@/components/MoreOptionsComponent';
 import { sectionsConfig } from '@/constants';
 import { useEffect, useState } from 'react';
+import TechStackPage from '@/views/TechStackPage';
 
 export default function App() {
   const [backgroundColor, setBackgroundColor] = useState<string>('bg-teal-900');
@@ -52,6 +53,7 @@ export default function App() {
         <Home />
         <Experience />
         <Projects />
+        <TechStackPage />
         <Contact />
       </main>
 
