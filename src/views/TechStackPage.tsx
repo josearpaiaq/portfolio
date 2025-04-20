@@ -6,7 +6,7 @@ import React from 'react';
 export default function TechStackPage() {
   return (
     <SnappingPage id={sectionsConfig.techStack.id}>
-      <h3 className="w-full pt-6 text-center text-3xl text-teal-100">{'Teck Stack'}</h3>
+      <h3 className="w-full pt-6 text-center text-3xl text-teal-100">{'Tech Stack'}</h3>
 
       <TechStack />
     </SnappingPage>
