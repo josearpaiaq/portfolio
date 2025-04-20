@@ -14,7 +14,7 @@ export default function Home() {
       <div className="flex h-full flex-col justify-center gap-2 px-6 text-teal-200 md:px-36">
         <div id="top" className="h-1 w-1 bg-transparent"></div>
         <h1 id="main-title" className="my-4 text-5xl md:text-6xl">
-          Jose Arpaia
+          Jose Arpaia Quintero
         </h1>
         <h3 className="flex w-fit flex-col gap-2 md:flex-row md:items-center">
           <Chip>
