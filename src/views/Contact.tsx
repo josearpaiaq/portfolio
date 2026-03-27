@@ -41,10 +41,19 @@ export default function Contact() {
     },
   });
 
-  const handleOnSubmit = (data: z.infer<typeof FormSchema>) => {
+  const handleOnSubmit = async (data: z.infer<typeof FormSchema>) => {
     try {
-      /* Send email to me */
-      console.log({ data });
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const { error } = await res.json();
+        throw new Error(error ?? 'Error sending message. Please try again later.');
+      }
+
       form.reset();
       toast({
         title: "Message sent. We'll be in touch soon. 🚀",
