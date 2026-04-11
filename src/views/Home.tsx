@@ -1,4 +1,5 @@
 import Chip from '@/components/Chip';
+import FadeIn from '@/components/FadeIn';
 import SnappingPage from '@/components/SnappingPage';
 import { Button } from '@/components/ui/button';
 import { sectionsConfig } from '@/constants';
@@ -13,22 +14,28 @@ export default function Home() {
     >
       <div className="flex h-full flex-col justify-center gap-2 px-6 text-teal-200 md:px-36">
         <div id="top" className="h-1 w-1 bg-transparent"></div>
-        <h1 id="main-title" className="my-4 text-5xl md:text-6xl">
-          Jose Arpaia Quintero
-        </h1>
-        <h3 className="flex w-fit flex-col gap-2 md:flex-row md:items-center">
-          <Chip>
-            <span className="text-nowrap font-bold md:text-lg">Full Stack Developer</span>
-          </Chip>
-          <span className="w-fit">experienced with TypeScript, React, and Vue.</span>
-        </h3>
+        <FadeIn delay={0.1}>
+          <h1 id="main-title" className="my-4 text-5xl md:text-6xl">
+            Jose Arpaia Quintero
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.3}>
+          <h3 className="flex w-fit flex-col gap-2 md:flex-row md:items-center">
+            <Chip>
+              <span className="text-nowrap font-bold md:text-lg">Full Stack Developer</span>
+            </Chip>
+            <span className="w-fit">experienced with TypeScript, React, and Vue.</span>
+          </h3>
+        </FadeIn>
 
-        <div className="mt-6 flex flex-col gap-2 md:flex-row">
-          <Button onClick={() => downloadCV()}>Download my CV</Button>
-          <Button variant={'secondary'} onClick={() => scrollTo(sectionsConfig.contact.id)}>
-            Get in touch with me
-          </Button>
-        </div>
+        <FadeIn delay={0.5}>
+          <div className="mt-6 flex flex-col gap-2 md:flex-row">
+            <Button onClick={() => downloadCV()}>Download my CV</Button>
+            <Button variant={'secondary'} onClick={() => scrollTo(sectionsConfig.contact.id)}>
+              Get in touch with me
+            </Button>
+          </div>
+        </FadeIn>
       </div>
     </SnappingPage>
   );

@@ -1,16 +1,18 @@
+import FadeIn from '@/components/FadeIn';
 import JobCard from '@/components/jobs/JobCard';
 import SnappingPage from '@/components/SnappingPage';
-import TechStack from '@/components/TechStack';
-import { jobs, sectionsConfig, tags, tagsEnum } from '@/constants';
+import { jobs, sectionsConfig } from '@/constants';
 
 export default function Experience() {
   return (
     <SnappingPage id={sectionsConfig.experience.id}>
-      <h3 className="w-full py-6 text-center text-3xl text-teal-100">
-        {'Professional Experience'}
-      </h3>
+      <FadeIn>
+        <h3 className="w-full py-6 text-center text-3xl text-teal-100">
+          {'Professional Experience'}
+        </h3>
+      </FadeIn>
 
-      <div className="relative flex w-full snap-x snap-mandatory gap-6 overflow-x-auto px-12 md:flex-col md:items-center md:pt-12">
+      <div className="relative flex w-full snap-x snap-mandatory gap-6 overflow-x-auto px-12 md:pt-12">
         {jobs.map(
           (
             {
@@ -26,7 +28,12 @@ export default function Experience() {
             },
             index,
           ) => (
-            <div className="shrink-0 snap-center" key={company + index}>
+            <FadeIn
+              key={company + index}
+              className="shrink-0 snap-center"
+              delay={index * 0.1}
+              direction="left"
+            >
               <JobCard
                 position={position}
                 company={company}
@@ -43,12 +50,9 @@ export default function Experience() {
                 url={url}
                 width={width}
               />
-            </div>
+            </FadeIn>
           ),
         )}
-
-        {/* TODO: move this to a separate section */}
-        {/* <TechStack /> */}
       </div>
     </SnappingPage>
   );

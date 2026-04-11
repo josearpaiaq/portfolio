@@ -17,6 +17,8 @@ import SnappingPage from '@/components/SnappingPage';
 import { sectionsConfig } from '@/constants';
 import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '@/components/ui/textarea';
+import { Loader2 } from 'lucide-react';
+import FadeIn from '@/components/FadeIn';
 
 const FormSchema = z.object({
   fullname: z.string().min(2, {
@@ -40,6 +42,8 @@ export default function Contact() {
       message: '',
     },
   });
+
+  const isSubmitting = form.formState.isSubmitting;
 
   const handleOnSubmit = async (data: z.infer<typeof FormSchema>) => {
     try {
@@ -72,11 +76,14 @@ export default function Contact() {
   return (
     <SnappingPage id={sectionsConfig.contact.id}>
       <div className="flex h-full flex-col items-center pt-12 text-teal-200 md:px-6">
-        <h3 className="w-full pb-4 text-center text-3xl text-teal-100">Send me a message</h3>
+        <FadeIn>
+          <h3 className="w-full pb-4 text-center text-3xl text-teal-100">Send me a message</h3>
+        </FadeIn>
+        <FadeIn delay={0.2} className="w-full px-8 md:w-2/3 md:p-0">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleOnSubmit)}
-            className="w-full space-y-6 px-8 md:w-2/3 md:p-0"
+            className="w-full space-y-6"
           >
             <FormField
               control={form.control}
@@ -149,9 +156,19 @@ export default function Contact() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                'Submit'
+              )}
+            </Button>
           </form>
         </Form>
+        </FadeIn>
       </div>
     </SnappingPage>
   );
