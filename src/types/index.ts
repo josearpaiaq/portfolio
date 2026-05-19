@@ -17,6 +17,7 @@ export interface IProjects {
   url?: string;
   image?: string;
   color?: string;
+  repo?: string;
   tags?: tagsEnum[];
 }
 

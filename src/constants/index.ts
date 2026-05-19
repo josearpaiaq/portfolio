@@ -1,4 +1,5 @@
 import { IJobs, IProjects } from '@/types';
+import { ta } from 'zod/v4/locales';
 
 type SectionOptions = 'home' | 'experience' | 'projects' | 'techStack' | 'contact';
 type SectionStyles = {
@@ -37,6 +38,7 @@ export enum tagsEnum {
   JavaScript = 'JavaScript',
   bash = 'Bash',
   git = 'Git',
+  github = 'GitHub',
   mysql = 'MySQL',
   postgresql = 'PostgreSQL',
   nodejs = 'Node.js',
@@ -46,6 +48,8 @@ export enum tagsEnum {
   postman = 'Postman',
   ionic = 'Ionic',
   angular = 'Angular',
+  golang = 'Golang',
+  claudecode = 'Claude Code',
   // canva = 'Canva',
   // github = 'GitHub',
 }
@@ -137,9 +141,57 @@ export const tags: Record<tagsEnum, { title: string; url: string; icon?: string;
       url: 'https://angular.io/',
       icon: '/icons/angular.svg',
     },
+    [tagsEnum.golang]: {
+      title: 'Golang',
+      url: 'https://golang.org/',
+      icon: '/icons/Go_dark.svg',
+    },
+    [tagsEnum.claudecode]: {
+      title: 'Claude Code',
+      url: 'https://claude.com/',
+      icon: '/icons/claude-ai-icon.svg',
+    },
+    [tagsEnum.github]: {
+      title: 'GitHub',
+      url: 'https://github.com/',
+      icon: '/icons/github.svg',
+    },
   };
 
 export const projects: IProjects[] = [
+  {
+    title: 'Gym Routine Manager',
+    description:
+      'This is a full-stack web app for building and managing personalized gym routines, powered by AI. Users create weekly routines organized by muscle groups, then use the built-in AI analyzer to identify gym machines from a photo — Claude Vision recognizes the equipment, lists the muscles it targets, and generates step-by-step exercises. Analyzed machines are automatically surfaced inside the relevant routine days based on muscle group matching.',
+    url: 'https://www.gym-manager.lat/',
+    image: 'projects/gym-routine-manager.png',
+    repo: 'https://github.com/josearpaiaq/gym-routine-manager',
+    tags: [
+      tagsEnum.nodejs,
+      tagsEnum.postgresql,
+      tagsEnum.typescript,
+      tagsEnum.tailwind,
+      tagsEnum.nextjs,
+    ],
+  },
+  {
+    title: 'URL Shortener',
+    description:
+      'A production-ready URL shortening service built with Go, featuring a REST API, PostgreSQL persistence, and a server-rendered frontend. Implements FNV-32a hashing for short code generation, per-request logging middleware, and click tracking per shortened URL. Containerized with Docker Compose for one-command local setup.',
+    url: 'https://shortener-pk9s.onrender.com/',
+    image: 'projects/url-shortener.png',
+    repo: 'https://github.com/josearpaiaq/shortener',
+    tags: [tagsEnum.golang],
+  },
+  {
+    title: 'Chatterly',
+    description:
+      'Chatterly is a voice-first web app that helps users practice spoken English through real-time AI conversations. Users speak directly into the browser — their audio is transcribed via Groq Whisper, processed by a LLaMA 3.3 70B model, and replied to using Azure Neural Text-to-Speech — creating a natural, immersive dialogue loop.',
+    url: 'https://chatterly-app.vercel.app/',
+    image: 'projects/chatterly-app.png',
+    repo: 'https://github.com/josearpaiaq/chatterly-app',
+    tags: [tagsEnum.claudecode, tagsEnum.typescript, tagsEnum.nextjs],
+  },
   {
     title: 'Funny Math App',
     description:
@@ -189,7 +241,7 @@ export const jobs: IJobs[] = [
     endDate: 'Present',
     position: 'Software Engineer',
     description:
-      "Here, in this company, I develop and maintain the mobile applications for the clients' company. Specially, for the financial sector, I develop the mobile applications that help the bank to manage their clients and their money. I am responsible for creating and maintaining the user interface, ensuring a seamless user experience, and implementing new features and functionalities.",
+      "Here, in this company, I develop and maintain the mobile applications. Specially, for the financial sector. I'm responsible for creating and maintaining the user interface, ensuring a seamless user experience, and implementing new features and functionalities.",
     url: 'https://www.bluecorela.com/',
     remarkablePoints: [
       'Working with the Ionic framework to develop mobile applications.',

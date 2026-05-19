@@ -2,17 +2,19 @@ import { tags } from '@/constants';
 
 export default function TechStack() {
   return (
-    <div className="p-8">
-      <div className={['grid w-full grid-cols-4 gap-4 pt-4'].filter(Boolean).join(' ')}>
+    <div className="px-6 py-3">
+      <div
+        className={['grid w-full grid-cols-4 gap-3 pt-2 md:grid-cols-6'].filter(Boolean).join(' ')}
+      >
         {Object.values(tags).map(({ title, icon, url }, index) => (
           <div
             key={index}
-            className="flex select-none flex-col items-center gap-2 border-none p-2 text-teal-100 [&>a>img]:hover:animate-bounce"
+            className="flex select-none flex-col items-center gap-1.5 border-none p-1.5 text-teal-100 [&>a>img]:hover:animate-bounce"
           >
             <a href={url} target="_blank" rel="noreferrer">
-              {icon && <img src={icon} alt={title} className="h-12 w-12" />}
+              {icon && <img src={icon} alt={title} className="h-10 w-10" />}
             </a>
-            <h3>{title}</h3>
+            <h3 className="text-sm">{title}</h3>
           </div>
         ))}
       </div>

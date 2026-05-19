@@ -9,6 +9,7 @@ export default function ProjectCard({
   description,
   tags: projectTags,
   image,
+  repo,
 }: IProjects) {
   const [showDescription, setShowDescription] = useState(() => false);
 
@@ -49,6 +50,16 @@ export default function ProjectCard({
             </Chip>
           ))}
         </div>
+        {repo && (
+          <div className="px-1 pb-4">
+            <Chip url={repo}>
+              <div className="flex items-center gap-1 text-sm">
+                <img src={tags['GitHub'].icon} alt={tags['GitHub'].title} className="h-4 w-4" />{' '}
+                View Repo
+              </div>
+            </Chip>
+          </div>
+        )}
       </div>
     </div>
   );

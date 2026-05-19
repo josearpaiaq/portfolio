@@ -11,22 +11,26 @@ export default function Projects() {
           <h3 className="w-full py-6 text-center text-3xl text-teal-100">Projects</h3>
         </FadeIn>
         <div className="relative flex h-full w-full snap-x snap-mandatory gap-6 overflow-x-auto md:pt-12">
-          {projects.map(({ title, description, url, image, tags: projectTags }, index) => (
-            <FadeIn
-              key={title + index}
-              className="shrink-0 snap-center"
-              delay={index * 0.12}
-              direction="up"
-            >
-              <ProjectCard
-                title={title}
-                description={description}
-                url={url}
-                image={image}
-                tags={projectTags}
-              />
-            </FadeIn>
-          ))}
+          {projects.map(
+            ({ title, description, url, image, tags: projectTags, repo, ...rest }, index) => (
+              <FadeIn
+                key={title + index}
+                className="shrink-0 snap-center"
+                delay={index * 0.12}
+                direction="up"
+              >
+                <ProjectCard
+                  title={title}
+                  description={description}
+                  url={url}
+                  image={image}
+                  tags={projectTags}
+                  repo={repo}
+                  {...rest}
+                />
+              </FadeIn>
+            ),
+          )}
         </div>
       </div>
     </SnappingPage>

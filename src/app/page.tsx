@@ -18,8 +18,9 @@ export default function App() {
       document.getElementById(section.id),
     );
 
+    const mainEl = document.getElementById('main');
     const observerOptions = {
-      root: null,
+      root: mainEl,
       rootMargin: '0px',
       threshold: 0.5,
     };
@@ -49,7 +50,7 @@ export default function App() {
   return (
     <section className={['flex h-screen flex-col', backgroundColor].filter(Boolean).join(' ')}>
       <Navbar />
-      <main className="h-screen snap-y snap-mandatory overflow-y-scroll" id="main">
+      <main className="flex-1 min-h-0 snap-y snap-mandatory overflow-y-scroll overscroll-y-none" id="main">
         <Home />
         <Experience />
         <Projects />
