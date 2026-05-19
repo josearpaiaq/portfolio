@@ -8,7 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const ContactSchema = z.object({
   fullname: z.string().min(2).max(100),
-  email: z.string().email().max(254),
+  email: z.email().max(254),
   how_did_you_hear: z.string().max(200).optional().default(''),
   message: z.string().min(10).max(2000),
 });
@@ -31,9 +31,7 @@ export async function POST(request: Request) {
 
   const { fullname, email, how_did_you_hear, message } = parsed.data;
 
-  const html = await render(
-    ContactEmail({ fullname, email, how_did_you_hear, message }),
-  );
+  const html = await render(ContactEmail({ fullname, email, how_did_you_hear, message }));
 
   const { data, error } = await resend.emails.send({
     from: 'Portfolio Contact <onboarding@resend.dev>',
