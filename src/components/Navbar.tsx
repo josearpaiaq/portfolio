@@ -1,20 +1,26 @@
 'use client';
 
-import { sectionsConfig } from '@/constants';
-import MenuIcon from './icons/MenuIcon';
 import { useEffect, useRef } from 'react';
-import { scrollTo } from '@/lib/utils';
+import { sectionsConfig } from '@/constants';
+import { cn, scrollTo } from '@/lib/utils';
 import useStore from '@/store';
 import BrandingLogo from './icons/BrandingLogo';
+import MenuIcon from './icons/MenuIcon';
 import NavbarLink from './NavbarLink';
+import ThemeToggle from './ThemeToggle';
+import { Button } from './ui/button';
+
+const navLinks = [
+  { id: sectionsConfig.home.id, label: 'Home' },
+  { id: sectionsConfig.about.id, label: 'About' },
+  { id: sectionsConfig.experience.id, label: 'Experience' },
+  { id: sectionsConfig.projects.id, label: 'Projects' },
+  { id: sectionsConfig.techStack.id, label: 'Tech Stack' },
+];
 
 export default function Navbar() {
   const navbarRef = useRef<HTMLDivElement | null>(null);
-  const { topVisible, navbarIsOpen, setNavbarIsOpen } = useStore();
-
-  const scrollToTop = () => {
-    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { topVisible, navbarIsOpen, setNavbarIsOpen, activeSection } = useStore();
 
   const scrollToSection = (sectionId: string) => {
     scrollTo(sectionId);
@@ -31,133 +37,93 @@ export default function Navbar() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
-
-  useEffect(() => {
-    // Si el usuario abre el menu, desactivamos el scroll
-    if (navbarIsOpen) {
-      // Desactivamos el scroll
-      document.body.style.overflow = 'hidden';
-    }
-  }, [navbarIsOpen]);
+  }, [setNavbarIsOpen]);
 
   return (
     <>
       <div
-        className={[
-          'absolute inset-0 z-50 bg-teal-950/50 transition-all duration-300 ease-in-out',
-          navbarIsOpen ? '' : 'hidden',
-        ]
-          .filter(Boolean)
-          .join(' ')}
+        className={cn(
+          'absolute inset-0 z-50 bg-background/60 backdrop-blur-sm transition-all duration-300 ease-in-out',
+          !navbarIsOpen && 'hidden',
+        )}
       ></div>
       <nav
         id="navbar"
         ref={navbarRef}
-        className={[
+        className={cn(
           'w-full p-2',
           'absolute top-0 z-[90]',
           'mx-auto w-[99%] rounded-lg',
           'transition-all duration-300 ease-in-out',
-          'h-fit text-teal-50 md:max-h-[10vh]',
-          topVisible
-            ? navbarIsOpen
-              ? 'bg-teal-700 pb-4 text-teal-50'
-              : 'bg-transparent text-teal-500'
-            : 'bg-teal-700/70',
-        ]
-          .filter(Boolean)
-          .join(' ')}
+          'h-fit text-foreground md:max-h-[10vh]',
+          topVisible && !navbarIsOpen
+            ? 'bg-transparent'
+            : 'border border-border bg-background/80 backdrop-blur',
+        )}
       >
         <div className="z-10 flex flex-col items-center justify-between">
           <div className="flex w-full items-center justify-between p-2">
-            <div
-              className="h-8 w-8 cursor-pointer select-none self-start rounded-md p-2 text-xl font-semibold transition-all duration-300 ease-in-out hover:bg-teal-700/70 md:self-center [&>img]:hover:scale-150"
-              onClick={scrollToTop}
+            <button
+              type="button"
+              aria-label="Back to top"
+              className="h-8 w-8 select-none self-start rounded-md p-2 text-xl font-semibold transition-all duration-300 ease-in-out hover:bg-secondary md:self-center"
+              onClick={() => scrollToSection(sectionsConfig.home.id)}
             >
               <BrandingLogo />
-            </div>
-            <div className="flex items-center gap-2 md:hidden">
-              <MenuIcon
+            </button>
+
+            <div className="flex items-center gap-1 md:hidden">
+              <ThemeToggle />
+              <button
+                type="button"
+                aria-label={navbarIsOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={navbarIsOpen}
                 onClick={() => setNavbarIsOpen(!navbarIsOpen)}
-                color={'#fff'}
-                className={[
-                  'z-50 block cursor-pointer transition-all duration-300 ease-in-out',
-                  navbarIsOpen ? '-rotate-45 opacity-100' : 'opacity-50',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-              />
+                className="p-2"
+              >
+                <MenuIcon
+                  color="currentColor"
+                  className={cn(
+                    'z-50 block transition-all duration-300 ease-in-out',
+                    navbarIsOpen ? '-rotate-45 opacity-100' : 'opacity-70',
+                  )}
+                />
+              </button>
             </div>
 
             {/* Desktop navbar */}
-            <div className="hidden h-fit items-center justify-between gap-4 md:flex">
-              <NavbarLink
-                onClick={() => {
-                  scrollToSection(sectionsConfig.home.id);
-                }}
-              >
-                Home
-              </NavbarLink>
-              <NavbarLink
-                onClick={() => {
-                  scrollToSection(sectionsConfig.experience.id);
-                }}
-              >
-                Experience
-              </NavbarLink>
-              <NavbarLink
-                onClick={() => {
-                  scrollToSection(sectionsConfig.projects.id);
-                }}
-              >
-                Projects
-              </NavbarLink>
-              <NavbarLink
-                onClick={() => {
-                  scrollToSection(sectionsConfig.techStack.id);
-                }}
-              >
-                Tech Stack
-              </NavbarLink>
+            <div className="hidden h-fit items-center justify-between gap-2 md:flex">
+              {navLinks.map(({ id, label }) => (
+                <NavbarLink
+                  key={id}
+                  active={activeSection === id}
+                  onClick={() => scrollToSection(id)}
+                >
+                  {label}
+                </NavbarLink>
+              ))}
+              <ThemeToggle />
+              <Button onClick={() => scrollToSection(sectionsConfig.contact.id)}>Contact</Button>
             </div>
           </div>
 
           {/* Mobile navbar */}
           <div
-            className={[
-              'flex w-full flex-col items-center justify-between gap-4 overflow-hidden transition-all duration-300 ease-in-out md:hidden md:flex-row',
-              navbarIsOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0',
-            ].join(' ')}
+            className={cn(
+              'flex w-full flex-col items-center justify-between gap-2 overflow-hidden transition-all duration-300 ease-in-out md:hidden',
+              navbarIsOpen ? 'max-h-screen pb-4 opacity-100' : 'max-h-0 opacity-0',
+            )}
           >
-            <NavbarLink
-              onClick={() => {
-                scrollToSection(sectionsConfig.home.id);
-              }}
-            >
-              Home
-            </NavbarLink>
-            <NavbarLink
-              onClick={() => {
-                scrollToSection(sectionsConfig.experience.id);
-              }}
-            >
-              Experience
-            </NavbarLink>
-            <NavbarLink
-              onClick={() => {
-                scrollToSection(sectionsConfig.projects.id);
-              }}
-            >
-              Projects
-            </NavbarLink>
-            <NavbarLink
-              onClick={() => {
-                scrollToSection(sectionsConfig.techStack.id);
-              }}
-            >
-              Tech Stack
-            </NavbarLink>
+            {navLinks.map(({ id, label }) => (
+              <NavbarLink
+                key={id}
+                active={activeSection === id}
+                onClick={() => scrollToSection(id)}
+              >
+                {label}
+              </NavbarLink>
+            ))}
+            <Button onClick={() => scrollToSection(sectionsConfig.contact.id)}>Contact</Button>
           </div>
         </div>
       </nav>

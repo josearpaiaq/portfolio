@@ -1,43 +1,29 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 export default function SnappingPage({
   children,
   className,
   id,
-  backgroundVideoUrl,
+  snapAlign = 'center',
 }: {
   children: ReactNode;
   className?: string;
   id: string;
-  backgroundVideoUrl?: string;
+  snapAlign?: 'center' | 'start';
 }) {
-  // const [videoLoaded, setVideoLoaded] = useState(false);
-
   return (
     <section
       id={id}
-      className={[
-        'relative h-screen snap-center snap-always overflow-hidden bg-slate-700 pt-[10vh]',
+      className={cn(
+        'relative flex min-h-svh flex-col pt-[10vh] md:snap-always',
+        snapAlign === 'center'
+          ? 'md:h-screen md:snap-center md:overflow-hidden'
+          : 'md:min-h-screen md:snap-start',
         className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
-      style={{
-        background: !!backgroundVideoUrl
-          ? `url(${backgroundVideoUrl}) no-repeat center center/cover`
-          : undefined,
-      }}
-    >
-      {backgroundVideoUrl && (
-        <video
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-          src={backgroundVideoUrl}
-          autoPlay
-          loop
-          muted
-        />
       )}
-      <div className="relative z-10 h-full w-full">{children}</div>
+    >
+      <div className="relative z-10 flex w-full flex-1 flex-col">{children}</div>
     </section>
   );
 }

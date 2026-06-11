@@ -5,7 +5,7 @@ import ArrowUp from './icons/ArrowUp';
 import { sectionsConfig } from '@/constants';
 import PlusSign from './icons/PlusSign';
 import DownloadFile from './icons/DownloadFile';
-import { downloadCV } from '@/lib/utils';
+import { cn, downloadCV } from '@/lib/utils';
 import useStore from '@/store';
 
 interface IMoreOptions {
@@ -27,7 +27,7 @@ export default function MoreOptionsComponent() {
   const moreOptions: IMoreOptions[] = [
     {
       title: 'Download my CV',
-      children: <DownloadFile color="#000" />,
+      children: <DownloadFile color="currentColor" stroke="currentColor" />,
       onClick: () => downloadCV(),
       size: '2',
     },
@@ -59,18 +59,11 @@ export default function MoreOptionsComponent() {
         observer.unobserve(topElement);
       }
     };
-  }, []);
+  }, [setTopVisible]);
 
   return (
     <div
-      className={[
-        'z-40 flex flex-col items-center gap-2',
-        'fixed bottom-8 right-8 text-white',
-        'transition-all duration-300',
-        'bg-transparent',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className="fixed bottom-8 right-8 z-40 flex flex-col items-center gap-2 bg-transparent transition-all duration-300"
       ref={containerRef}
       onMouseLeave={() => setOpenOptions(false)}
     >
@@ -99,9 +92,9 @@ export default function MoreOptionsComponent() {
         visible
         title="More Options"
         onMouseEnter={() => setOpenOptions(true)}
-        className={[openOptions ? 'rotate-45' : ''].filter(Boolean).join(' ')}
+        className={cn(openOptions && 'rotate-45')}
       >
-        <PlusSign color="#fff" />
+        <PlusSign color="currentColor" />
       </CircleButton>
     </div>
   );
@@ -123,16 +116,14 @@ function CircleButton({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={[
+      className={cn(
         'duration-800 transition-all',
         'shadow-md',
-        'rounded-full bg-teal-500 hover:scale-110 hover:opacity-85 hover:shadow-xl',
+        'rounded-full bg-primary text-primary-foreground hover:scale-110 hover:opacity-85 hover:shadow-xl',
         size === '3' ? 'p-3' : 'p-2',
         visible ? 'flex opacity-100' : 'hidden opacity-0',
         className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      )}
       aria-label={title}
       title={title}
     >
