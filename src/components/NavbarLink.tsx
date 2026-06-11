@@ -1,28 +1,31 @@
-import useStore from '@/store';
+import { cn } from '@/lib/utils';
 
 export default function NavbarLink({
   onClick,
+  active = false,
   children,
 }: {
   onClick?: () => void;
+  active?: boolean;
   children: string;
 }) {
-  const { topVisible, navbarIsOpen } = useStore();
   return (
     <div className="group flex flex-col transition-all">
-      <a
-        className={['cursor-pointer rounded-md px-4 py-2'].filter(Boolean).join(' ')}
+      <button
+        type="button"
+        className={cn(
+          'rounded-md px-4 py-2 transition-colors',
+          active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+        )}
         onClick={() => onClick?.()}
       >
         {children}
-      </a>
+      </button>
       <div
-        className={[
-          'h-0.5 w-0 transition-all duration-300 group-hover:w-full',
-          topVisible ? (navbarIsOpen ? 'bg-teal-200' : 'bg-teal-500') : 'bg-teal-200',
-        ]
-          .filter(Boolean)
-          .join(' ')}
+        className={cn(
+          'h-0.5 bg-primary transition-all duration-300',
+          active ? 'w-full' : 'w-0 group-hover:w-full',
+        )}
       ></div>
     </div>
   );

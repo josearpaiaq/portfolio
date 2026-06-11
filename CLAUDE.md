@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev        # Start development server on localhost:3000
 npm run build      # Production build
-npm run lint       # ESLint via next lint
+npm run lint       # ESLint CLI over src/ (next lint was removed in Next 16)
 npm run prettier   # Format all files with Prettier + Tailwind plugin
 ```
 
@@ -15,41 +15,47 @@ No test suite is configured.
 
 ## Architecture
 
-Single-page portfolio built with **Next.js 14 App Router**. The entire app renders from `src/app/page.tsx` as a `'use client'` component — there is no server-side rendering for the main UI.
+Single-page portfolio built with **Next.js 16 App Router**, deployed to Netlify via `@netlify/plugin-nextjs` (see `netlify.toml`). The main UI renders from `src/app/page.tsx` as a `'use client'` component; `layout.tsx` (server) owns metadata, JSON-LD and the theme provider.
 
 ### Scroll layout
 
-The page uses CSS scroll snapping. `<main>` has `snap-y snap-mandatory overflow-y-scroll`, and each section is wrapped in `<SnappingPage>` (`src/components/SnappingPage.tsx`) which applies `snap-center snap-always h-screen`. The `IntersectionObserver` in `page.tsx` watches sections and updates `backgroundColor` state to produce the dynamic background color transitions.
+CSS scroll snapping is **desktop-only**: `<main>` applies `md:snap-y md:snap-mandatory`; mobile scrolls freely. Each section is wrapped in `<SnappingPage>` (`src/components/SnappingPage.tsx`) with a `snapAlign` prop — `center` (default, fixed `md:h-screen`) or `start` (for sections that can grow taller than one viewport: Experience, Projects, Contact). The `IntersectionObserver` in `page.tsx` tracks which section crosses the middle of the viewport and writes `activeSection` to the Zustand store (drives the navbar active-link indicator).
+
+### Theming
+
+Dark/light mode via `next-themes` (`class` attribute, system default, toggle in navbar). All colors are shadcn CSS variables in `globals.css` (lime/zinc palette); use semantic tokens (`bg-background`, `text-muted-foreground`, `text-highlight` for accent text safe on both themes) — never hardcoded palette classes.
 
 ### Sections and views
 
-Views live in `src/views/` and map 1:1 to scroll sections: `Home`, `Experience`, `Projects`, `TechStackPage`, `Contact`. Each view renders inside a `<SnappingPage id="...">` where the `id` must match a key in `sectionsConfig` from `src/constants/index.ts`.
+Views live in `src/views/` and map 1:1 to scroll sections: `Home`, `About`, `Experience`, `Projects`, `TechStackPage`, `Contact` (which also mounts the `Footer`). Each view renders inside a `<SnappingPage id="...">` where the `id` must match a key in `sectionsConfig` from `src/constants/index.ts`.
 
 ### Data and content
 
 All portfolio content (jobs, projects, tech tags) is defined in `src/constants/index.ts`:
-- `jobs: IJobs[]` — work experience cards
-- `projects: IProjects[]` — project carousel cards
+
+- `jobs: IJobs[]` — work experience cards (vertical stack)
+- `projects: IProjects[]` — project cards; `featured: true` renders a large `ProjectCard`, the rest render expandable `CompactProjectCard`s. Each has a `status` (`Live` | `WIP` | `Archived`)
 - `tags` + `tagsEnum` — tech stack items with icons, used both in cards (as `Chip` components) and the TechStack grid
-- `sectionsConfig` — maps section names to their DOM ids and optional background styles
+- `sectionsConfig` — maps section names to their DOM ids
 
 To add a new tech tag: add to `tagsEnum`, add its entry in `tags`, then reference it via `tagsEnum.xxx` in jobs/projects.
 
 ### Types
 
-`src/types/index.ts` defines `IProjects` and `IJobs`. The `IJobs.width` field is a per-card `vw` string that controls horizontal card width in the scroll — currently hardcoded per job.
+`src/types/index.ts` defines `IProjects`, `IJobs` and `ProjectStatus`.
 
 ### State management
 
-Zustand store (`src/store/index.ts`) tracks two global values: `topVisible` (whether user is at the top section, drives back-to-top button visibility) and `navbarIsOpen` (mobile menu state).
+Zustand store (`src/store/index.ts`) tracks three global values: `topVisible` (whether user is at the top section, drives back-to-top button visibility), `navbarIsOpen` (mobile menu state) and `activeSection` (navbar active-link indicator).
 
 ### Contact API
 
 `src/app/api/contact/route.ts` — POST endpoint that sends email via Resend. Requires two env vars:
+
 - `RESEND_API_KEY`
 - `CONTACT_EMAIL_TO`
 
-There is no server-side validation; the route trusts the request body directly.
+The route validates the body with zod and includes a `company` honeypot field — if it's filled, the route returns a fake 200 without sending email.
 
 ### UI components
 
@@ -57,8 +63,9 @@ There is no server-side validation; the route trusts the request body directly.
 
 ### Styling conventions
 
-- Use `cn()` from `src/lib/utils.ts` for conditional class merging — some older components use `.filter(Boolean).join(' ')` but `cn()` is preferred.
-- Tailwind color theme is teal-based. Custom colors are not defined in `tailwind.config.ts` beyond the shadcn-required `hsl` variables.
+- Use `cn()` from `src/lib/utils.ts` for conditional class merging.
+- Colors come from the shadcn `hsl` variables in `globals.css` (lime accent on zinc neutrals, light + dark). `tailwind.config.ts` adds one extra token: `highlight` (accent text with enough contrast on both themes).
+- Animations respect `prefers-reduced-motion` (`FadeIn`, `scrollTo`).
 - Tech icons live in `public/icons/` — mix of `.svg` and `.webp` formats.
 
 <!-- autoskills:start -->
@@ -246,7 +253,7 @@ React and Next.js performance optimization guidelines from Vercel Engineering. T
 - `.claude/skills/vercel-react-best-practices/rules/rendering-content-visibility.md`: Apply `content-visibility: auto` to defer off-screen rendering.
 - `.claude/skills/vercel-react-best-practices/rules/rendering-hoist-jsx.md`: Extract static JSX outside components to avoid re-creation.
 - `.claude/skills/vercel-react-best-practices/rules/rendering-hydration-no-flicker.md`: When rendering content that depends on client-side storage (localStorage, cookies), avoid both SSR breakage and post-hydration flickering by injecting a synchronous script that updates the DOM before React hydrates.
-- `.claude/skills/vercel-react-best-practices/rules/rendering-hydration-suppress-warning.md`: In SSR frameworks (e.g., Next.js), some values are intentionally different on server vs client (random IDs, dates, locale/timezone formatting). For these *expected* mismatches, wrap the dynamic text in an element with `suppressHydrationWarning` to prevent noisy warnings. Do not use this to hide r...
+- `.claude/skills/vercel-react-best-practices/rules/rendering-hydration-suppress-warning.md`: In SSR frameworks (e.g., Next.js), some values are intentionally different on server vs client (random IDs, dates, locale/timezone formatting). For these _expected_ mismatches, wrap the dynamic text in an element with `suppressHydrationWarning` to prevent noisy warnings. Do not use this to hide r...
 - `.claude/skills/vercel-react-best-practices/rules/rendering-resource-hints.md`: **Impact: HIGH (reduces load time for critical resources)**
 - `.claude/skills/vercel-react-best-practices/rules/rendering-script-defer-async.md`: **Impact: HIGH (eliminates render-blocking)**
 - `.claude/skills/vercel-react-best-practices/rules/rendering-svg-precision.md`: Reduce SVG coordinate precision to decrease file size. The optimal precision depends on the viewBox size, but in general reducing precision should be considered.

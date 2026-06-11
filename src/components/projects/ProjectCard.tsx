@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import { IProjects } from '@/types';
-import Chip from '../Chip';
 import { tags } from '@/constants';
-import { useState } from 'react';
+import Chip from '../Chip';
+import { Button } from '../ui/button';
+import StatusBadge from './StatusBadge';
 
 export default function ProjectCard({
   url,
@@ -10,57 +12,52 @@ export default function ProjectCard({
   tags: projectTags,
   image,
   repo,
+  status,
 }: IProjects) {
-  const [showDescription, setShowDescription] = useState(() => false);
-
   return (
-    <div
-      className={[
-        'h-fit w-[76vw] rounded-lg bg-teal-700 transition-all duration-300 ease-in-out hover:shadow-md md:w-[25vw]',
-        url && 'hover:bg-opacity-75',
-      ]
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-highlight/50 hover:shadow-lg">
       {image && (
-        <img
-          src={image}
-          alt={title}
-          onClick={() => url && window.open(url, '_blank')}
-          className="relative inset-0 h-52 w-full cursor-pointer rounded-lg bg-teal-800 object-cover object-left-top shadow-2xl"
-        />
-      )}
-      <div className="px-2 py-1">
-        <h3 className="my-2 px-4 font-bold md:text-lg">{title}</h3>
-        <div
-          className="cursor-pointer text-balance px-4 text-teal-200/80"
-          onClick={() => setShowDescription((prev) => !prev)}
-        >
-          {showDescription ? description : `${description?.slice(0, 150)}...`}
+        <div className="relative">
+          <Image
+            src={image}
+            alt={`${title} screenshot`}
+            width={800}
+            height={416}
+            className="h-44 w-full object-cover object-left-top"
+          />
+          <StatusBadge status={status} className="absolute right-3 top-3" />
         </div>
-        <div className="flex flex-wrap gap-2 p-4">
+      )}
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <h3 className="text-lg font-bold">{title}</h3>
+        <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{description}</p>
+        <div className="flex flex-wrap gap-2">
           {projectTags?.map((tag) => (
             <Chip key={tag} url={tags[tag].url}>
-              <div className="flex items-center gap-1 text-sm">
-                {tags[tag].icon && (
-                  <img src={tags[tag].icon} alt={tags[tag].title} className="h-4 w-4" />
-                )}
+              <div className="flex items-center gap-1 text-xs">
+                {tags[tag].icon && <img src={tags[tag].icon} alt="" className="h-3.5 w-3.5" />}
                 {tags[tag].title}
               </div>
             </Chip>
           ))}
         </div>
-        {repo && (
-          <div className="px-1 pb-4">
-            <Chip url={repo}>
-              <div className="flex items-center gap-1 text-sm">
-                <img src={tags['GitHub'].icon} alt={tags['GitHub'].title} className="h-4 w-4" />{' '}
-                View Repo
-              </div>
-            </Chip>
-          </div>
-        )}
+        <div className="mt-2 flex gap-2">
+          {url && (
+            <Button asChild size="sm">
+              <a href={url} target="_blank" rel="noreferrer">
+                Live ↗
+              </a>
+            </Button>
+          )}
+          {repo && (
+            <Button asChild size="sm" variant="outline">
+              <a href={repo} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </Button>
+          )}
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

@@ -11,9 +11,13 @@ export interface IMenuIconProps {
   onClick?: () => void;
 }
 
+export type ProjectStatus = 'Live' | 'WIP' | 'Archived';
+
 export interface IProjects {
   title: string;
   description: string;
+  status: ProjectStatus;
+  featured?: boolean;
   url?: string;
   image?: string;
   color?: string;
@@ -30,5 +34,4 @@ export interface IJobs {
   description?: ReactNode;
   tags?: tagsEnum[];
   remarkablePoints?: string[];
-  width?: string;
 }
