@@ -11,6 +11,8 @@ const ContactSchema = z.object({
   email: z.email().max(254),
   how_did_you_hear: z.string().max(200).optional().default(''),
   message: z.string().min(10).max(2000),
+  // Honeypot field: hidden in the UI, so any value means a bot filled it.
+  company: z.string().optional().default(''),
 });
 
 export async function POST(request: Request) {
@@ -29,7 +31,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const { fullname, email, how_did_you_hear, message } = parsed.data;
+  const { fullname, email, how_did_you_hear, message, company } = parsed.data;
+
+  if (company) {
+    return NextResponse.json({ id: null }, { status: 200 });
+  }
 
   const html = await render(ContactEmail({ fullname, email, how_did_you_hear, message }));
 
