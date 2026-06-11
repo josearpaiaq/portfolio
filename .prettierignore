@@ -1,0 +1,4 @@
+# Vendored agent/skill content and tool artifacts — not project source
+.agents/
+.claude/
+.superpowers/
