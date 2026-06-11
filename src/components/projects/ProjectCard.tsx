@@ -30,7 +30,9 @@ export default function ProjectCard({
       )}
       <div className="flex flex-1 flex-col gap-3 p-5">
         <h3 className="text-lg font-bold">{title}</h3>
-        <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{description}</p>
+        <p className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
         <div className="flex flex-wrap gap-2">
           {projectTags?.map((tag) => (
             <Chip key={tag} url={tags[tag].url}>

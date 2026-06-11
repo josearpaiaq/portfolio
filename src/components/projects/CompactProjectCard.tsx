@@ -22,13 +22,13 @@ export default function CompactProjectCard({
   const detailsId = useId();
 
   return (
-    <article className="flex h-fit flex-col gap-3 rounded-xl border border-border bg-card p-5 text-card-foreground transition-colors duration-300 hover:border-highlight/40">
+    <article className="flex h-full flex-col gap-3 rounded-xl border border-border bg-card p-5 text-card-foreground transition-colors duration-300 hover:border-highlight/40">
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-bold">{title}</h3>
         <StatusBadge status={status} />
       </div>
 
-      <div id={detailsId} className="flex flex-col gap-3">
+      <div id={detailsId} className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto">
         <p
           className={cn(
             'text-sm leading-relaxed text-muted-foreground',

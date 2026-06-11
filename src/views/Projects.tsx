@@ -1,4 +1,5 @@
 import FadeIn from '@/components/FadeIn';
+import HorizontalRail from '@/components/HorizontalRail';
 import CompactProjectCard from '@/components/projects/CompactProjectCard';
 import ProjectCard from '@/components/projects/ProjectCard';
 import SectionHeading from '@/components/SectionHeading';
@@ -10,33 +11,34 @@ export default function Projects() {
   const more = projects.filter((project) => !project.featured);
 
   return (
-    <SnappingPage id={sectionsConfig.projects.id} snapAlign="start">
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-6 py-10 md:px-10">
-        <FadeIn>
+    <SnappingPage id={sectionsConfig.projects.id}>
+      <div className="flex min-h-0 flex-1 flex-col gap-6 py-6">
+        <FadeIn className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <SectionHeading kicker="Work" title="Projects" />
         </FadeIn>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <HorizontalRail label="Projects" className="mx-auto w-full max-w-6xl">
           {featured.map((project, index) => (
-            <FadeIn key={project.title} delay={index * 0.12} className="h-full">
+            <FadeIn
+              key={project.title}
+              delay={index * 0.1}
+              direction="left"
+              className="h-full w-[85vw] shrink-0 snap-start sm:w-[400px]"
+            >
               <ProjectCard {...project} />
             </FadeIn>
           ))}
-        </div>
-
-        <FadeIn>
-          <h3 className="font-mono text-sm uppercase tracking-[0.25em] text-muted-foreground">
-            More projects
-          </h3>
-        </FadeIn>
-
-        <div className="grid gap-4 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-          {more.map((project, index) => (
-            <FadeIn key={project.title} delay={index * 0.08}>
+          {more.map((project) => (
+            <FadeIn
+              key={project.title}
+              delay={0.1}
+              direction="left"
+              className="h-full w-[80vw] shrink-0 snap-start sm:w-[320px]"
+            >
               <CompactProjectCard {...project} />
             </FadeIn>
           ))}
-        </div>
+        </HorizontalRail>
       </div>
     </SnappingPage>
   );

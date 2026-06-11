@@ -40,7 +40,7 @@ export default function App() {
       <Navbar />
       <main
         id="main"
-        className="min-h-0 flex-1 overflow-y-scroll overscroll-y-none md:snap-y md:snap-mandatory"
+        className="min-h-0 flex-1 snap-y snap-mandatory overflow-y-scroll overscroll-y-none"
       >
         <Home />
         <About />
