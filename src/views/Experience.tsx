@@ -1,4 +1,5 @@
 import FadeIn from '@/components/FadeIn';
+import HorizontalRail from '@/components/HorizontalRail';
 import JobCard from '@/components/jobs/JobCard';
 import SectionHeading from '@/components/SectionHeading';
 import SnappingPage from '@/components/SnappingPage';
@@ -6,19 +7,24 @@ import { jobs, sectionsConfig } from '@/constants';
 
 export default function Experience() {
   return (
-    <SnappingPage id={sectionsConfig.experience.id} snapAlign="start">
-      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center gap-8 px-6 py-10 md:px-0">
-        <FadeIn>
+    <SnappingPage id={sectionsConfig.experience.id}>
+      <div className="flex min-h-0 flex-1 flex-col gap-6 py-6">
+        <FadeIn className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <SectionHeading kicker="Career" title="Professional Experience" />
         </FadeIn>
 
-        <div className="flex flex-col gap-6">
+        <HorizontalRail label="Work experience" className="mx-auto w-full max-w-6xl">
           {jobs.map((job, index) => (
-            <FadeIn key={job.company} delay={index * 0.15}>
+            <FadeIn
+              key={job.company}
+              delay={index * 0.15}
+              direction="left"
+              className="my-auto max-h-full w-[88vw] shrink-0 snap-center overflow-y-auto sm:w-[560px]"
+            >
               <JobCard {...job} />
             </FadeIn>
           ))}
-        </div>
+        </HorizontalRail>
       </div>
     </SnappingPage>
   );

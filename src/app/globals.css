@@ -31,6 +31,20 @@ body {
       transparent
     );
   }
+  .rail-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .rail-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+  .rail-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .rail-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 9999px;
+  }
 }
 
 @layer base {

@@ -79,92 +79,94 @@ export default function Contact() {
   };
 
   return (
-    <SnappingPage id={sectionsConfig.contact.id} snapAlign="start">
-      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-8 px-6 py-10">
-        <FadeIn>
-          <SectionHeading kicker="Contact" title="Send me a message" />
-        </FadeIn>
-        <FadeIn delay={0.15}>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleOnSubmit)} className="w-full space-y-6">
-              <FormField
-                control={form.control}
-                name="fullname"
-                render={({ field }) => (
-                  <FormItem className="m-0 p-0">
-                    <FormLabel>Full name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. John Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <SnappingPage id={sectionsConfig.contact.id}>
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        <div className="mx-auto my-auto flex w-full max-w-2xl flex-col gap-8 px-6 py-10">
+          <FadeIn>
+            <SectionHeading kicker="Contact" title="Send me a message" />
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleOnSubmit)} className="w-full space-y-6">
+                <FormField
+                  control={form.control}
+                  name="fullname"
+                  render={({ field }) => (
+                    <FormItem className="m-0 p-0">
+                      <FormLabel>Full name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g. John Doe" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem className="m-0 p-0">
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="e.g. john@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="m-0 p-0">
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="e.g. john@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="how_did_you_hear"
-                render={({ field }) => (
-                  <FormItem className="m-0 p-0">
-                    <FormLabel>How did you hear about me?</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. LinkedIn" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="how_did_you_hear"
+                  render={({ field }) => (
+                    <FormItem className="m-0 p-0">
+                      <FormLabel>How did you hear about me?</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g. LinkedIn" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem className="m-0 p-0">
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="e.g. Hi, I'm interested in your work." {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem className="m-0 p-0">
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="e.g. Hi, I'm interested in your work." {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <input
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                className="hidden"
-                {...form.register('company')}
-              />
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                  {...form.register('company')}
+                />
 
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  'Submit'
-                )}
-              </Button>
-            </form>
-          </Form>
-        </FadeIn>
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    'Submit'
+                  )}
+                </Button>
+              </form>
+            </Form>
+          </FadeIn>
+        </div>
       </div>
 
       <Footer />
