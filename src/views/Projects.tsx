@@ -28,16 +28,18 @@ export default function Projects() {
               <ProjectCard {...project} />
             </FadeIn>
           ))}
-          {more.map((project) => (
-            <FadeIn
-              key={project.title}
-              delay={0.1}
-              direction="left"
-              className="h-full w-[80vw] shrink-0 snap-start sm:w-[320px]"
-            >
-              <CompactProjectCard {...project} />
-            </FadeIn>
-          ))}
+          <div className="grid h-full shrink-0 auto-cols-[80vw] grid-flow-col grid-rows-2 gap-5 sm:auto-cols-[320px]">
+            {more.map((project) => (
+              <FadeIn
+                key={project.title}
+                delay={0.1}
+                direction="left"
+                className="h-full min-h-0 snap-start"
+              >
+                <CompactProjectCard {...project} />
+              </FadeIn>
+            ))}
+          </div>
         </HorizontalRail>
       </div>
     </SnappingPage>
