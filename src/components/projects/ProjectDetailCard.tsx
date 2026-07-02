@@ -5,7 +5,7 @@ import Chip from '../Chip';
 import { Button } from '../ui/button';
 import StatusBadge from './StatusBadge';
 
-export default function ProjectCard({
+export default function ProjectDetailCard({
   url,
   title,
   description,
@@ -15,7 +15,7 @@ export default function ProjectCard({
   status,
 }: IProjects) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-highlight/50 hover:shadow-lg">
+    <article className="flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm">
       {image && (
         <div className="relative">
           <Image
@@ -23,14 +23,14 @@ export default function ProjectCard({
             alt={`${title} screenshot`}
             width={800}
             height={416}
-            className="h-44 w-full object-cover object-left-top"
+            className="w-full object-cover object-left-top"
           />
           <StatusBadge status={status} className="absolute right-3 top-3" />
         </div>
       )}
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="text-lg font-bold">{title}</h3>
-        <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        <h3 className="text-xl font-bold">{title}</h3>
+        <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
         <div className="flex flex-wrap gap-2">
           {projectTags?.map((tag) => (
             <Chip key={tag} url={tags[tag].url}>
@@ -41,7 +41,7 @@ export default function ProjectCard({
             </Chip>
           ))}
         </div>
-        <div className="mt-auto flex gap-2 pt-2">
+        <div className="mt-2 flex gap-2">
           {url && (
             <Button asChild size="sm">
               <a href={url} target="_blank" rel="noreferrer">
