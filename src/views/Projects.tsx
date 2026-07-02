@@ -1,46 +1,33 @@
+import Link from 'next/link';
 import FadeIn from '@/components/FadeIn';
-import HorizontalRail from '@/components/HorizontalRail';
-import CompactProjectCard from '@/components/projects/CompactProjectCard';
 import ProjectCard from '@/components/projects/ProjectCard';
 import SectionHeading from '@/components/SectionHeading';
 import SnappingPage from '@/components/SnappingPage';
+import { Button } from '@/components/ui/button';
 import { projects, sectionsConfig } from '@/constants';
 
 export default function Projects() {
   const featured = projects.filter((project) => project.featured);
-  const more = projects.filter((project) => !project.featured);
 
   return (
     <SnappingPage id={sectionsConfig.projects.id}>
-      <div className="flex min-h-0 flex-1 flex-col gap-6 py-6">
-        <FadeIn className="mx-auto w-full max-w-6xl px-6 md:px-10">
-          <SectionHeading kicker="Work" title="Projects" />
-        </FadeIn>
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        <div className="mx-auto my-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 md:px-10">
+          <FadeIn className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading kicker="Work" title="Projects" />
+            <Button asChild variant="outline">
+              <Link href="/projects">View all projects</Link>
+            </Button>
+          </FadeIn>
 
-        <HorizontalRail label="Projects" className="mx-auto w-full max-w-6xl">
-          {featured.map((project, index) => (
-            <FadeIn
-              key={project.title}
-              delay={index * 0.1}
-              direction="left"
-              className="h-full w-[85vw] shrink-0 snap-start sm:w-[400px]"
-            >
-              <ProjectCard {...project} />
-            </FadeIn>
-          ))}
-          <div className="grid h-full shrink-0 auto-cols-[80vw] grid-flow-col grid-rows-2 gap-5 sm:auto-cols-[320px]">
-            {more.map((project) => (
-              <FadeIn
-                key={project.title}
-                delay={0.1}
-                direction="left"
-                className="h-full min-h-0 snap-start"
-              >
-                <CompactProjectCard {...project} />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((project, index) => (
+              <FadeIn key={project.title} delay={index * 0.1} direction="left" className="h-full">
+                <ProjectCard {...project} />
               </FadeIn>
             ))}
           </div>
-        </HorizontalRail>
+        </div>
       </div>
     </SnappingPage>
   );
