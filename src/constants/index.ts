@@ -159,6 +159,24 @@ export const tags: Record<tagsEnum, { title: string; url: string; icon?: string;
 
 export const projects: IProjects[] = [
   {
+    title: 'Quiniela Fifa World Cup 2025',
+    description:
+      'This project is a full-stack web app for playing and guessing the results of the 2026 FIFA World Cup. It is built with Next.js, PostgreSQL, TypeScript, Tailwind CSS, and Node.js. The app uses a Neon.com postgresql database for storing the results of the matches and the user’s guesses. The app also uses vercel for hosting and deployment. The project is open-source and available on GitHub.',
+    status: 'Live',
+    featured: true,
+    url: 'https://quiniela-wc-2026-lovat.vercel.app',
+    image: '/projects/quiniela-world-cup-2026.png',
+    repo: 'https://github.com/josearpaiaq/quiniela-wc-2026',
+    tags: [
+      tagsEnum.nodejs,
+      tagsEnum.postgresql,
+      tagsEnum.typescript,
+      tagsEnum.tailwind,
+      tagsEnum.nextjs,
+    ],
+    order: 1,
+  },
+  {
     title: 'Gym Routine Manager',
     description:
       'This is a full-stack web app for building and managing personalized gym routines, powered by AI. Users create weekly routines organized by muscle groups, then use the built-in AI analyzer to identify gym machines from a photo — Claude Vision recognizes the equipment, lists the muscles it targets, and generates step-by-step exercises. Analyzed machines are automatically surfaced inside the relevant routine days based on muscle group matching.',
@@ -174,6 +192,7 @@ export const projects: IProjects[] = [
       tagsEnum.tailwind,
       tagsEnum.nextjs,
     ],
+    order: 2,
   },
   {
     title: 'Chatterly',
@@ -185,6 +204,7 @@ export const projects: IProjects[] = [
     image: '/projects/chatterly-app.png',
     repo: 'https://github.com/josearpaiaq/chatterly-app',
     tags: [tagsEnum.claudecode, tagsEnum.typescript, tagsEnum.nextjs],
+    order: 2,
   },
   {
     title: 'URL Shortener',
@@ -196,6 +216,7 @@ export const projects: IProjects[] = [
     image: '/projects/url-shortener.png',
     repo: 'https://github.com/josearpaiaq/shortener',
     tags: [tagsEnum.golang],
+    order: 2,
   },
   {
     title: 'Funny Math App',
