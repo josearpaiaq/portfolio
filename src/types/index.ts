@@ -23,6 +23,7 @@ export interface IProjects {
   color?: string;
   repo?: string;
   tags?: tagsEnum[];
+  order?: number;
 }
 
 export interface IJobs {

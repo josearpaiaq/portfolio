@@ -21,11 +21,13 @@ export default function Projects() {
           </FadeIn>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project, index) => (
-              <FadeIn key={project.title} delay={index * 0.1} direction="left" className="h-full">
-                <ProjectCard {...project} />
-              </FadeIn>
-            ))}
+            {featured
+              .sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity))
+              .map((project, index) => (
+                <FadeIn key={project.title} delay={index * 0.1} direction="left" className="h-full">
+                  <ProjectCard {...project} />
+                </FadeIn>
+              ))}
           </div>
         </div>
       </div>
