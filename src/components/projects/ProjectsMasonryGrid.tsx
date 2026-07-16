@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { IProjects } from '@/types';
+import HorizontalRail from '../HorizontalRail';
 import ProjectDetailCard from './ProjectDetailCard';
 
 const BREAKPOINTS = [
@@ -27,6 +28,18 @@ export default function ProjectsMasonryGrid({ projects }: { projects: IProjects[
     mediaQueries.forEach((mq) => mq.addEventListener('change', update));
     return () => mediaQueries.forEach((mq) => mq.removeEventListener('change', update));
   }, []);
+
+  if (columnCount === 1) {
+    return (
+      <HorizontalRail label="All projects" className="-mx-6">
+        {projects.map((project) => (
+          <div key={project.title} className="my-auto w-[85vw] shrink-0 snap-center">
+            <ProjectDetailCard {...project} />
+          </div>
+        ))}
+      </HorizontalRail>
+    );
+  }
 
   const columns: IProjects[][] = Array.from({ length: columnCount }, () => []);
   projects.forEach((project, index) => columns[index % columnCount].push(project));
