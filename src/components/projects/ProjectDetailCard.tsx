@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { IProjects } from '@/types';
 import { tags } from '@/constants';
 import Chip from '../Chip';
+import TechIcon from '../TechIcon';
 import { Button } from '../ui/button';
 import StatusBadge from './StatusBadge';
 
@@ -35,7 +36,7 @@ export default function ProjectDetailCard({
           {projectTags?.map((tag) => (
             <Chip key={tag} url={tags[tag].url}>
               <div className="flex items-center gap-1 text-xs">
-                {tags[tag].icon && <img src={tags[tag].icon} alt="" className="h-3.5 w-3.5" />}
+                <TechIcon icon={tags[tag].icon} className="h-3.5 w-3.5" />
                 {tags[tag].title}
               </div>
             </Chip>

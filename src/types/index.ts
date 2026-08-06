@@ -13,6 +13,8 @@ export interface IMenuIconProps {
 
 export type ProjectStatus = 'Live' | 'WIP' | 'Archived';
 
+export type TagIcon = string | { light?: string; dark?: string };
+
 export interface IProjects {
   title: string;
   description: string;
