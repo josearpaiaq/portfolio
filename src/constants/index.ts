@@ -51,6 +51,7 @@ export enum tagsEnum {
   angular = 'Angular',
   golang = 'Golang',
   claudecode = 'Claude Code',
+  nest = 'Nest JS',
 }
 
 export const tags: Record<tagsEnum, { title: string; url: string; icon?: string; color?: string }> =
@@ -155,14 +156,31 @@ export const tags: Record<tagsEnum, { title: string; url: string; icon?: string;
       url: 'https://github.com/',
       icon: '/icons/github.svg',
     },
+    [tagsEnum.nest]: {
+      title: 'Nest JS',
+      url: 'https://nestjs.com/',
+      icon: '/icons/nestjs.svg',
+    },
   };
 
 export const projects: IProjects[] = [
   {
+    title: 'Property Historical App',
+    description:
+      'Full-stack app for tracking property maintenance history: repairs, improvements, and changes, with file attachments and recurring reminders. Backend built with NestJS + Drizzle ORM + PostgreSQL, frontend with React + Vite + TailwindCSS/shadcn, JWT auth, and S3 file storage. Deployed on Railway (API), Vercel (frontend), and Neon (DB).',
+    status: 'Live',
+    featured: true,
+    url: 'https://property-historical.vercel.app/login',
+    image: '/projects/property-historical-dashboard.png',
+    repo: 'https://github.com/josearpaiaq/property-historical',
+    tags: [tagsEnum.react, tagsEnum.postgresql, tagsEnum.git, tagsEnum.nest],
+    order: 1,
+  },
+  {
     title: 'Quiniela Fifa World Cup 2025',
     description:
       'This project is a full-stack web app for playing and guessing the results of the 2026 FIFA World Cup. It is built with Next.js, PostgreSQL, TypeScript, Tailwind CSS, and Node.js. The app uses a Neon.com postgresql database for storing the results of the matches and the user’s guesses. The app also uses vercel for hosting and deployment. The project is open-source and available on GitHub.',
-    status: 'Live',
+    status: 'Archived',
     featured: true,
     url: 'https://quiniela-wc-2026-lovat.vercel.app',
     image: '/projects/quiniela-world-cup-2026.png',
@@ -174,7 +192,7 @@ export const projects: IProjects[] = [
       tagsEnum.tailwind,
       tagsEnum.nextjs,
     ],
-    order: 1,
+    order: 4,
   },
   {
     title: 'Gym Routine Manager',
