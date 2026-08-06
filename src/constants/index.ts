@@ -1,4 +1,4 @@
-import { IJobs, IProjects } from '@/types';
+import { IJobs, IProjects, TagIcon } from '@/types';
 
 type SectionOptions = 'home' | 'about' | 'experience' | 'projects' | 'techStack' | 'contact';
 
@@ -51,118 +51,138 @@ export enum tagsEnum {
   angular = 'Angular',
   golang = 'Golang',
   claudecode = 'Claude Code',
+  nest = 'Nest JS',
 }
 
-export const tags: Record<tagsEnum, { title: string; url: string; icon?: string; color?: string }> =
-  {
-    [tagsEnum.react]: {
-      title: 'React',
-      url: 'https://reactjs.org/',
-      icon: '/icons/react-icon.svg',
-    },
-    [tagsEnum.tailwind]: {
-      title: 'Tailwind CSS',
-      url: 'https://tailwindcss.com/',
-      icon: '/icons/tailwindcss-icon.svg',
-    },
-    [tagsEnum.typescript]: {
-      title: 'TypeScript',
-      url: 'https://www.typescriptlang.org/',
-      icon: '/icons/typescript-icon.svg',
-    },
-    [tagsEnum.nextjs]: {
-      title: 'Next.js',
-      url: 'https://nextjs.org/',
-      icon: '/icons/next-js-icon.svg',
-    },
-    [tagsEnum.vuejs]: {
-      title: 'Vue.js',
-      url: 'https://vuejs.org/',
-      icon: '/icons/vue-icon.svg',
-    },
-    [tagsEnum.JavaScript]: {
-      title: 'JavaScript',
-      url: 'https://www.javascript.com/',
-      icon: '/icons/js-icon.svg',
-    },
-    [tagsEnum.bash]: {
-      title: 'Bash',
-      url: 'https://www.gnu.org/software/bash/',
-      icon: '/icons/bash.svg',
-    },
-    [tagsEnum.git]: {
-      title: 'Git',
-      url: 'https://git-scm.com/',
-      icon: '/icons/git.svg',
-    },
-    [tagsEnum.mysql]: {
-      title: 'MySQL',
-      url: 'https://www.mysql.com/',
-      icon: '/icons/mysql.svg',
-    },
-    [tagsEnum.postgresql]: {
-      title: 'PostgreSQL',
-      url: 'https://www.postgresql.org/',
-      icon: '/icons/postgresql.svg',
-    },
-    [tagsEnum.nodejs]: {
-      title: 'Node.js',
-      url: 'https://nodejs.org/',
-      icon: '/icons/nodejs.svg',
-    },
-    [tagsEnum.figma]: {
-      title: 'Figma',
-      url: 'https://www.figma.com/',
-      icon: '/icons/figma.svg',
-    },
-    [tagsEnum.prettier]: {
-      title: 'Prettier',
-      url: 'https://prettier.io/',
-      icon: '/icons/prettier-icon-dark.svg',
-    },
-    [tagsEnum.vitejs]: {
-      title: 'Vite.js',
-      url: 'https://vitejs.dev/',
-      icon: '/icons/vitejs.svg',
-    },
-    [tagsEnum.postman]: {
-      title: 'Postman',
-      url: 'https://www.postman.com/',
-      icon: '/icons/postman.svg',
-    },
-    [tagsEnum.ionic]: {
-      title: 'Ionic',
-      url: 'https://ionicframework.com/',
-      icon: '/icons/ionic-logo.webp',
-    },
-    [tagsEnum.angular]: {
-      title: 'Angular',
-      url: 'https://angular.io/',
-      icon: '/icons/angular.svg',
-    },
-    [tagsEnum.golang]: {
-      title: 'Golang',
-      url: 'https://golang.org/',
-      icon: '/icons/Go_dark.svg',
-    },
-    [tagsEnum.claudecode]: {
-      title: 'Claude Code',
-      url: 'https://claude.com/',
-      icon: '/icons/claude-ai-icon.svg',
-    },
-    [tagsEnum.github]: {
-      title: 'GitHub',
-      url: 'https://github.com/',
-      icon: '/icons/github.svg',
-    },
-  };
+export const tags: Record<
+  tagsEnum,
+  { title: string; url: string; icon?: TagIcon; color?: string }
+> = {
+  [tagsEnum.react]: {
+    title: 'React',
+    url: 'https://reactjs.org/',
+    icon: '/icons/react-icon.svg',
+  },
+  [tagsEnum.tailwind]: {
+    title: 'Tailwind CSS',
+    url: 'https://tailwindcss.com/',
+    icon: '/icons/tailwindcss-icon.svg',
+  },
+  [tagsEnum.typescript]: {
+    title: 'TypeScript',
+    url: 'https://www.typescriptlang.org/',
+    icon: '/icons/typescript-icon.svg',
+  },
+  [tagsEnum.nextjs]: {
+    title: 'Next.js',
+    url: 'https://nextjs.org/',
+    icon: { dark: '/icons/nextjs_icon_dark.svg', light: '/icons/next-js-icon.svg' },
+  },
+  [tagsEnum.vuejs]: {
+    title: 'Vue.js',
+    url: 'https://vuejs.org/',
+    icon: '/icons/vue-icon.svg',
+  },
+  [tagsEnum.JavaScript]: {
+    title: 'JavaScript',
+    url: 'https://www.javascript.com/',
+    icon: '/icons/js-icon.svg',
+  },
+  [tagsEnum.bash]: {
+    title: 'Bash',
+    url: 'https://www.gnu.org/software/bash/',
+    icon: '/icons/bash.svg',
+  },
+  [tagsEnum.git]: {
+    title: 'Git',
+    url: 'https://git-scm.com/',
+    icon: '/icons/git.svg',
+  },
+  [tagsEnum.mysql]: {
+    title: 'MySQL',
+    url: 'https://www.mysql.com/',
+    icon: '/icons/mysql.svg',
+  },
+  [tagsEnum.postgresql]: {
+    title: 'PostgreSQL',
+    url: 'https://www.postgresql.org/',
+    icon: '/icons/postgresql.svg',
+  },
+  [tagsEnum.nodejs]: {
+    title: 'Node.js',
+    url: 'https://nodejs.org/',
+    icon: '/icons/nodejs.svg',
+  },
+  [tagsEnum.figma]: {
+    title: 'Figma',
+    url: 'https://www.figma.com/',
+    icon: '/icons/figma.svg',
+  },
+  [tagsEnum.prettier]: {
+    title: 'Prettier',
+    url: 'https://prettier.io/',
+    icon: '/icons/prettier-icon-dark.svg',
+  },
+  [tagsEnum.vitejs]: {
+    title: 'Vite.js',
+    url: 'https://vitejs.dev/',
+    icon: '/icons/vitejs.svg',
+  },
+  [tagsEnum.postman]: {
+    title: 'Postman',
+    url: 'https://www.postman.com/',
+    icon: '/icons/postman.svg',
+  },
+  [tagsEnum.ionic]: {
+    title: 'Ionic',
+    url: 'https://ionicframework.com/',
+    icon: '/icons/ionic-logo.webp',
+  },
+  [tagsEnum.angular]: {
+    title: 'Angular',
+    url: 'https://angular.io/',
+    icon: '/icons/angular.svg',
+  },
+  [tagsEnum.golang]: {
+    title: 'Golang',
+    url: 'https://golang.org/',
+    icon: { light: '/icons/Go_light.svg', dark: '/icons/Go_dark.svg' },
+  },
+  [tagsEnum.claudecode]: {
+    title: 'Claude Code',
+    url: 'https://claude.com/',
+    icon: '/icons/claude-ai-icon.svg',
+  },
+  [tagsEnum.github]: {
+    title: 'GitHub',
+    url: 'https://github.com/',
+    icon: '/icons/github.svg',
+  },
+  [tagsEnum.nest]: {
+    title: 'Nest JS',
+    url: 'https://nestjs.com/',
+    icon: '/icons/nestjs.svg',
+  },
+};
 
 export const projects: IProjects[] = [
+  {
+    title: 'Property Historical App',
+    description:
+      'Full-stack app for tracking property maintenance history: repairs, improvements, and changes, with file attachments and recurring reminders. Backend built with NestJS + Drizzle ORM + PostgreSQL, frontend with React + Vite + TailwindCSS/shadcn, JWT auth, and S3 file storage. Deployed on Railway (API), Vercel (frontend), and Neon (DB).',
+    status: 'Live',
+    featured: true,
+    url: 'https://property-historical.vercel.app/login',
+    image: '/projects/property-historical-dashboard.png',
+    repo: 'https://github.com/josearpaiaq/property-historical',
+    tags: [tagsEnum.react, tagsEnum.postgresql, tagsEnum.git, tagsEnum.nest],
+    order: 1,
+  },
   {
     title: 'Quiniela Fifa World Cup 2025',
     description:
       'This project is a full-stack web app for playing and guessing the results of the 2026 FIFA World Cup. It is built with Next.js, PostgreSQL, TypeScript, Tailwind CSS, and Node.js. The app uses a Neon.com postgresql database for storing the results of the matches and the user’s guesses. The app also uses vercel for hosting and deployment. The project is open-source and available on GitHub.',
-    status: 'Live',
+    status: 'Archived',
     featured: true,
     url: 'https://quiniela-wc-2026-lovat.vercel.app',
     image: '/projects/quiniela-world-cup-2026.png',
@@ -174,7 +194,7 @@ export const projects: IProjects[] = [
       tagsEnum.tailwind,
       tagsEnum.nextjs,
     ],
-    order: 1,
+    order: 4,
   },
   {
     title: 'Gym Routine Manager',

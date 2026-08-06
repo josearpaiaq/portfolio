@@ -1,4 +1,5 @@
 import { tags } from '@/constants';
+import TechIcon from './TechIcon';
 
 export default function TechStack() {
   return (
@@ -11,13 +12,10 @@ export default function TechStack() {
           rel="noreferrer"
           className="group flex select-none flex-col items-center gap-1.5 rounded-lg border border-transparent p-2 text-muted-foreground transition-colors duration-300 hover:border-border hover:bg-card hover:text-foreground"
         >
-          {icon && (
-            <img
-              src={icon}
-              alt=""
-              className="h-10 w-10 transition-transform duration-300 group-hover:-translate-y-1"
-            />
-          )}
+          <TechIcon
+            icon={icon}
+            className="h-10 w-10 transition-transform duration-300 group-hover:-translate-y-1"
+          />
           <p className="text-center text-sm">{title}</p>
         </a>
       ))}

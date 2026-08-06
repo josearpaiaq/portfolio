@@ -6,7 +6,7 @@ import { sectionsConfig } from '@/constants';
 
 const facts = [
   { icon: MapPin, label: 'Location', value: 'Panamá' },
-  { icon: Briefcase, label: 'Experience', value: '4+ years · currently @ BlueCore' },
+  { icon: Briefcase, label: 'Experience', value: '5+ years · currently @ BlueCore' },
   { icon: Sparkles, label: 'Focus', value: 'Web & mobile products' },
   { icon: Globe, label: 'Languages', value: 'Spanish · English' },
 ];

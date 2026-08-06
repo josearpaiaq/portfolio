@@ -1,6 +1,7 @@
 import { IJobs } from '@/types';
 import { tags } from '@/constants';
 import Chip from '../Chip';
+import TechIcon from '../TechIcon';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 export default function JobCard({
@@ -54,7 +55,7 @@ export default function JobCard({
         {jobTags?.map((tag) => (
           <Chip key={tag} url={tags[tag].url}>
             <div className="flex items-center gap-1 text-sm">
-              {tags[tag].icon && <img src={tags[tag].icon} alt="" className="h-4 w-4" />}
+              <TechIcon icon={tags[tag].icon} className="h-4 w-4" />
               {tags[tag].title}
             </div>
           </Chip>
