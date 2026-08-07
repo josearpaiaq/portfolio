@@ -1,3 +1,4 @@
+import { useTilt } from '@/hooks/useTilt';
 import { IJobs } from '@/types';
 import { tags } from '@/constants';
 import Chip from '../Chip';
@@ -14,8 +15,15 @@ export default function JobCard({
   tags: jobTags,
   remarkablePoints,
 }: IJobs) {
+  const tilt = useTilt<HTMLDivElement>();
+
   return (
-    <Card className="w-full transition-colors duration-300 hover:border-highlight/40">
+    <Card
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      className="w-full transition-all duration-150 ease-out will-change-transform hover:border-highlight/40"
+    >
       <CardHeader className="gap-1">
         <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
           {startDate} — {endDate}
