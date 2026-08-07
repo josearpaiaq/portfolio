@@ -3,6 +3,7 @@ import FadeIn from '@/components/FadeIn';
 import SectionHeading from '@/components/SectionHeading';
 import SnappingPage from '@/components/SnappingPage';
 import { sectionsConfig } from '@/constants';
+import { useTilt } from '@/hooks/useTilt';
 
 const facts = [
   { icon: MapPin, label: 'Location', value: 'Panamá' },
@@ -12,6 +13,8 @@ const facts = [
 ];
 
 export default function About() {
+  const tilt = useTilt<HTMLDListElement>();
+
   return (
     <SnappingPage id={sectionsConfig.about.id}>
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
@@ -57,7 +60,12 @@ export default function About() {
             </FadeIn>
 
             <FadeIn delay={0.3} className="flex-1">
-              <dl className="flex h-fit flex-col gap-4 rounded-lg border border-border bg-card p-6 text-card-foreground">
+              <dl
+                ref={tilt.ref}
+                onMouseMove={tilt.onMouseMove}
+                onMouseLeave={tilt.onMouseLeave}
+                className="flex h-fit flex-col gap-4 rounded-lg border border-border bg-card p-6 text-card-foreground transition-transform duration-150 ease-out will-change-transform"
+              >
                 {facts.map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-start gap-3">
                     <Icon aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-highlight" />

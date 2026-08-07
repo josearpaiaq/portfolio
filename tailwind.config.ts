@@ -56,15 +56,6 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-      keyframes: {
-        'aurora-drift': {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '100%': { transform: 'translate(-16px, 16px) scale(1.12)' },
-        },
-      },
-      animation: {
-        'aurora-drift': 'aurora-drift 9s ease-in-out infinite alternate',
-      },
     },
   },
   plugins: [],

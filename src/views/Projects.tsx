@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import Link from 'next/link';
 import FadeIn from '@/components/FadeIn';
 import HorizontalRail from '@/components/HorizontalRail';
-import ProjectCard from '@/components/projects/ProjectCard';
+import ProjectCard, { RETURN_SLUG_KEY } from '@/components/projects/ProjectCard';
 import SectionHeading from '@/components/SectionHeading';
 import SnappingPage from '@/components/SnappingPage';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,23 @@ import { projects, sectionsConfig } from '@/constants';
 
 export default function Projects() {
   const featured = projects.filter((project) => project.featured);
+
+  useEffect(() => {
+    const slug = sessionStorage.getItem(RETURN_SLUG_KEY);
+    if (!slug) return;
+    sessionStorage.removeItem(RETURN_SLUG_KEY);
+
+    document.getElementById(sectionsConfig.projects.id)?.scrollIntoView({ behavior: 'auto' });
+
+    const card = document.getElementById(`project-card-${slug}`);
+    const rail = card?.closest('[role="region"]') as HTMLElement | null;
+    if (card && rail) {
+      const cardRect = card.getBoundingClientRect();
+      const railRect = rail.getBoundingClientRect();
+      const cardCenter = cardRect.left - railRect.left + rail.scrollLeft + cardRect.width / 2;
+      rail.scrollLeft = cardCenter - rail.clientWidth / 2;
+    }
+  }, []);
 
   return (
     <SnappingPage id={sectionsConfig.projects.id}>

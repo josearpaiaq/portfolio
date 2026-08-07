@@ -167,6 +167,7 @@ export const tags: Record<
 
 export const projects: IProjects[] = [
   {
+    slug: 'property-historical-app',
     title: 'Property Historical App',
     description:
       'Full-stack app for tracking property maintenance history: repairs, improvements, and changes, with file attachments and recurring reminders. Backend built with NestJS + Drizzle ORM + PostgreSQL, frontend with React + Vite + TailwindCSS/shadcn, JWT auth, and S3 file storage. Deployed on Railway (API), Vercel (frontend), and Neon (DB).',
@@ -179,10 +180,11 @@ export const projects: IProjects[] = [
     order: 1,
   },
   {
-    title: 'Quiniela Fifa World Cup 2025',
+    slug: 'quiniela-fifa-world-cup-2026',
+    title: 'Quiniela Fifa World Cup 2026',
     description:
       'This project is a full-stack web app for playing and guessing the results of the 2026 FIFA World Cup. It is built with Next.js, PostgreSQL, TypeScript, Tailwind CSS, and Node.js. The app uses a Neon.com postgresql database for storing the results of the matches and the user’s guesses. The app also uses vercel for hosting and deployment. The project is open-source and available on GitHub.',
-    status: 'Archived',
+    status: 'Live',
     featured: true,
     url: 'https://quiniela-wc-2026-lovat.vercel.app',
     image: '/projects/quiniela-world-cup-2026.png',
@@ -197,6 +199,7 @@ export const projects: IProjects[] = [
     order: 4,
   },
   {
+    slug: 'gym-routine-manager',
     title: 'Gym Routine Manager',
     description:
       'This is a full-stack web app for building and managing personalized gym routines, powered by AI. Users create weekly routines organized by muscle groups, then use the built-in AI analyzer to identify gym machines from a photo — Claude Vision recognizes the equipment, lists the muscles it targets, and generates step-by-step exercises. Analyzed machines are automatically surfaced inside the relevant routine days based on muscle group matching.',
@@ -215,6 +218,7 @@ export const projects: IProjects[] = [
     order: 2,
   },
   {
+    slug: 'chatterly',
     title: 'Chatterly',
     description:
       'Chatterly is a voice-first web app that helps users practice spoken English through real-time AI conversations. Users speak directly into the browser — their audio is transcribed via Groq Whisper, processed by a LLaMA 3.3 70B model, and replied to using Azure Neural Text-to-Speech — creating a natural, immersive dialogue loop.',
@@ -227,6 +231,7 @@ export const projects: IProjects[] = [
     order: 2,
   },
   {
+    slug: 'url-shortener',
     title: 'URL Shortener',
     description:
       'A production-ready URL shortening service built with Go, featuring a REST API, PostgreSQL persistence, and a server-rendered frontend. Implements FNV-32a hashing for short code generation, per-request logging middleware, and click tracking per shortened URL. Containerized with Docker Compose for one-command local setup.',
@@ -239,6 +244,7 @@ export const projects: IProjects[] = [
     order: 2,
   },
   {
+    slug: 'funny-math-app',
     title: 'Funny Math App',
     description:
       'This a calculator app that can calculate basic math operations like addition, subtraction, multiplication, and division. Made with React 18 when it just came out. I tried to make an unique style for the buttons and the inputs, not a complex project but gets tricky on the right control of the operations and context maintaining.',
@@ -248,6 +254,7 @@ export const projects: IProjects[] = [
     tags: [tagsEnum.JavaScript, tagsEnum.react],
   },
   {
+    slug: 'tic-tac-toe-game',
     title: 'Tic Tac Toe game',
     description:
       'Tic Tac Toe is a classic game that can be played with two players. It is a simple game that is easy to learn and play. I made this game using vainilla JavaScript, HTML and CSS. I host the game using the GitHub Pages service that makes it super easy to settle a continuous integration pipeline with every merge to master branch, it is available online now.',
@@ -257,6 +264,7 @@ export const projects: IProjects[] = [
     tags: [tagsEnum.JavaScript],
   },
   {
+    slug: 'vue-todo-app',
     title: 'To-do App made with Vue.js',
     description:
       'A simple to-do app made with Vue.js I made with vue cli, bootstrap and data persistence with local storage. You can create new tasks, edit a task, mark a task as completed, put back to uncompleted or delete a task, only using the local storage to store the tasks go we do not need to use a database.',
@@ -266,6 +274,7 @@ export const projects: IProjects[] = [
     tags: [tagsEnum.JavaScript, tagsEnum.vuejs],
   },
   {
+    slug: 'rick-and-morty-wiki',
     title: 'Rick and Morty Wiki',
     description:
       'I developed a Rick and Morty character Wiki using the official API to fetch detailed character information. The app also features pagination by leveraging the API’s built-in properties. This project was a great way to sharpen my vanilla JavaScript skills, and it was built entirely with HTML, CSS, and JavaScript.',
@@ -275,6 +284,7 @@ export const projects: IProjects[] = [
     tags: [tagsEnum.JavaScript],
   },
   {
+    slug: 'country-finder-app',
     title: 'Country Finder App',
     description:
       'This application allows you to find countries by their name or by its continent. Made with vue and bootstrap. Develop this application was really fun and helped me learn more about vue, vue lifecycle, components, conditional rendering and other stuff i was really new about at the time.',
