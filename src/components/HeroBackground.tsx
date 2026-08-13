@@ -16,8 +16,8 @@ const ICON_PHYSICS: BodyPhysics = {
 };
 
 const HALOS = [
-  { size: 380, opacity: 0.4, color: 'hsl(var(--primary))' },
-  { size: 280, opacity: 0.32, color: 'hsl(var(--highlight))' },
+  { size: 380, opacity: 0.2, color: 'hsl(var(--primary))' },
+  { size: 280, opacity: 0.14, color: 'hsl(var(--highlight))' },
 ];
 const HALO_PHYSICS: BodyPhysics = {
   repelRadius: 260,
@@ -105,6 +105,37 @@ function stepBody(
   }
 }
 
+function resolveCollisions(bodies: BodyState[]) {
+  for (let i = 0; i < bodies.length; i++) {
+    for (let j = i + 1; j < bodies.length; j++) {
+      const a = bodies[i];
+      const b = bodies[j];
+      const dx = b.x + b.size / 2 - (a.x + a.size / 2);
+      const dy = b.y + b.size / 2 - (a.y + a.size / 2);
+      const dist = Math.hypot(dx, dy);
+      const minDist = (a.size + b.size) / 2;
+      if (dist <= 0 || dist >= minDist) continue;
+
+      const nx = dx / dist;
+      const ny = dy / dist;
+      const overlap = minDist - dist;
+
+      a.x -= (nx * overlap) / 2;
+      a.y -= (ny * overlap) / 2;
+      b.x += (nx * overlap) / 2;
+      b.y += (ny * overlap) / 2;
+
+      const relVel = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny;
+      if (relVel < 0) {
+        a.vx += nx * relVel;
+        a.vy += ny * relVel;
+        b.vx -= nx * relVel;
+        b.vy -= ny * relVel;
+      }
+    }
+  }
+}
+
 export default function HeroBackground({
   techKeys,
   children,
@@ -154,8 +185,11 @@ export default function HeroBackground({
       lastTime = time;
       const liveBounds = container.getBoundingClientRect();
 
-      iconStates.current.forEach((state, i) => {
+      iconStates.current.forEach((state) => {
         stepBody(state, dt, liveBounds, pointer.current, ICON_PHYSICS);
+      });
+      resolveCollisions(iconStates.current);
+      iconStates.current.forEach((state, i) => {
         const el = iconElRefs.current[i];
         if (el) el.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
       });
