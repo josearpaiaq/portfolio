@@ -1,3 +1,4 @@
+import { Briefcase, Globe, LucideIcon, MapPin, Sparkles } from 'lucide-react';
 import { IJobs, IProjects, TagIcon } from '@/types';
 
 type SectionOptions = 'home' | 'about' | 'experience' | 'projects' | 'techStack' | 'contact';
@@ -24,6 +25,43 @@ export const sectionsConfig: Record<SectionOptions, { id: string }> = {
 };
 
 export const contactEmail = 'josearpaiaquintero@gmail.com';
+
+export const heroCopy = {
+  kicker: 'Full Stack Developer',
+  name: 'Jose Arpaia Quintero',
+  subtitleLead: 'I build fast, accessible web and mobile apps with',
+  subtitleHighlights: ['React', 'Next.js', 'TypeScript'],
+  heroTech: ['TypeScript', 'React', 'Next.js', 'Node.js', 'Go'],
+};
+
+interface AboutParagraph {
+  lead: string;
+  link?: { text: string; url: string };
+  tail?: string;
+}
+
+export const aboutCopy: { paragraphs: AboutParagraph[] } = {
+  paragraphs: [
+    {
+      lead: "I'm a full stack developer based in Panamá with over four years of experience building web and mobile applications. I currently work at",
+      link: { text: 'BlueCore', url: 'https://www.bluecorela.com/' },
+      tail: ', crafting mobile banking apps for the financial sector with Ionic and Angular, before that I spent three years at Etyalab shipping web products with Vue, React and Next.js.',
+    },
+    {
+      lead: "I work across the stack with TypeScript, Node.js and PostgreSQL, and lately I've been building AI-powered side projects like a gym routine manager with vision-based equipment recognition and a voice-first app for practicing spoken English. As a full stack developer, I enjoy working with a wide range of tools and technologies, and I'm always looking for ways to improve my skills and knowledge. Being able to work with projects that actually change people's lives is a dream come true to me.",
+    },
+    {
+      lead: "Outside of code: I enjoy sports, pop culture movies, tv shows, and video games. I'm a big fan of football, enjoy watching italian Serie A matches and playing FIFA (or A.K.A nowadays as EA Sports FC lol) with friends. Also, I like reading books, or listening to audiobooks lately.",
+    },
+  ],
+};
+
+export const aboutFacts: { icon: LucideIcon; label: string; value: string }[] = [
+  { icon: MapPin, label: 'Location', value: 'Panamá' },
+  { icon: Briefcase, label: 'Experience', value: '5+ years · currently @ BlueCore' },
+  { icon: Sparkles, label: 'Focus', value: 'Web & mobile products' },
+  { icon: Globe, label: 'Languages', value: 'Spanish · English' },
+];
 
 export enum mediaLinks {
   github = 'https://github.com/josearpaiaq',
