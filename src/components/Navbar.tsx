@@ -1,5 +1,7 @@
 'use client';
 
+import { Box } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { sectionsConfig } from '@/constants';
 import { cn, scrollTo } from '@/lib/utils';
@@ -9,6 +11,18 @@ import MenuIcon from './icons/MenuIcon';
 import NavbarLink from './NavbarLink';
 import ThemeToggle from './ThemeToggle';
 import { Button } from './ui/button';
+
+function ThreeDToggle() {
+  return (
+    <Link
+      href="/3d"
+      aria-label="View the 3D experience"
+      className="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+    >
+      <Box className="h-4 w-4" />
+    </Link>
+  );
+}
 
 const navLinks = [
   { id: sectionsConfig.home.id, label: 'Home' },
@@ -73,6 +87,7 @@ export default function Navbar() {
             </button>
 
             <div className="flex items-center gap-1 md:hidden">
+              <ThreeDToggle />
               <ThemeToggle />
               <button
                 type="button"
@@ -102,6 +117,7 @@ export default function Navbar() {
                   {label}
                 </NavbarLink>
               ))}
+              <ThreeDToggle />
               <ThemeToggle />
               <Button onClick={() => scrollToSection(sectionsConfig.contact.id)}>Contact</Button>
             </div>
