@@ -9,6 +9,7 @@ import MenuIcon from './icons/MenuIcon';
 import NavbarLink from './NavbarLink';
 import ThemeToggle from './ThemeToggle';
 import { Button } from './ui/button';
+import VersionToggle from './VersionToggle';
 
 const navLinks = [
   { id: sectionsConfig.home.id, label: 'Home' },
@@ -73,6 +74,7 @@ export default function Navbar() {
             </button>
 
             <div className="flex items-center gap-1 md:hidden">
+              <VersionToggle />
               <ThemeToggle />
               <button
                 type="button"
@@ -102,6 +104,7 @@ export default function Navbar() {
                   {label}
                 </NavbarLink>
               ))}
+              <VersionToggle />
               <ThemeToggle />
               <Button onClick={() => scrollToSection(sectionsConfig.contact.id)}>Contact</Button>
             </div>
