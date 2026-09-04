@@ -1,56 +1,62 @@
 'use client';
 
-import { useEffect } from 'react';
-import MoreOptionsComponent from '@/components/MoreOptionsComponent';
-import Navbar from '@/components/Navbar';
-import { sectionsConfig } from '@/constants';
-import useStore from '@/store';
-import About from '@/views/About';
-import Contact from '@/views/Contact';
-import Experience from '@/views/Experience';
-import Home from '@/views/Home';
-import Projects from '@/views/Projects';
-import TechStackPage from '@/views/TechStackPage';
+import { Environment } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import Navbar3D from '@/components/Navbar3D';
+import AboutPanel from '@/components/three/AboutPanel';
+import CameraRig from '@/components/three/CameraRig';
+import ContactPanel from '@/components/three/ContactPanel';
+import DetailOverlay, { DetailSelection } from '@/components/three/DetailOverlay';
+import ExperienceTimeline from '@/components/three/ExperienceTimeline';
+import HeroOrb from '@/components/three/HeroOrb';
+import HeroOverlayText from '@/components/three/HeroOverlayText';
+import ProjectsField from '@/components/three/ProjectsField';
+import { CAMERA_OFFSET } from '@/components/three/sceneLayout';
+import TechCluster from '@/components/three/TechCluster';
+import useIsLowPower from '@/components/three/useIsLowPower';
+import useScrollProgress from '@/components/three/useScrollProgress';
 
-export default function App() {
-  const setActiveSection = useStore((state) => state.setActiveSection);
+export default function ThreeDPage() {
+  const reducedMotion = Boolean(useReducedMotion());
+  const isLowPower = useIsLowPower();
+  const [selection, setSelection] = useState<DetailSelection>(null);
+  const progressTarget = useScrollProgress(selection !== null);
 
+  // R3F's canvas size observer can miss its initial measurement on mount in
+  // this Next.js/Turbopack setup, leaving the canvas at the browser's 300x150
+  // default until something forces a re-measure. Nudge it once, post-mount.
   useEffect(() => {
-    const sections = Object.values(sectionsConfig)
-      .map((section) => document.getElementById(section.id))
-      .filter((section): section is HTMLElement => section !== null);
-
-    // Fires when a section crosses the middle band of the viewport, so the
-    // active nav link tracks correctly even for sections taller than the screen.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { root: document.getElementById('main'), rootMargin: '-45% 0px -45% 0px', threshold: 0 },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [setActiveSection]);
+    const timeout = setTimeout(() => window.dispatchEvent(new Event('resize')), 300);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <div className="flex h-dvh flex-col bg-background text-foreground">
-      <Navbar />
-      <main
-        id="main"
-        className="min-h-0 flex-1 snap-y snap-mandatory overflow-y-scroll overscroll-y-none"
-      >
-        <Home />
-        <About />
-        <Experience />
-        <Projects />
-        <TechStackPage />
-        <Contact />
-      </main>
+    <div className="dark fixed inset-0 bg-[#0a0a0a] text-foreground">
+      <Navbar3D progressTarget={progressTarget} />
+      <HeroOverlayText progressTarget={progressTarget} />
 
-      <MoreOptionsComponent />
+      <Canvas
+        dpr={isLowPower ? [1, 1] : [1, 1.5]}
+        style={{ width: '100vw', height: '100vh' }}
+        camera={{ fov: 50, position: [0, 0, CAMERA_OFFSET] }}
+      >
+        <fog attach="fog" args={['#0a0a0a', 8, 22]} />
+        <ambientLight intensity={0.4} />
+        <directionalLight position={[5, 5, 5]} intensity={0.8} />
+        {!isLowPower && <Environment preset="studio" />}
+        <CameraRig progressTarget={progressTarget} reducedMotion={reducedMotion} />
+
+        <HeroOrb reducedMotion={reducedMotion} />
+        <AboutPanel />
+        <ExperienceTimeline onSelect={(job) => setSelection({ type: 'job', data: job })} />
+        <ProjectsField onSelect={(project) => setSelection({ type: 'project', data: project })} />
+        <TechCluster reducedMotion={reducedMotion} />
+        <ContactPanel />
+      </Canvas>
+
+      <DetailOverlay selection={selection} onClose={() => setSelection(null)} />
     </div>
   );
 }

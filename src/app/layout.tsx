@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import PageTransition from '@/components/PageTransition';
 import ThemeProvider from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
 import { mediaLinks } from '@/constants';
@@ -64,7 +65,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <PageTransition>{children}</PageTransition>
           <Toaster />
         </ThemeProvider>
         <script

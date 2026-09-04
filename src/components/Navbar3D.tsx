@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { MutableRefObject, useState } from 'react';
 import { BEAT_COUNT, BEAT_IDS } from '@/components/three/sceneLayout';
 import { sectionsConfig } from '@/constants';
@@ -10,6 +9,7 @@ import BrandingLogo from './icons/BrandingLogo';
 import MenuIcon from './icons/MenuIcon';
 import NavbarLink from './NavbarLink';
 import { Button } from './ui/button';
+import VersionToggle from './VersionToggle';
 
 const navLinks = [
   { id: sectionsConfig.home.id, label: 'Home' },
@@ -36,15 +36,17 @@ export default function Navbar3D({ progressTarget }: { progressTarget: MutableRe
       className="fixed left-0 right-0 top-0 z-[90] mx-auto mt-2 w-[99%] rounded-lg border border-border bg-background/80 p-2 text-foreground backdrop-blur"
     >
       <div className="flex w-full items-center justify-between p-2">
-        <Link
-          href="/"
-          aria-label="Back to 2D site"
+        <button
+          type="button"
+          aria-label="Back to top"
+          onClick={() => scrollToBeat(sectionsConfig.home.id)}
           className="flex h-8 w-8 select-none items-center justify-center rounded-md transition-all duration-300 ease-in-out hover:bg-secondary"
         >
           <BrandingLogo />
-        </Link>
+        </button>
 
         <div className="flex items-center gap-1 md:hidden">
+          <VersionToggle />
           <button
             type="button"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -68,9 +70,7 @@ export default function Navbar3D({ progressTarget }: { progressTarget: MutableRe
               {label}
             </NavbarLink>
           ))}
-          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
-            ← Back to 2D
-          </Link>
+          <VersionToggle />
           <Button onClick={() => scrollToBeat(sectionsConfig.contact.id)}>Contact</Button>
         </div>
       </div>
@@ -86,9 +86,6 @@ export default function Navbar3D({ progressTarget }: { progressTarget: MutableRe
             {label}
           </NavbarLink>
         ))}
-        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
-          ← Back to 2D
-        </Link>
         <Button onClick={() => scrollToBeat(sectionsConfig.contact.id)}>Contact</Button>
       </div>
     </nav>
