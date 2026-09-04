@@ -1,6 +1,7 @@
 'use client';
 
-import { Edges, Html, useTexture } from '@react-three/drei';
+// import { Edges } from '@react-three/drei'; // outline disabled for deploy, see below
+import { Html, useTexture } from '@react-three/drei';
 import { Suspense, useState } from 'react';
 import { Group } from 'three';
 import { projects, sectionsConfig } from '@/constants';
@@ -93,7 +94,7 @@ export default function ProjectsField({ onSelect }: { onSelect: (project: IProje
             >
               <boxGeometry args={[1.8, 1.5, 0.6]} />
               <meshBasicMaterial transparent opacity={0} depthWrite={false} />
-              <Edges color="#9ee62c" transparent opacity={isActive ? (isHovered ? 0.6 : 0.3) : 0} />
+              {/* <Edges color="#9ee62c" transparent opacity={isActive ? (isHovered ? 0.6 : 0.3) : 0} /> */}
             </mesh>
 
             <Suspense fallback={<PlaceholderScreen />}>

@@ -1,6 +1,7 @@
 'use client';
 
-import { Edges, Html } from '@react-three/drei';
+// import { Edges } from '@react-three/drei'; // outline disabled for deploy, see below
+import { Html } from '@react-three/drei';
 import { Mesh } from 'three';
 import { useState } from 'react';
 import { jobs, sectionsConfig } from '@/constants';
@@ -59,7 +60,7 @@ function JobOrb({
       >
         <sphereGeometry args={[HIT_RADIUS, 16, 12]} />
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
-        <Edges color="#9ee62c" transparent opacity={showHitArea ? (isHovered ? 0.6 : 0.3) : 0} />
+        {/* <Edges color="#9ee62c" transparent opacity={showHitArea ? (isHovered ? 0.6 : 0.3) : 0} /> */}
       </mesh>
 
       <mesh ref={scaleRef}>
