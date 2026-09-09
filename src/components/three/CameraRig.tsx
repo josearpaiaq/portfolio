@@ -2,9 +2,16 @@
 
 import { useFrame } from '@react-three/fiber';
 import { MutableRefObject, useRef } from 'react';
-import { MathUtils, Vector3 } from 'three';
+import { MathUtils, PerspectiveCamera, Vector3 } from 'three';
 import useStore from '@/store';
-import { BEAT_COUNT, BEAT_IDS, CAMERA_OFFSET, beatIndexFromOffset, beatZ } from './sceneLayout';
+import {
+  BEAT_COUNT,
+  BEAT_IDS,
+  CAMERA_OFFSET,
+  beatIndexFromOffset,
+  beatZ,
+  computeResponsiveFov,
+} from './sceneLayout';
 
 const tmpPosition = new Vector3();
 const tmpLookAt = new Vector3();
@@ -36,6 +43,14 @@ export default function CameraRig({
 
     state.camera.position.copy(tmpPosition);
     state.camera.lookAt(tmpLookAt);
+
+    if (state.camera instanceof PerspectiveCamera) {
+      const targetFov = computeResponsiveFov(state.size.width / state.size.height);
+      if (Math.abs(state.camera.fov - targetFov) > 0.01) {
+        state.camera.fov = targetFov;
+        state.camera.updateProjectionMatrix();
+      }
+    }
 
     const nearestBeatId = BEAT_IDS[Math.round(beatFloat)];
     if (nearestBeatId !== lastBeatId.current) {
