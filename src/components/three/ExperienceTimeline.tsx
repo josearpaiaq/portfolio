@@ -1,13 +1,14 @@
 'use client';
 
 // import { Edges } from '@react-three/drei'; // outline disabled for deploy, see below
-import { Html } from '@react-three/drei';
-import { Mesh } from 'three';
-import { useState } from 'react';
+import { Billboard, Html, useTexture } from '@react-three/drei';
+import { Group } from 'three';
+import { Suspense, useState } from 'react';
 import { jobs, sectionsConfig } from '@/constants';
 import useStore from '@/store';
 import { IJobs } from '@/types';
 import { beatZ } from './sceneLayout';
+import useIsLowPower from './useIsLowPower';
 import useLerpedScale from './useLerpedScale';
 
 const VISIBLE_RADIUS = 0.6;
@@ -15,6 +16,52 @@ const VISIBLE_RADIUS = 0.6;
 // zones never overlap — overlapping zones made hover flicker unpredictably
 // between neighbors.
 const HIT_RADIUS = 0.85;
+// The company logos are wide wordmarks, not square marks — contain-fit them
+// in a box this size (well under the sphere's diameter) so every corner
+// stays inside its circular silhouette regardless of aspect ratio.
+const LOGO_BOX = VISIBLE_RADIUS * 1.3;
+
+function JobLogo({ src }: { src: string }) {
+  const texture = useTexture(src);
+  const image = texture.image as { width: number; height: number };
+  const aspect = image.width / image.height;
+
+  let width = LOGO_BOX;
+  let height = LOGO_BOX / aspect;
+  if (height > LOGO_BOX) {
+    height = LOGO_BOX;
+    width = LOGO_BOX * aspect;
+  }
+
+  // The logos' dark/colored strokes blend into the sphere's own shading and
+  // hue depending on where the light falls, so give them a light backing
+  // plate to read against consistently rather than against the glossy
+  // green material directly.
+  const padding = 1.25;
+
+  return (
+    // A billboard is a flat plane at a constant depth, but the sphere's near
+    // pole reaches all the way out to VISIBLE_RADIUS — sitting the plate at
+    // less than that let the sphere poke through its center. Clear the pole
+    // entirely instead of matching the curved surface.
+    <Billboard position={[0, 0, VISIBLE_RADIUS * 1.08]}>
+      <mesh position={[0, 0, -0.01]}>
+        <planeGeometry args={[width * padding, height * padding]} />
+        <meshBasicMaterial
+          color="#f5f5f0"
+          transparent
+          opacity={0.95}
+          toneMapped={false}
+          depthWrite={false}
+        />
+      </mesh>
+      <mesh>
+        <planeGeometry args={[width, height]} />
+        <meshBasicMaterial map={texture} transparent toneMapped={false} depthWrite={false} />
+      </mesh>
+    </Billboard>
+  );
+}
 
 function JobOrb({
   job,
@@ -33,7 +80,7 @@ function JobOrb({
   onHoverStart: () => void;
   onHoverEnd: () => void;
 }) {
-  const scaleRef = useLerpedScale<Mesh>(isHovered ? 1.15 : 1);
+  const scaleRef = useLerpedScale<Group>(isHovered ? 1.15 : 1);
 
   return (
     <>
@@ -63,14 +110,22 @@ function JobOrb({
         {/* <Edges color="#9ee62c" transparent opacity={showHitArea ? (isHovered ? 0.6 : 0.3) : 0} /> */}
       </mesh>
 
-      <mesh ref={scaleRef}>
-        <sphereGeometry args={[VISIBLE_RADIUS, 48, 48]} />
-        <meshStandardMaterial
-          color={isCurrent ? '#9ee62c' : '#4f7a17'}
-          roughness={0.2}
-          metalness={0.5}
-        />
-      </mesh>
+      <group ref={scaleRef}>
+        <mesh>
+          <sphereGeometry args={[VISIBLE_RADIUS, 48, 48]} />
+          <meshStandardMaterial
+            color={isCurrent ? '#9ee62c' : '#4f7a17'}
+            roughness={0.2}
+            metalness={0.5}
+          />
+        </mesh>
+
+        {job.logo && (
+          <Suspense fallback={null}>
+            <JobLogo src={job.logo} />
+          </Suspense>
+        )}
+      </group>
     </>
   );
 }
@@ -78,8 +133,12 @@ function JobOrb({
 export default function ExperienceTimeline({ onSelect }: { onSelect: (job: IJobs) => void }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const isActive = useStore((state) => state.activeSection === sectionsConfig.experience.id);
+  const isLowPower = useIsLowPower();
   const baseZ = beatZ(2);
-  const spacing = 2.2;
+  // Tighter on narrow viewports — a portrait phone's narrower horizontal FOV
+  // (see computeResponsiveFov in sceneLayout.ts) has less room for orbs
+  // spread this far apart, otherwise they crowd the frame edges.
+  const spacing = isLowPower ? 2 : 2.2;
   const offset = (jobs.length - 1) / 2;
 
   return (

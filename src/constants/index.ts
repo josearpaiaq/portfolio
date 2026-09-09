@@ -339,6 +339,7 @@ export const jobs: IJobs[] = [
     startDate: 'Nov, 2024',
     endDate: 'Present',
     position: 'Software Engineer',
+    logo: '/logos/bluecore-logo-horizontal.png',
     description:
       'I build and ship mobile applications for the financial sector, owning the UI layer and feature delivery end to end — from implementation to a polished, seamless user experience.',
     url: 'https://www.bluecorela.com/',
@@ -354,6 +355,7 @@ export const jobs: IJobs[] = [
     startDate: 'Nov, 2021',
     endDate: 'Nov, 2024',
     position: 'Frontend Developer',
+    logo: '/logos/Etyalab-logo.png',
     description:
       'For three years I developed and maintained the company’s web applications — building user interfaces, shipping new features and keeping the product experience consistent across releases.',
     remarkablePoints: [

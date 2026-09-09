@@ -8,9 +8,16 @@ import { projects, sectionsConfig } from '@/constants';
 import useStore from '@/store';
 import { IProjects } from '@/types';
 import { beatZ } from './sceneLayout';
+import useIsLowPower from './useIsLowPower';
 import useLerpedScale from './useLerpedScale';
 
 const COLUMNS = 4;
+// Fewer columns on narrow viewports, plus an overall scale-down — otherwise
+// a 4-wide grid doesn't fit the narrower horizontal field of view a portrait
+// phone gets (see computeResponsiveFov in sceneLayout.ts) and cards overlap
+// or run off-screen.
+const COLUMNS_MOBILE = 2;
+const MOBILE_SCALE = 0.75;
 const SPACING_X = 2.6;
 const SPACING_Y = 2.1;
 
@@ -50,16 +57,18 @@ function PlaceholderScreen() {
 export default function ProjectsField({ onSelect }: { onSelect: (project: IProjects) => void }) {
   const [hovered, setHovered] = useState<string | null>(null);
   const isActive = useStore((state) => state.activeSection === sectionsConfig.projects.id);
+  const isLowPower = useIsLowPower();
   const baseZ = beatZ(3);
-  const rows = Math.ceil(projects.length / COLUMNS);
+  const columns = isLowPower ? COLUMNS_MOBILE : COLUMNS;
+  const rows = Math.ceil(projects.length / columns);
   const rowOffset = (rows - 1) / 2;
-  const colOffset = (COLUMNS - 1) / 2;
+  const colOffset = (columns - 1) / 2;
 
   return (
-    <group position={[0, 0, baseZ]}>
+    <group position={[0, 0, baseZ]} scale={isLowPower ? MOBILE_SCALE : 1}>
       {projects.map((project, index) => {
-        const row = Math.floor(index / COLUMNS);
-        const col = index % COLUMNS;
+        const row = Math.floor(index / columns);
+        const col = index % columns;
         const x = (col - colOffset) * SPACING_X;
         const y = (rowOffset - row) * SPACING_Y;
         const scale = project.featured ? 1.15 : 0.85;

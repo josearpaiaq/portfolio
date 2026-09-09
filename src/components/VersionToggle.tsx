@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 export default function VersionToggle() {
   const pathname = usePathname();
-  const is3D = pathname === '/';
+  const is3D = pathname === '/3d';
 
   return (
     <div
@@ -15,7 +15,7 @@ export default function VersionToggle() {
       className="flex items-center rounded-full border border-border bg-secondary/50 p-0.5 text-xs font-medium"
     >
       <Link
-        href="/"
+        href="/3d"
         aria-current={is3D ? 'page' : undefined}
         className={cn(
           'rounded-full px-2.5 py-1 transition-colors',
@@ -27,7 +27,7 @@ export default function VersionToggle() {
         3D
       </Link>
       <Link
-        href="/2d"
+        href="/"
         aria-current={!is3D ? 'page' : undefined}
         className={cn(
           'rounded-full px-2.5 py-1 transition-colors',
