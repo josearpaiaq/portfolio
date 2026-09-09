@@ -38,4 +38,5 @@ export interface IJobs {
   description?: ReactNode;
   tags?: tagsEnum[];
   remarkablePoints?: string[];
+  logo?: string;
 }

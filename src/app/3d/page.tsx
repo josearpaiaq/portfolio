@@ -13,7 +13,7 @@ import ExperienceTimeline from '@/components/three/ExperienceTimeline';
 import HeroOrb from '@/components/three/HeroOrb';
 import HeroOverlayText from '@/components/three/HeroOverlayText';
 import ProjectsField from '@/components/three/ProjectsField';
-import { CAMERA_OFFSET } from '@/components/three/sceneLayout';
+import { BASE_FOV, CAMERA_OFFSET } from '@/components/three/sceneLayout';
 import TechCluster from '@/components/three/TechCluster';
 import useIsLowPower from '@/components/three/useIsLowPower';
 import useScrollProgress from '@/components/three/useScrollProgress';
@@ -40,7 +40,7 @@ export default function ThreeDPage() {
       <Canvas
         dpr={isLowPower ? [1, 1] : [1, 1.5]}
         style={{ width: '100vw', height: '100vh' }}
-        camera={{ fov: 50, position: [0, 0, CAMERA_OFFSET] }}
+        camera={{ fov: BASE_FOV, position: [0, 0, CAMERA_OFFSET] }}
       >
         <fog attach="fog" args={['#0a0a0a', 8, 22]} />
         <ambientLight intensity={0.4} />
