@@ -1,0 +1,78 @@
+export const metadata = {
+  title: 'Rate limiting a Next.js contact form on Netlify with zero dependencies',
+  description:
+    'How I protected the Resend-powered contact endpoint of my portfolio with a honeypot, zod validation and a 10-line Netlify rate limit rule — no Redis, no middleware.',
+  publishedAt: '2026-10-14',
+  tags: ['Next.js', 'Netlify', 'Security', 'Resend'],
+};
+
+My portfolio has a contact form that hits a Next.js route handler, which sends me an email through [Resend](https://resend.com). It's the only endpoint on the site that does real work, which also makes it the only thing worth abusing: every request costs an email from my Resend quota, and a script hammering it could burn through that in minutes.
+
+This post walks through the three layers I ended up with, from cheapest to most effective.
+
+## Layer 1: validate everything with zod
+
+The route handler never trusts the body. It parses it with a zod schema that caps every field's length, so nobody can send a 5 MB "message":
+
+```ts title="src/app/api/contact/route.ts"
+const ContactSchema = z.object({
+  fullname: z.string().min(2).max(100),
+  email: z.email().max(254),
+  how_did_you_hear: z.string().max(200).optional().default(''),
+  message: z.string().min(10).max(2000),
+  // Honeypot field: hidden in the UI, so any value means a bot filled it.
+  company: z.string().optional().default(''),
+});
+```
+
+Invalid payloads get a `422` before any email is rendered or sent.
+
+## Layer 2: a honeypot field
+
+The `company` field above is rendered in the form but hidden from real users. Naive bots fill every input they find, so if `company` has a value, the request is almost certainly automated:
+
+```ts
+if (company) {
+  return NextResponse.json({ id: null }, { status: 200 });
+}
+```
+
+The important detail is returning a **fake `200`**. If the bot got an error, its author would notice and adapt. A success response tells them everything worked, while nothing is actually sent.
+
+## Layer 3: rate limiting at the edge
+
+Validation and honeypots stop dumb bots, but not someone replaying a valid request in a loop. For that you need rate limiting, and the usual answer in serverless land is "add Redis" (Upstash, a KV store, etc.) plus some middleware to count requests.
+
+On Netlify there's a simpler option: rate limit rules live right in `netlify.toml`, attached to a redirect. A redirect from a path **to itself** with `status = 200` is just a rewrite that changes nothing, which makes it a convenient hook to hang the rule on:
+
+```toml title="netlify.toml"
+[[redirects]]
+  from = "/api/contact"
+  to = "/api/contact"
+  status = 200
+  force = true
+  [redirects.rate_limit]
+    window_limit = 3
+    window_size = 180
+    aggregate_by = ["ip", "domain"]
+```
+
+What each setting does:
+
+- `force = true` applies the rule even though a function exists at that path (without it, Netlify would serve the existing route and skip the redirect).
+- `window_limit = 3` and `window_size = 180` allow 3 requests per 180-second window. A human sends one message; three leaves room for a typo and a retry.
+- `aggregate_by = ["ip", "domain"]` counts requests per client IP on this domain, so one abusive client doesn't lock everyone else out.
+
+Requests over the limit are rejected by Netlify's edge with a `429` **before they ever reach the Next.js function**. That means no cold start, no function invocation and no email sent.
+
+## Handling the 429 on the client
+
+The form already treats any non-`ok` response as an error and shows a toast. A `429` from the edge doesn't return my JSON error shape, so `res.json()` throws and the `catch` block falls back to the generic "Error sending message. Please try again later." message. For a portfolio, that's exactly the right UX. If you want something friendlier, check `res.status === 429` and tell the user to wait a few minutes.
+
+## Takeaways
+
+- **Validate and cap input size** on every public endpoint, even "harmless" ones.
+- **Honeypots are nearly free.** Return a fake success so bots don't learn anything.
+- **Push rate limiting to the platform** when it supports it. Ten lines of config beat a Redis instance you have to provision and pay for.
+
+The whole change was a single commit to `netlify.toml`. Sometimes the best security improvement is the one with the smallest diff.
