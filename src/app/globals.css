@@ -81,6 +81,14 @@ body {
   }
 }
 
+/* Dual-theme code blocks from rehype-pretty-code (Shiki emits both palettes as CSS vars). */
+[data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-light);
+}
+.dark [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-dark);
+}
+
 @layer base {
   * {
     @apply border-border;
