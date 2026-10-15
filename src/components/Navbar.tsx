@@ -104,6 +104,7 @@ export default function Navbar() {
                   {label}
                 </NavbarLink>
               ))}
+              <NavbarLink href="/blog">Blog</NavbarLink>
               <VersionToggle />
               <ThemeToggle />
               <Button onClick={() => scrollToSection(sectionsConfig.contact.id)}>Contact</Button>
@@ -126,6 +127,7 @@ export default function Navbar() {
                 {label}
               </NavbarLink>
             ))}
+            <NavbarLink href="/blog">Blog</NavbarLink>
             <Button onClick={() => scrollToSection(sectionsConfig.contact.id)}>Contact</Button>
           </div>
         </div>
